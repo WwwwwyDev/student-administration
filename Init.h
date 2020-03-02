@@ -1,0 +1,1 @@
+Stu *Itzlink(int n);

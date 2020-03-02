@@ -1,5 +1,5 @@
-typedef struct StudentInformation
-{   int  m_nSign;
+struct Stu{   
+    int  m_nSign;
 	char m_strName[20]; //学生基本信息 
 	char m_strGrade[20];
 	char m_strClass[20];
@@ -7,5 +7,5 @@ typedef struct StudentInformation
 	int  m_nChinese;
 	int  m_nEnglish;
 	int  m_nComputer;
-	link *m_pNext;
-}Stu;
+	Stu *m_pNext;
+};

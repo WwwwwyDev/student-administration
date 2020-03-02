@@ -3,6 +3,9 @@
 #include <string.h>
 #include "struct.h"
 #include "Init.h"
+#include "Sort.h"
+#include "Search.h"
+#include "Display.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -21,5 +24,6 @@ int main(int argc, char** argv)
 	{
 		p_head=Itzlink(n_num);
 	}
+	Display(p_head);
     return 0;
 }

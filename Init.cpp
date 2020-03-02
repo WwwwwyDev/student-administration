@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "struct.h"
-Stu *Itzlink(int n_num) {   
+Stu *Itzlink(int n_num) 
+{   
     int n_id;
     Stu *p_head = NULL;//头指针 
     Stu *p_init = (Stu *)malloc(sizeof(Stu));//初始化空结点 

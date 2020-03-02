@@ -1,3 +1,4 @@
+
 void display(link *p)
 {   int i=1;
 	link *temp=p;

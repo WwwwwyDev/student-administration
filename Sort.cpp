@@ -58,4 +58,18 @@ int Sort(Stu *p_head,int n_ID,int n_subject)
 		}
 		return sum;
 	}
+	if(n_subject == 5)
+	{
+		num = p_thisStudent->m_nComputer+p_thisStudent->m_nEnglish+p_thisStudent->m_nChinese+p_thisStudent->m_nMath;
+    	while(Search(i,p_head))
+    	{
+    	int n_sumScore = Search(i,p_head)->m_nComputer+Search(i,p_head)->m_nEnglish+Search(i,p_head)->m_nChinese+Search(i,p_head)->m_nMath;
+    	if(num <= n_sumScore)
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
  } 

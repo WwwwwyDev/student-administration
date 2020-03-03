@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o Init.o Search.o Sort.o Display.o Change.o Del.o Add.o Fprint.o ClassSort.o NoPass.o
-LINKOBJ  = main.o Init.o Search.o Sort.o Display.o Change.o Del.o Add.o Fprint.o ClassSort.o NoPass.o
+OBJ      = main.o sys.o
+LINKOBJ  = main.o sys.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -27,32 +27,5 @@ $(BIN): $(OBJ)
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
-Init.o: Init.cpp
-	$(CPP) -c Init.cpp -o Init.o $(CXXFLAGS)
-
-Search.o: Search.cpp
-	$(CPP) -c Search.cpp -o Search.o $(CXXFLAGS)
-
-Sort.o: Sort.cpp
-	$(CPP) -c Sort.cpp -o Sort.o $(CXXFLAGS)
-
-Display.o: Display.cpp
-	$(CPP) -c Display.cpp -o Display.o $(CXXFLAGS)
-
-Change.o: Change.cpp
-	$(CPP) -c Change.cpp -o Change.o $(CXXFLAGS)
-
-Del.o: Del.cpp
-	$(CPP) -c Del.cpp -o Del.o $(CXXFLAGS)
-
-Add.o: Add.cpp
-	$(CPP) -c Add.cpp -o Add.o $(CXXFLAGS)
-
-Fprint.o: Fprint.cpp
-	$(CPP) -c Fprint.cpp -o Fprint.o $(CXXFLAGS)
-
-ClassSort.o: ClassSort.cpp
-	$(CPP) -c ClassSort.cpp -o ClassSort.o $(CXXFLAGS)
-
-NoPass.o: NoPass.cpp
-	$(CPP) -c NoPass.cpp -o NoPass.o $(CXXFLAGS)
+sys.o: sys.cpp
+	$(CPP) -c sys.cpp -o sys.o $(CXXFLAGS)

@@ -1,16 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "struct.h"
-#include "Init.h"
-#include "Sort.h"
-#include "Search.h"
-#include "Display.h"
-#include "Add.h"
-#include "Change.h"
-#include "Del.h"
-#include "Fprint.h"
-#include "NoPass.h"
+#include "sys.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -37,7 +28,7 @@ while(1)
 		getchar();
 		scanf("%c",&a);
 		switch(a)
-		{
+		{   
 			case 'A': 
 			Add(p_head);
 			n_num=n_num+1;
@@ -85,24 +76,30 @@ while(1)
 			{ 
 			printf("请输入你要查找学生的姓名：");
 			scanf("%s",str_name);
+			Stu *temp = NULL;
 			for(i=1;i<=n_num;i++)
 			{
 				if(strcmp(str_name,Search(i,p_head)->m_strName)==0)
-				{
-					break;
+				{   temp=Search(i,p_head);
+					printf("|编号:%d ",temp->m_nSign);
+		    		printf("|姓名:%s ",temp->m_strName);
+		    		printf("|班级:%s ",temp->m_strClass);
+					printf("|年级:%s\n",temp->m_strGrade);
+					printf("|数学成绩:%d 院系名次:%d 班级名次:%d\n",temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
+					printf("|语文成绩:%d 院系名次:%d 班级名次:%d\n",temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
+					printf("|英语成绩:%d 院系名次:%d 班级名次:%d\n",temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
+					printf("|专业成绩:%d 院系名次:%d 班级名次:%d\n",temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
+					printf("|总成绩:%d   院系名次:%d 班级名次:%d\n\n",temp->m_nComputer+temp->m_nEnglish+temp->m_nChinese+temp->m_nMath,Sort(p_head,i,5),ClassSort(p_head,i,5));
 				}
 			}
-			Stu *temp=Search(i,p_head);
-			printf("|编号:%d ",temp->m_nSign);
-		    printf("|姓名:%s ",temp->m_strName);
-		    printf("|年级:%s ",temp->m_strGrade);
-		    printf("|班级:%s ",temp->m_strClass);
-		    printf("|数学成绩:%d ",temp->m_nMath);
-		    printf("|语文成绩:%d ",temp->m_nChinese);
-		    printf("|英语成绩:%d ",temp->m_nEnglish);
-		    printf("|专业成绩:%d\n",temp->m_nComputer);
+			if(temp==NULL)
+			{
+				printf("(提示:查无此人)");
+			}
 			break;
-			} 
+			}
+			
+			
 			case 'F':
 			if(n_num==0)
 			{
@@ -127,7 +124,8 @@ while(1)
 			} 
 			case 'H':
 			return 0;
-			default: printf("提示：无此功能");
+			default: 
+			printf("(提示：无此功能)");
 			break;	
 		}
 	    

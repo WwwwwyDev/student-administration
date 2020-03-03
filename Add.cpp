@@ -5,28 +5,28 @@
 void Add(Stu *p_head)
 {
 	int n;
-	printf("ÇëÊäÈëÄãÏëÌí¼ÓµÄ±íµÄÎ»ÖÃ£¨ÊäÈë0Ôò²åÔÚ¿ªÍ·£¬ÊäÈë1Ôò²åÔÚ1-2Ö®¼ä,ÒÔ´ËÀàÍÆ£©:");
+	printf("è¯·è¾“å…¥ä½ æƒ³æ·»åŠ çš„è¡¨çš„ä½ç½®ï¼ˆè¾“å…¥0åˆ™æ’åœ¨å¼€å¤´ï¼Œè¾“å…¥1åˆ™æ’åœ¨1-2ä¹‹é—´,ä»¥æ­¤ç±»æŽ¨ï¼‰:");
 	scanf("%d",&n);
 	Stu *p_new = (Stu *)malloc(sizeof(Stu));
 	if(p_new == NULL)
     {
-    	printf("¿Õ¼ä·ÖÅäÊ§°Ü\n");
+    	printf("ç©ºé—´åˆ†é…å¤±è´¥\n");
     	exit(-1);	 
     }
-	printf("ÊäÈëÐÂÔö±í:\n");
-	printf("ÐÕÃû(%d):",n+1);
+	printf("è¾“å…¥æ–°å¢žè¡¨:\n");
+	printf("å§“å(%d):",n+1);
 	scanf("%s",p_new->m_strName);
-	printf("Äê¼¶(%d):",n+1);
+	printf("å¹´çº§(%d):",n+1);
 	scanf("%s",p_new->m_strGrade);
-	printf("°à¼¶(%d):",n+1);
+	printf("ç­çº§(%d):",n+1);
 	scanf("%s",p_new->m_strClass);
-	printf("ÊýÑ§³É¼¨(%d):",n+1);
+	printf("æ•°å­¦æˆç»©(%d):",n+1);
 	scanf("%d",&p_new->m_nMath);
-	printf("ÓïÎÄ³É¼¨(%d):",n+1);
+	printf("è¯­æ–‡æˆç»©(%d):",n+1);
 	scanf("%d",&p_new->m_nChinese);
-	printf("Ó¢Óï³É¼¨(%d):",n+1);
+	printf("è‹±è¯­æˆç»©(%d):",n+1);
 	scanf("%d",&p_new->m_nEnglish);
-	printf("×¨Òµ³É¼¨(%d):",n+1);
+	printf("ä¸“ä¸šæˆç»©(%d):",n+1);
 	scanf("%d",&p_new->m_nComputer);
 	Stu *p_temp1 = Search(n,p_head);
     Stu *p_temp2 = Search(n+1,p_head);
@@ -40,3 +40,4 @@ void Add(Stu *p_head)
 	p_new->m_pNext = p_temp2;
 	p_new->m_nSign = n+1; 
 }
+

@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o Init.o Search.o Sort.o Display.o Change.o Del.o Add.o Fprint.o
-LINKOBJ  = main.o Init.o Search.o Sort.o Display.o Change.o Del.o Add.o Fprint.o
+OBJ      = main.o Init.o Search.o Sort.o Display.o Change.o Del.o Add.o Fprint.o ClassSort.o NoPass.o
+LINKOBJ  = main.o Init.o Search.o Sort.o Display.o Change.o Del.o Add.o Fprint.o ClassSort.o NoPass.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -50,3 +50,9 @@ Add.o: Add.cpp
 
 Fprint.o: Fprint.cpp
 	$(CPP) -c Fprint.cpp -o Fprint.o $(CXXFLAGS)
+
+ClassSort.o: ClassSort.cpp
+	$(CPP) -c ClassSort.cpp -o ClassSort.o $(CXXFLAGS)
+
+NoPass.o: NoPass.cpp
+	$(CPP) -c NoPass.cpp -o NoPass.o $(CXXFLAGS)

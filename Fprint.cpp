@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "struct.h"
 #include "Sort.h"
+#include "ClassSort.h"
 void Fprint(Stu *p_head)
 {   char Str[256];
     int i = 1; 
@@ -27,21 +28,31 @@ void Fprint(Stu *p_head)
 		fputs(Str,fp );
 		sprintf(Str,"|院系排名:%d",Sort(p_head,i,1));
 		fputs(Str,fp );
+		sprintf(Str,"|班级排名:%d",ClassSort(p_head,i,1));
+		fputs(Str,fp );
 		sprintf(Str,"|语文成绩:%d",p_temp->m_nChinese);
 		fputs(Str,fp );
 		sprintf(Str,"|院系排名:%d",Sort(p_head,i,2));
+		fputs(Str,fp );
+		sprintf(Str,"|班级排名:%d",ClassSort(p_head,i,2));
 		fputs(Str,fp );
 		sprintf(Str,"|英语成绩:%d",p_temp->m_nEnglish);
 		fputs(Str,fp );
 		sprintf(Str,"|院系排名:%d",Sort(p_head,i,3));
 		fputs(Str,fp );
+		sprintf(Str,"|班级排名:%d",ClassSort(p_head,i,3));
+		fputs(Str,fp );
 		sprintf(Str,"|专业成绩:%d",p_temp->m_nComputer);
 		fputs(Str,fp );
 		sprintf(Str,"|院系排名:%d",Sort(p_head,i,4));
 		fputs(Str,fp );
+		sprintf(Str,"|班级排名:%d",ClassSort(p_head,i,4));
+		fputs(Str,fp );
 		sprintf(Str,"|总成绩:%d",p_temp->m_nComputer+p_temp->m_nEnglish+p_temp->m_nChinese+p_temp->m_nMath);
 		fputs(Str,fp );
-		sprintf(Str,"|院系排名:%d\n",Sort(p_head,i,5));
+		sprintf(Str,"|院系排名:%d",Sort(p_head,i,5));
+		fputs(Str,fp );
+		sprintf(Str,"|班级排名:%d\n",ClassSort(p_head,i,5));
 		fputs(Str,fp );
 	    i=i+1;
 	    p_temp=p_temp->m_pNext;

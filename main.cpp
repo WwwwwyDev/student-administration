@@ -10,6 +10,7 @@
 #include "Change.h"
 #include "Del.h"
 #include "Fprint.h"
+#include "NoPass.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -32,7 +33,7 @@ int main(int argc, char** argv)
 	}
 while(1)
 	{   
-		printf("\n请选择你要进行的操作（A:插入表 B:删除表 C:修改表 D:输出表 E:查找表 F:打印表 G:退出）:"); 
+		printf("\n请选择你要进行的操作（A:插入表 B:删除表 C:修改表 D:输出表 E:查找表 F:打印表 G:输出不及格 H:退出）:"); 
 		getchar();
 		scanf("%c",&a);
 		switch(a)
@@ -114,6 +115,17 @@ while(1)
 			break;
 			} 
 			case 'G':
+			if(n_num==0)
+			{
+				printf("提示：请先添加一个表");
+				break; 
+			}
+			else
+			{ 
+			NoPass(p_head);
+			break;
+			} 
+			case 'H':
 			return 0;
 			default: printf("提示：无此功能");
 			break;	

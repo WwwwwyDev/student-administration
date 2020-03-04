@@ -3,8 +3,13 @@
 
 #include "list.h"
 //管理系统函数
+void Mainmenu(Stu *p_head);  //主菜单显示函数 
+void Maininput(Stu *p_head);  //主菜单输入函数函数
+void Studentmenu(Stu *p_head);  //学生菜单显示函数 
+void Studentinput(Stu *p_head);   //学生菜单输入函数
 void Adminmenu(Stu *p_head);  //管理员菜单显示函数 
 void Admininput(Stu *p_head);   //管理员菜单输入函数
+
 
 
 
@@ -13,12 +18,14 @@ void Admininput(Stu *p_head);   //管理员菜单输入函数
 //功能函数 
 void Display(Stu *p_head);   //输出学生信息 
 void InitSys(Stu *p_head);   //输入学生信息(初始化系统)
+void SaveFile(Stu *p_head);   //保存文件 
 int Pow(int num,int n); //传入数字，返回其n次方 
 int Strtoint(char *str);    //传入0-100的字符串返回整型函数，若传入其他字符串，则返回-1
 int Sort(Stu *p_head,int n_ID,int n_subject);  //院系排名，传入头指针、学生编号、所要排名的数据类型 
 int ClassSort(Stu *p_head,int n_ID,int n_subject);   //班级排名，传入头指针、学生编号、所要排名的数据类型 
 void Search(Stu *p_head,char *name);     //搜索学生信息，传入头指针，传入学生姓名
 void Del(Stu *p_head,int n_ID);    //删除表，传入头指针，传入删除学生编号
+double Strtodouble(char *str);  //传入0-100的字符串返回double型函数，若传入其他字符串，则返回-1
 
  
 /*

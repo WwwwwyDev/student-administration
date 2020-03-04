@@ -6,15 +6,73 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) 
-{   
-	Stu *p_head = InitList(2);
-	InitSys(p_head);
+{   printf("%f",atof("99")); 
+    Stu *p_head = NULL;
+//文件读取层 
+    FILE *pf; 
+    int i,num;
+	int length = 1;
+	int sign=0; 
+	  //未找到文件需要初始化文件
+	if((pf = fopen("data.wwy","r")) == NULL)
+	    {
+	      sign=1; 
+	    }
+	fclose(pf);   
+	if(sign == 1)
+	{
+	printf("首次使用未找到历史文件，请初始化文件，请输入学生数量:");
+	      scanf("%d",&num);
+	     p_head = InitList(num);  //开num个空间的链表 
+	     InitSys(p_head);      //输入数据域 
+	     SaveFile(p_head);   //保存文件 
+     }
+     else
+	{   
+    if((pf = fopen("data.wwy","rb")) == NULL) 
+	{   
+	   exit(1);   
+	}
+         //找到文件，将文件读入链表 
+	    p_head = InitList(1);
+	    Stu *p_temp = NextItem(p_head);
+	    while(fread(p_temp,sizeof(struct Stu),1,pf) == 1)
+		{    
+			AddItem(p_temp); 
+		    p_temp = NextItem(p_temp);
+		    length++; 
+		}
+		Del(p_head,length);
+		length--;
+		fclose(pf);
+	}
+
+//工作层 
 	while(1)
 	{
-		Adminmenu(p_head);
+		Mainmenu(p_head);
 	}
 	
 	return 0;
+}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/* int n_num,i ;
 	char a;
     char str_name[10];
@@ -139,4 +197,3 @@ while(1)
 	    
 	} 
     return 0;*/
-}

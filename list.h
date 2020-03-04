@@ -3,12 +3,12 @@
 struct Stu
 {   //数据域 
     int  m_nSign;
-	char m_strName[50]; //学生基本信息 
-	char m_strClass[20];
-	char  m_nMath[20]; //各科成绩及对应排名
-	char  m_nChinese[20];
-	char  m_nEnglish[20];
-	char  m_nComputer[20];
+	char m_strName[999]; //学生基本信息 
+	char m_strClass[999];
+	char  m_nMath[999]; //各科成绩及对应排名
+	char  m_nChinese[999];
+	char  m_nEnglish[999];
+	char  m_nComputer[999];
 	//结点 
 	Stu *m_pNext;
 };

@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 //文件读取层 
     FILE *pf; 
     int i,num;
-	int length = 1;
+	int length = 0;
 	int sign=0; 
 	  //未找到文件需要初始化文件
 	if((pf = fopen("data.wwy","r")) == NULL)
@@ -37,16 +37,16 @@ int main(int argc, char** argv)
 	   exit(1);   
 	}
          //找到文件，将文件读入链表 
-	    p_head = InitList(1);
-	    Stu *p_temp = NextItem(p_head);
-	    while(fread(p_temp,sizeof(struct Stu),1,pf) == 1)
+	    p_head = InitList(0);
+	    Stu *p_temp = p_head;
+        while(fread(p_temp,sizeof(struct Stu),1,pf) == 1)
 		{    
 			AddItem(p_temp); 
 		    p_temp = NextItem(p_temp);
 		    length++; 
 		}
 		Del(p_head,length);
-		length--;
+		length--; 
 		printf("提示：读取成功\n");
 		fclose(pf);
 	}

@@ -26,7 +26,8 @@ int ClassSort(Stu *p_head,int n_ID,int n_subject);   //°à¼¶ÅÅÃû£¬´«ÈëÍ·Ö¸Õë¡¢Ñ§É
 void Search(Stu *p_head,char *name);     //ËÑË÷Ñ§ÉúĞÅÏ¢£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÑ§ÉúĞÕÃû
 void Del(Stu *p_head,int n_ID);    //É¾³ı±í£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÉ¾³ıÑ§Éú±àºÅ
 double Strtodouble(char *str);  //´«Èë0-100µÄ×Ö·û´®·µ»ØdoubleĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö·û´®£¬Ôò·µ»Ø-1
-
+void AddList(Stu *p_head);    //Î²²¿Ìí¼ÓĞÂÍ¬Ñ§ 
+void Change(Stu *p_head);   //ĞŞ¸Ä 
  
 /*
 Stu *Itzlink(int n_num);  //³õÊ¼»¯Á´±í 

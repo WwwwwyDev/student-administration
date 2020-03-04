@@ -12,8 +12,8 @@ void InitItem(Stu *plist) //初始化结点，将plist指向一个空链表
       plist->m_pNext = NULL;
 } 
 
-void AddItem(Stu *plist)  //尾插结点，传入上一结点，将上一结点的指针域指向尾部新结点 
-{
+void AddItem(Stu *plist)  //尾插结点，传入前置结点，遍历到NULL，将尾部的指针域指向尾部新结点 ，完成添加 ,返回新指针地址 
+{   
 	struct Stu *temp = (struct Stu*)malloc(sizeof(struct Stu));
 	if(temp == NULL)
     {
@@ -23,6 +23,7 @@ void AddItem(Stu *plist)  //尾插结点，传入上一结点，将上一结点的指针域指向尾部新
 	InitItem(temp); 
 	temp->m_nSign=plist->m_nSign+1;
 	plist->m_pNext=temp;
+	temp->m_pNext=NULL;
 }
 Stu *NextItem(Stu *plist) //传入当前结点，传出下一结点 
 {

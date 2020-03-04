@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 void InitItem(Stu *plist) //初始化结点，将plist指向一个空链表
-{     /*strcpy(plist->m_nComputer,"0");
+{     strcpy(plist->m_nComputer,"0");
       strcpy(plist->m_nChinese,"0");
       strcpy(plist->m_nEnglish,"0");
       strcpy(plist->m_nMath,"0");
-      strcpy(plist->m_strName,"无法无天");
+    /*strcpy(plist->m_strName,"无法无天");
 	  strcpy(plist->m_strClass,"None");*/
       plist->m_pNext = NULL;
 } 
@@ -38,6 +38,7 @@ Stu *InitList(int num) //初始化链表
     	printf("空间分配失败\n");
     	exit(-1);	 
     }
+    phead->m_pNext = NULL;
     InitItem(phead);
 	phead->m_nSign = 0;
 	for(i=1;i<=num;i++)

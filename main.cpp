@@ -6,8 +6,7 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) 
-{   printf("%f",atof("99")); 
-    Stu *p_head = NULL;
+{   Stu *p_head = NULL;
 //文件读取层 
     FILE *pf; 
     int i,num;
@@ -21,8 +20,12 @@ int main(int argc, char** argv)
 	fclose(pf);   
 	if(sign == 1)
 	{
-	printf("首次使用未找到历史文件，请初始化文件，请输入学生数量:");
-	      scanf("%d",&num);
+	printf("首次使用未找到历史文件，请初始化文件，请输入学生数量(输入0，则不录入任何数据):");
+	    while(scanf("%d",&num)!=1 || num<0)
+		{
+		printf("提示：你没有输入正确值，请重新输入:");
+		while(getchar()!='\n');
+	    }
 	     p_head = InitList(num);  //开num个空间的链表 
 	     InitSys(p_head);      //输入数据域 
 	     SaveFile(p_head);   //保存文件 
@@ -44,6 +47,7 @@ int main(int argc, char** argv)
 		}
 		Del(p_head,length);
 		length--;
+		printf("提示：读取成功\n");
 		fclose(pf);
 	}
 

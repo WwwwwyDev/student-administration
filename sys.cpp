@@ -89,6 +89,7 @@ void Admininput(Stu *p_head)   //管理员菜单输入函数
 		else 
 		{
 		Del(p_head,n_ID);
+		printf("提示：删除成功\n");
 	    }
 	}
 	else
@@ -129,7 +130,7 @@ void InitSys(Stu *p_head)      //初始化学生系统后，管理员输入数据层
 		scanf("%s",p_temp->m_strName);
 		printf("班级(编号:%d):",p_temp->m_nSign);
 		scanf("%s",p_temp->m_strClass);
-		printf("数学成绩(编号:%d):",p_temp->m_nSign);
+/*		printf("数学成绩(编号:%d):",p_temp->m_nSign);
 		scanf("%s",p_temp->m_nMath);
 		while(Strtodouble(p_temp->m_nMath) == -1)
 		{   
@@ -157,6 +158,7 @@ void InitSys(Stu *p_head)      //初始化学生系统后，管理员输入数据层
 			printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:");
 			scanf("%s",p_temp->m_nComputer);
 		}
+		*/
         p_temp = NextItem(p_temp);
         }
 } 
@@ -201,21 +203,29 @@ double Strtodouble(char *str)  //传入0-100的字符串返回double型函数，若传入其他字
 {   int i;
 	int sign = 0;
 	int len = strlen(str);
+	if(str[0] == '.'||str[len-1] == '.')
+	{
+				return -1;
+	}
 	for(i=0;i<len;i++)
 	{
-		if(str[i]<='0' || str[i]>='9')
+		if(str[i]<'0' || str[i]>'9')
 		{
 			if(str[i]!='.')
 			{
-				sign = 1;
+				return -1;
+			}
+			if(str[i]=='.')
+			{
+				sign=sign+1;
+				if(sign>1)
+				{
+					return -1;
+				}
 			}
 		}
 	}
-	if(sign == 1)
-	{
-		return -1;
-	}
-	else if (atof(str)<0.0 || atof(str)>100.0)
+    if (atof(str)<0.0 || atof(str)>100.0)
 	{
 		return -1;
 	}
@@ -270,7 +280,6 @@ void Del(Stu *p_head,int n_ID)    //删除表，传入头指针，传入删除学生编号
     	p_temp2->m_nSign = (p_temp2->m_nSign)-1;
     	p_temp2 = p_temp2->m_pNext;
 	}    	
-	printf("提示：删除成功\n");
     }
 }
 

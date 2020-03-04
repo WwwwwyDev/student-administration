@@ -35,7 +35,7 @@ void Maininput(Stu *p_head)  //主菜单输入函数函数
 
 void Studentmenu(Stu *p_head)  //学生菜单显示函数 
 {
-	printf("(权限:学生)请输入你要进行的操作\nA:输出所有学生信息 B:查找学生:"); 
+	printf("(权限:学生)请输入你要进行的操作\nA:输出所有学生信息 B:查找学生 C:输出两门以上不及格的学生名单:"); 
 	Studentinput(p_head);
 }
 
@@ -52,6 +52,10 @@ void Studentinput(Stu *p_head)   //学生菜单输入函数
 	    scanf("%s",name);
 		Search(p_head,name);
 	}
+	else if(strcmp(choice,"C")==0)
+	{   
+	    NoPass(p_head); 
+	}
 	else
 	{
 		printf("没有这个操作，请重新选择\n"); 
@@ -60,7 +64,7 @@ void Studentinput(Stu *p_head)   //学生菜单输入函数
 
 void Adminmenu(Stu *p_head)  //管理员菜单显示函数 
 {
-	printf("(权限:管理员)请输入你要进行的操作\nA:输出所有学生信息 B:查找学生 C:删除学生 D:添加学生 E:修改学生信息:"); 
+	printf("(权限:管理员)请输入你要进行的操作\nA:输出所有学生信息 B:查找学生 C:删除学生 D:添加学生 E:修改学生信息 F:输出两门以上不及格的学生名单 G:学生单科成绩录入:"); 
 	Admininput(p_head);
 }
  
@@ -100,7 +104,47 @@ void Admininput(Stu *p_head)   //管理员菜单输入函数
 	}
 	else if(strcmp(choice,"E")==0)
 	{   
-	    Change(p_head); 
+	    Change(p_head);
+		SaveFile(p_head); 
+	}
+	else if(strcmp(choice,"F")==0)
+	{   
+	    NoPass(p_head); 
+	}
+	else if(strcmp(choice,"G")==0)
+	{   int start;
+	    int end;
+	    char subject[999];
+	    printf("请输入起始位置编号:");
+	    if(scanf("%d",&start)!=1)
+		{
+		printf("提示：你没有输入正确编号或者编号数据过大导致溢出\n");
+		while(getchar()!='\n');
+		return;
+	    }
+	    Stu *temp1=SearchItem(start , p_head);
+        if(temp1==NULL || temp1->m_nSign==0)
+        {
+   	    	printf("提示：起始位置错误\n");
+   	  		return;	
+   		}
+	    printf("请输入终点位置编号:");
+	    if(scanf("%d",&end)!=1)
+		{
+		printf("提示：你没有输入正确编号或者编号数据过大导致溢出\n");
+		while(getchar()!='\n');
+		return;
+	    }
+	    Stu *temp2=SearchItem(end ,p_head);
+   		if(temp2==NULL || temp2->m_nSign==0 ||temp1->m_nSign>temp2->m_nSign)
+   		{
+   	  		printf("提示：终点位置错误\n");
+   	  		return;
+   		}
+	    printf("请输入你要录入的学科(A：数学B：语文C：英语D：专业):");
+	    scanf("%s",subject);
+		InputScore(temp1,temp2,p_head,subject); 
+		SaveFile(p_head);
 	}
 	else
 	{
@@ -522,6 +566,108 @@ void Change(Stu *p_head)   //修改
 	    printf("提示：没有这个功能");   
 }
 
+void NoPass(Stu *p_head)   //传入头指针，输出所有不及格科目超过2科的学生名单
+{   int i = 1;
+	Stu *p_temp = NextItem(p_head);
+	int sum = 0;
+	while(p_temp)   //判断不及格 
+	{
+		if(Strtodouble(p_temp->m_nMath) < 60)
+		{
+			sum = sum+1;
+		}
+		if(Strtodouble(p_temp->m_nEnglish) < 60)
+		{
+			sum = sum+1;
+		}
+		if(Strtodouble(p_temp->m_nChinese) < 60)
+		{
+			sum = sum+1;
+		}
+		if(Strtodouble(p_temp->m_nComputer) < 60)
+		{
+			sum = sum+1;
+		}
+		if(sum >= 2)
+		{
+			printf("|编号:%d ",p_temp->m_nSign);
+		    printf("|姓名:%s ",p_temp->m_strName);
+		    printf("|班级:%s\n",p_temp->m_strClass);
+			printf("|数学成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
+			printf("|语文成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
+			printf("|英语成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
+			printf("|专业成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
+			printf("|总成绩:%.1f 院系名次:%d 班级名次:%d\n\n",Strtodouble(p_temp->m_nComputer)+Strtodouble(p_temp->m_nEnglish)+Strtodouble(p_temp->m_nChinese)+Strtodouble(p_temp->m_nMath),Sort(p_head,i,5),ClassSort(p_head,i,5));
+		}
+		i=i+1;
+		p_temp=NextItem(p_temp);
+		sum=0;
+	}
+}
+
+void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject)    //单科学习成绩录入，传入开始录入位置和结束录入位置，传入头指针 ,传入需要录入的学科 
+{
+   
+   Stu *temp = start;
+   
+        if(strcmp(subject,"A")==0)
+        {   while(temp != NextItem(end))
+            {
+	    		printf("%s的数学成绩(编号:%d)原为%s分，现改为:",temp->m_strName,temp->m_nSign,temp->m_nMath);
+				scanf("%s",temp->m_nMath);
+				while(Strtodouble(temp->m_nMath) == -1)
+					{	   
+						printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:"); 
+						scanf("%s",temp->m_nMath);
+					}
+				temp=NextItem(temp);
+		   	} 
+   		}
+   		else if(strcmp(subject,"B")==0)
+        {   while(temp != NextItem(end))
+            {
+	    		printf("%s的语文成绩(编号:%d)原为%s分，现改为:",temp->m_strName,temp->m_nSign,temp->m_nChinese);
+				scanf("%s",temp->m_nChinese);
+				while(Strtodouble(temp->m_nChinese) == -1)
+					{	   
+						printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:"); 
+						scanf("%s",temp->m_nChinese);
+					}
+				temp=NextItem(temp);
+		   	} 
+   		}
+   		else if(strcmp(subject,"C")==0)
+        {   while(temp != NextItem(end))
+            {
+	    		printf("%s的英语成绩(编号:%d)原为%s分，现改为:",temp->m_strName,temp->m_nSign,temp->m_nEnglish);
+				scanf("%s",temp->m_nMath);
+				while(Strtodouble(temp->m_nEnglish) == -1)
+					{	   
+						printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:"); 
+						scanf("%s",temp->m_nEnglish);
+					}
+				temp=NextItem(temp);
+		   	} 
+   		}
+   		else if(strcmp(subject,"D")==0)
+        {   while(temp != NextItem(end))
+            {
+	    		printf("%s的专业成绩(编号:%d)原为%s分，现改为:",temp->m_strName,temp->m_nSign,temp->m_nComputer);
+				scanf("%s",temp->m_nComputer);
+				while(Strtodouble(temp->m_nComputer) == -1)
+					{	   
+						printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:"); 
+						scanf("%s",temp->m_nComputer);
+					}
+				temp=NextItem(temp);
+		   	} 
+   		}
+   		else
+   		{
+   			 printf("提示:无此功能:"); 
+		}
+}
+ 
 /*
 Stu *Search(int n_ID,Stu *p_head)
 {   

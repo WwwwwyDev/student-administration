@@ -26,8 +26,10 @@ int ClassSort(Stu *p_head,int n_ID,int n_subject);   //°à¼¶ÅÅÃû£¬´«ÈëÍ·Ö¸Õë¡¢Ñ§É
 void Search(Stu *p_head,char *name);     //ËÑË÷Ñ§ÉúĞÅÏ¢£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÑ§ÉúĞÕÃû
 void Del(Stu *p_head,int n_ID);    //É¾³ı±í£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÉ¾³ıÑ§Éú±àºÅ
 double Strtodouble(char *str);  //´«Èë0-100µÄ×Ö·û´®·µ»ØdoubleĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö·û´®£¬Ôò·µ»Ø-1
-void AddList(Stu *p_head);    //Î²²¿Ìí¼ÓĞÂÍ¬Ñ§ 
-void Change(Stu *p_head);   //ĞŞ¸Ä 
+void AddList(Stu *p_head);    //Î²²¿Ìí¼ÓĞÂÍ¬Ñ§
+void Change(Stu *p_head);   //ĞŞ¸Ä
+void NoPass(Stu *p_head);   //´«ÈëÍ·Ö¸Õë£¬Êä³öËùÓĞ²»¼°¸ñ¿ÆÄ¿³¬¹ı2¿ÆµÄÑ§ÉúÃûµ¥
+void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject);    //µ¥¿ÆÑ§Ï°³É¼¨Â¼Èë£¬´«Èë¿ªÊ¼Â¼ÈëÎ»ÖÃºÍ½áÊøÂ¼ÈëÎ»ÖÃ£¬´«ÈëÍ·Ö¸Õë ,´«ÈëĞèÒªÂ¼ÈëµÄÑ§¿Æ 
  
 /*
 Stu *Itzlink(int n_num);  //³õÊ¼»¯Á´±í 

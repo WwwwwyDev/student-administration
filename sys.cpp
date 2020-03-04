@@ -3,6 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "sys.h"
+//系统操作函数 
+void Adminmenu();
+
+
+
+
+//辅助函数 
 void Display(Stu *p_head)   //遍历并输出链表,传入头指针 
 {   if(p_head == NULL)
     {
@@ -19,13 +26,14 @@ void Display(Stu *p_head)   //遍历并输出链表,传入头指针
 		printf("|数学成绩:%s",p_temp->m_nMath);
 		printf("|语文成绩:%s",p_temp->m_nChinese);
 		printf("|英语成绩:%s",p_temp->m_nEnglish);
-		printf("|专业成绩:%s\n",p_temp->m_nComputer);
+		printf("|专业成绩:%s",p_temp->m_nComputer);
+		printf("|总成绩:%d\n",Strtoint(p_temp->m_nComputer)+Strtoint(p_temp->m_nEnglish)+Strtoint(+p_temp->m_nChinese)+Strtoint(p_temp->m_nMath));
 		i=i+1;
 	    p_temp=NextItem(p_temp);
 	}
 }
 
-void InitSys(Stu *p_head)      //初始化学生系统后，用户输入数据层 
+void InitSys(Stu *p_head)      //初始化学生系统后，管理员输入数据层 
 {       Stu *p_temp = NextItem(p_head);
         while(p_temp)
         {
@@ -36,14 +44,53 @@ void InitSys(Stu *p_head)      //初始化学生系统后，用户输入数据层
 		scanf("%s",p_temp->m_strClass);
 		printf("数学成绩(编号:%d):",p_temp->m_nSign);
 		scanf("%s",p_temp->m_nMath);
+		while(Strtoint(p_temp->m_nMath) == -1)
+		{   
+			printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:"); 
+			scanf("%s",p_temp->m_nMath);
+		}
 		printf("语文成绩(编号:%d):",p_temp->m_nSign);
 		scanf("%s",p_temp->m_nChinese);
+		while(Strtoint(p_temp->m_nChinese) == -1)
+		{   
+			printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:");
+			scanf("%s",p_temp->m_nChinese);
+		}
 		printf("英语成绩(编号:%d):",p_temp->m_nSign);
 		scanf("%s",p_temp->m_nEnglish);
+		while(Strtoint(p_temp->m_nEnglish) == -1)
+		{   
+			printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:");
+			scanf("%s",p_temp->m_nEnglish);
+		}
 		printf("专业成绩(编号:%d):",p_temp->m_nSign);
 		scanf("%s",p_temp->m_nComputer);
+		while(Strtoint(p_temp->m_nComputer) == -1)
+		{   
+			printf("提示:您的输入有问题(成绩为0-100的整数),请重新输入:");
+			scanf("%s",p_temp->m_nComputer);
+		}
         p_temp = NextItem(p_temp);
         }
+} 
+int Pow(int num,int n) //传入数字，返回其n次方 
+{ if(n == 1)
+  return num;
+  else
+  return num*Pow(num,n-1);
+} 
+int Strtoint(char *str)    //传入0-100的字符串返回整型函数，若传入其他字符串，则返回-1
+{
+   int sum = 0;
+   while(*str!='\0')
+   {
+   	sum = 10*sum + *str - '0';
+   	str++;
+   }
+   if(sum >= 0 && sum <= 100)
+   return sum;
+   else
+   return -1;
 } 
 
 /*

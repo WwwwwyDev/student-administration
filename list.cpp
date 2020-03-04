@@ -49,5 +49,21 @@ Stu *InitList(int num) //初始化链表
 	return phead;
 }
 
+Stu *SearchItem(int num,Stu *phead)  //传入头指针，返回编号为num的结点位置 
+{   struct Stu *temp = phead;
+    while(temp)
+    {
+		if(num == temp->m_nSign)
+    	{
+    		return temp;
+		}
+		else
+		{
+			temp = NextItem(temp); 
+		}
+	}
+	return NULL;
+} 
+
 
 

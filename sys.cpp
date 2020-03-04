@@ -1,8 +1,52 @@
 //函数定义
-#include "sys.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "sys.h"
+void Display(Stu *p_head)   //遍历并输出链表,传入头指针 
+{   if(p_head == NULL)
+    {
+    	printf("WRONG:未进行初始化表\n");
+    	return;	 
+    }
+    int i = 1;
+	Stu *p_temp = NextItem(p_head);
+	while(p_temp)
+	{   
+		printf("|编号:%d ",p_temp->m_nSign);
+		printf("|姓名:%s ",p_temp->m_strName);
+		printf("|班级:%s ",p_temp->m_strClass);
+		printf("|数学成绩:%s",p_temp->m_nMath);
+		printf("|语文成绩:%s",p_temp->m_nChinese);
+		printf("|英语成绩:%s",p_temp->m_nEnglish);
+		printf("|专业成绩:%s\n",p_temp->m_nComputer);
+		i=i+1;
+	    p_temp=NextItem(p_temp);
+	}
+}
+
+void InitSys(Stu *p_head)      //初始化学生系统后，用户输入数据层 
+{       Stu *p_temp = NextItem(p_head);
+        while(p_temp)
+        {
+		printf("输入学生信息(编号:%d):\n",p_temp->m_nSign);   //对结点写入数据
+		printf("姓名(编号:%d):",p_temp->m_nSign);
+		scanf("%s",p_temp->m_strName);
+		printf("班级(编号:%d):",p_temp->m_nSign);
+		scanf("%s",p_temp->m_strClass);
+		printf("数学成绩(编号:%d):",p_temp->m_nSign);
+		scanf("%s",p_temp->m_nMath);
+		printf("语文成绩(编号:%d):",p_temp->m_nSign);
+		scanf("%s",p_temp->m_nChinese);
+		printf("英语成绩(编号:%d):",p_temp->m_nSign);
+		scanf("%s",p_temp->m_nEnglish);
+		printf("专业成绩(编号:%d):",p_temp->m_nSign);
+		scanf("%s",p_temp->m_nComputer);
+        p_temp = NextItem(p_temp);
+        }
+} 
+
+/*
 Stu *Search(int n_ID,Stu *p_head)
 {   
      Stu *p_temp = p_head;
@@ -474,3 +518,4 @@ void Add(Stu *p_head)
 	p_new->m_pNext = p_temp2;
 	p_new->m_nSign = n+1; 
 }	 
+*/ 

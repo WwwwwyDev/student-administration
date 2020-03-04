@@ -6,8 +6,13 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) 
-{
-	int n_num,i ;
+{   
+	Stu *p_head = InitList(2);
+	InitSys(p_head);
+	Display(p_head);
+	
+	return 0;
+	/* int n_num,i ;
 	char a;
     char str_name[10];
     printf("请输入你要创建的学生个数:");  //初始化链表
@@ -130,5 +135,5 @@ while(1)
 		}
 	    
 	} 
-    return 0;
+    return 0;*/
 }

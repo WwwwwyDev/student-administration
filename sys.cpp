@@ -4,30 +4,81 @@
 #include <string.h>
 #include "sys.h"
 //系统操作函数 
-void Adminmenu();
+void Adminmenu(Stu *p_head)  //管理员菜单显示函数 
+{
+	printf("(权限:管理员)请输入你要进行的操作\nA:输出所有学生信息 B:查找学生 C:删除学生:"); 
+	Admininput(p_head);
+} 
+
+void Admininput(Stu *p_head)   //管理员菜单输入函数
+{   char choice[20];
+	scanf("%s",choice);
+    while(choice[20]!='\0')
+    {   printf("提示：字符串长度过长");
+        while(getchar()!='\n');
+    	scanf("%s",choice);
+	}
+	if(strcmp(choice,"A")==0)
+	{
+		Display(p_head);
+	}
+	else if(strcmp(choice,"B")==0)
+	{   char name[50]; 
+	    printf("请输入你要查找学生姓名:");
+	    scanf("%s",name);
+	    if(scanf("%s",name)!=1)
+		{
+		printf("提示：读入姓名失败\n");
+		while(getchar()!='\n');
+	    }
+	    if(strlen(name)<=50) 
+	    {
+		Search(p_head,name);
+		}
+		else
+		{
+		printf("提示：你输入的学生姓名过长");
+		while(getchar()!='\n');
+		} 
+		
+	}
+	else if(strcmp(choice,"C")==0)
+	{   int n_ID ;
+	    printf("请输入你要删除的学生的编号:");
+	    if(scanf("%d",&n_ID)!=1)
+		{
+		printf("提示：你没有输入正确编号或者编号数据过大导致溢出\n");
+		while(getchar()!='\n');
+	    }
+		else 
+		{
+		Del(p_head,n_ID);
+	    }
+	}
+	else
+	{
+		printf("没有这个操作，请重新选择\n"); 
+	}
+} 
 
 
 
 
-//辅助函数 
+//功能函数 
 void Display(Stu *p_head)   //遍历并输出链表,传入头指针 
-{   if(p_head == NULL)
-    {
-    	printf("WRONG:未进行初始化表\n");
-    	return;	 
-    }
+{   
     int i = 1;
 	Stu *p_temp = NextItem(p_head);
 	while(p_temp)
 	{   
 		printf("|编号:%d ",p_temp->m_nSign);
 		printf("|姓名:%s ",p_temp->m_strName);
-		printf("|班级:%s ",p_temp->m_strClass);
-		printf("|数学成绩:%s",p_temp->m_nMath);
-		printf("|语文成绩:%s",p_temp->m_nChinese);
-		printf("|英语成绩:%s",p_temp->m_nEnglish);
-		printf("|专业成绩:%s",p_temp->m_nComputer);
-		printf("|总成绩:%d\n",Strtoint(p_temp->m_nComputer)+Strtoint(p_temp->m_nEnglish)+Strtoint(+p_temp->m_nChinese)+Strtoint(p_temp->m_nMath));
+		printf("|班级:%s\n ",p_temp->m_strClass);
+		printf("|数学成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
+		printf("|语文成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
+		printf("|英语成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
+		printf("|专业成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
+		printf("|总成绩:%d   院系名次:%d 班级名次:%d\n\n",Strtoint(p_temp->m_nComputer)+Strtoint(p_temp->m_nEnglish)+Strtoint(+p_temp->m_nChinese)+Strtoint(p_temp->m_nMath),Sort(p_head,i,5),ClassSort(p_head,i,5));
 		i=i+1;
 	    p_temp=NextItem(p_temp);
 	}
@@ -73,12 +124,16 @@ void InitSys(Stu *p_head)      //初始化学生系统后，管理员输入数据层
         p_temp = NextItem(p_temp);
         }
 } 
+
+
 int Pow(int num,int n) //传入数字，返回其n次方 
 { if(n == 1)
   return num;
   else
   return num*Pow(num,n-1);
 } 
+
+
 int Strtoint(char *str)    //传入0-100的字符串返回整型函数，若传入其他字符串，则返回-1
 {
    int sum = 0;
@@ -92,6 +147,203 @@ int Strtoint(char *str)    //传入0-100的字符串返回整型函数，若传入其他字符串，则
    else
    return -1;
 } 
+
+void Search(Stu *p_head,char *name)     //搜索学生信息，传入头指针，传入学生姓名 
+{   Stu *p_temp = NextItem(p_head);
+    int i = 1;
+    int sign=0;
+    while(p_temp)
+    {
+	if(strcmp(name,p_temp->m_strName)==0)
+	{   sign=1;
+		printf("|编号:%d ",p_temp->m_nSign);
+		printf("|姓名:%s ",p_temp->m_strName);
+		printf("|班级:%s\n ",p_temp->m_strClass);
+		printf("|数学成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
+		printf("|语文成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
+		printf("|英语成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
+		printf("|专业成绩:%s 院系名次:%d 班级名次:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
+		printf("|总成绩:%d   院系名次:%d 班级名次:%d\n\n",Strtoint(p_temp->m_nComputer)+Strtoint(p_temp->m_nEnglish)+Strtoint(+p_temp->m_nChinese)+Strtoint(p_temp->m_nMath),Sort(p_head,i,5),ClassSort(p_head,i,5));
+	}
+	p_temp = NextItem(p_temp);
+	i=i+1;
+	}
+	if(sign == 0)
+	{
+		printf("提示：无此学生\n");
+	}
+	
+}
+
+
+void Del(Stu *p_head,int n_ID)    //删除表，传入头指针，传入删除学生编号 
+{   if(SearchItem(n_ID,p_head)==NULL)
+    {
+    	printf("提示：没有这个编号\n");
+	}
+	else
+	{
+	free(SearchItem(n_ID,p_head));  //释放内存空间 
+    Stu *p_temp1=SearchItem(n_ID-1,p_head);   //删除结点前后关联 
+    Stu *p_temp2=SearchItem(n_ID+1,p_head);  
+    p_temp1->m_pNext = p_temp2;
+    while(p_temp2)
+    {
+    	p_temp2->m_nSign = (p_temp2->m_nSign)-1;
+    	p_temp2 = p_temp2->m_pNext;
+	}    	
+	printf("提示：删除成功\n");
+    }
+}
+
+
+int Sort(Stu *p_head,int n_ID,int n_subject)   //院系总排名，传入头指针、学生编号、所要排名的数据类型 
+{
+    Stu *p_thisStudent=SearchItem(n_ID,p_head);
+    int num;
+	int i = 1;
+	int sum = 1;
+    if(n_subject == 1)   //用Search()函数对每一个结点该编号数据值进行检索，遇到比被排序结点数值大时sum+1
+    {
+    	num = Strtoint(p_thisStudent->m_nMath);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nMath))
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 2)
+	{
+		num = Strtoint(p_thisStudent->m_nChinese);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nChinese))
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 3)
+	{
+		num = Strtoint(p_thisStudent->m_nEnglish);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nEnglish))
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 4)
+	{
+		num = Strtoint(p_thisStudent->m_nComputer);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nComputer))
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 5)
+	{
+		num = Strtoint(p_thisStudent->m_nComputer)+Strtoint(p_thisStudent->m_nEnglish)+Strtoint(p_thisStudent->m_nChinese)+Strtoint(p_thisStudent->m_nMath);
+    	while(SearchItem(i,p_head))
+    	{
+    	int n_sumScore = Strtoint(SearchItem(i,p_head)->m_nComputer)+Strtoint(SearchItem(i,p_head)->m_nEnglish)+Strtoint(SearchItem(i,p_head)->m_nChinese)+Strtoint(SearchItem(i,p_head)->m_nMath);
+    	if(num < n_sumScore)
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+ } 
+ 
+ int ClassSort(Stu *p_head,int n_ID,int n_subject)   //班级排名，传入头指针、学生编号、所要排名的数据类型 
+{
+    Stu *p_thisStudent=SearchItem(n_ID,p_head);
+    int num;
+	int i = 1;
+	int sum = 1;
+    if(n_subject == 1)   //用Search()函数对每一个结点该编号数据值进行检索，遇到比被排序结点数值大时sum+1
+    {
+    	num = Strtoint(p_thisStudent->m_nMath);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nMath) && strcmp(p_thisStudent->m_strClass,SearchItem(i,p_head)->m_strClass) == 0)
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 2)
+	{
+		num = Strtoint(p_thisStudent->m_nChinese);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nChinese) && strcmp(p_thisStudent->m_strClass,SearchItem(i,p_head)->m_strClass) == 0)
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 3)
+	{
+		num = Strtoint(p_thisStudent->m_nEnglish);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nEnglish) && strcmp(p_thisStudent->m_strClass,SearchItem(i,p_head)->m_strClass) == 0)
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 4)
+	{
+		num = Strtoint(p_thisStudent->m_nComputer);
+    	while(SearchItem(i,p_head))
+    	{
+    	if(num < Strtoint(SearchItem(i,p_head)->m_nComputer) && strcmp(p_thisStudent->m_strClass,SearchItem(i,p_head)->m_strClass) == 0)
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+	if(n_subject == 5)
+	{
+		num = Strtoint(p_thisStudent->m_nComputer)+Strtoint(p_thisStudent->m_nEnglish)+Strtoint(p_thisStudent->m_nChinese)+Strtoint(p_thisStudent->m_nMath);
+    	while(SearchItem(i,p_head))
+    	{
+    	int n_sumScore = Strtoint(SearchItem(i,p_head)->m_nComputer)+Strtoint(SearchItem(i,p_head)->m_nEnglish)+Strtoint(SearchItem(i,p_head)->m_nChinese)+Strtoint(SearchItem(i,p_head)->m_nMath);
+    	if(num < n_sumScore && strcmp(p_thisStudent->m_strClass,SearchItem(i,p_head)->m_strClass) == 0)
+		{
+		sum = sum+1;
+		}	
+		i = i+1;
+		}
+		return sum;
+	}
+ } 
 
 /*
 Stu *Search(int n_ID,Stu *p_head)

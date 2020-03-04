@@ -9,7 +9,10 @@ int main(int argc, char** argv)
 {   
 	Stu *p_head = InitList(2);
 	InitSys(p_head);
-	Display(p_head);
+	while(1)
+	{
+		Adminmenu(p_head);
+	}
 	
 	return 0;
 	/* int n_num,i ;

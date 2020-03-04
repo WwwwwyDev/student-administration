@@ -126,7 +126,6 @@ void NoPass(Stu *p_head)
 			printf("|编号:%d ",p_temp->m_nSign);
 		    printf("|姓名:%s ",p_temp->m_strName);
 		    printf("|班级:%s ",p_temp->m_strClass);
-			printf("|年级:%s\n",p_temp->m_strGrade);
 			printf("|数学成绩:%d 院系名次:%d 班级名次:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
 			printf("|语文成绩:%d 院系名次:%d 班级名次:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
 			printf("|英语成绩:%d 院系名次:%d 班级名次:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
@@ -165,8 +164,6 @@ Stu *Itzlink(int n_num)
 		printf("输入学生信息(编号:%d):\n",n_id);   //对临时结点写入数据
 		printf("姓名(编号:%d):",n_id);
 		scanf("%s",p_temp->m_strName);
-		printf("年级(编号:%d):",n_id);
-		scanf("%s",p_temp->m_strGrade);
 		printf("班级(编号:%d):",n_id);
 		scanf("%s",p_temp->m_strClass);
 		printf("数学成绩(编号:%d):",n_id);
@@ -217,8 +214,6 @@ void Fprint(Stu *p_head)
 		fputs(Str,fp );
 		fputs("|姓名:",fp );
 		fputs(p_temp->m_strName,fp );
-		fputs("|年级:",fp );
-		fputs(p_temp->m_strGrade,fp );
 		fputs("|班级:",fp );
 		fputs(p_temp->m_strClass,fp );
 		sprintf(Str,"|数学成绩:%d",p_temp->m_nMath);
@@ -273,7 +268,6 @@ void Display(Stu *p_head)
 		printf("|编号:%d ",p_temp->m_nSign);
 		printf("|姓名:%s ",p_temp->m_strName);
 		printf("|班级:%s ",p_temp->m_strClass);
-		printf("|年级:%s\n",p_temp->m_strGrade);
 		printf("|数学成绩:%d 院系名次:%d 班级名次:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
 		printf("|语文成绩:%d 院系名次:%d 班级名次:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
 		printf("|英语成绩:%d 院系名次:%d 班级名次:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
@@ -397,7 +391,7 @@ int ClassSort(Stu *p_head,int n_ID,int n_subject)   //同sort类似，只是判断了班级
     printf("请输入你想修改的表的编号：");
     scanf("%d",&n_ID);
 	Stu *p_temp = Search(n_ID,p_head);    //通过编号搜索结点位置 
-	printf("请选择你想修改的值（A:姓名，B:年级，C:班级，D:数学成绩，E:语文成绩，F:英语成绩，G:专业成绩）：");  
+	printf("请选择你想修改的值（A:姓名，B:班级，C:数学成绩，D:语文成绩，E:英语成绩，F:专业成绩）：");  
 	scanf("%s",c_value);
 	printf("请输入你修改后的内容：");
 	if(strcmp(c_value,"A") == 0)
@@ -405,32 +399,27 @@ int ClassSort(Stu *p_head,int n_ID,int n_subject)   //同sort类似，只是判断了班级
 		scanf("%s",p_temp->m_strName);
 	    printf("(提示：修改成功！)");
 	    } 
-	else if(strcmp(c_value,"B") == 0)
-	    {
-		scanf("%s",p_temp->m_strGrade);
-	    printf("(提示：修改成功！)");
-	    } 
-    else if(strcmp(c_value,"C") == 0)
+    else if(strcmp(c_value,"B") == 0)
 	    {
 		scanf("%s",p_temp->m_strClass);
 	    printf("(提示：修改成功！)");
 	    } 
-	else if (strcmp(c_value,"D") == 0)
+	else if (strcmp(c_value,"C") == 0)
 		{
 		scanf("%d",&p_temp->m_nMath);
 		printf("(提示：修改成功！)");
 		} 
-	else if (strcmp(c_value,"E") == 0)
+	else if (strcmp(c_value,"D") == 0)
 		{
 		scanf("%d",&p_temp->m_nChinese);
 		printf("(提示：修改成功！)");
 		} 
-	else if (strcmp(c_value,"F") == 0)
+	else if (strcmp(c_value,"E") == 0)
 		{
 		scanf("%d",&p_temp->m_nEnglish);
 		printf("(提示：修改成功！)");
 		} 
-	else if (strcmp(c_value,"G") == 0)
+	else if (strcmp(c_value,"F") == 0)
 		{
 		scanf("%d",&p_temp->m_nComputer);
 		printf("(提示：修改成功！)");
@@ -463,8 +452,6 @@ void Add(Stu *p_head)
 	printf("输入新增表:\n");
 	printf("姓名(%d):",n+1);
 	scanf("%s",p_new->m_strName);
-	printf("年级(%d):",n+1);
-	scanf("%s",p_new->m_strGrade);
 	printf("班级(%d):",n+1);
 	scanf("%s",p_new->m_strClass);
 	printf("数学成绩(%d):",n+1);

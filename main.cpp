@@ -10,7 +10,6 @@ int main(int argc, char** argv)
 //文件读取层 
     FILE *pf; 
     int i,num;
-	int length = 0;
 	int sign=0; 
 	  //未找到文件需要初始化文件
 	if((pf = fopen("data.wwy","r")) == NULL)
@@ -43,10 +42,8 @@ int main(int argc, char** argv)
 		{    
 			AddItem(p_temp); 
 		    p_temp = NextItem(p_temp);
-		    length++; 
 		}
-		Del(p_head,length);
-		length--; 
+		Del(p_head,p_temp->m_nSign);
 		printf("提示：读取成功\n");
 		fclose(pf);
 	}

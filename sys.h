@@ -29,8 +29,9 @@ double Strtodouble(char *str);  //´«Èë0-100µÄ×Ö·û´®·µ»ØdoubleĞÍº¯Êı£¬Èô´«ÈëÆäËû×
 void AddList(Stu *p_head);    //Î²²¿Ìí¼ÓĞÂÍ¬Ñ§
 void Change(Stu *p_head);   //ĞŞ¸Ä
 void NoPass(Stu *p_head);   //´«ÈëÍ·Ö¸Õë£¬Êä³öËùÓĞ²»¼°¸ñ¿ÆÄ¿³¬¹ı2¿ÆµÄÑ§ÉúÃûµ¥
-void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject);    //µ¥¿ÆÑ§Ï°³É¼¨Â¼Èë£¬´«Èë¿ªÊ¼Â¼ÈëÎ»ÖÃºÍ½áÊøÂ¼ÈëÎ»ÖÃ£¬´«ÈëÍ·Ö¸Õë ,´«ÈëĞèÒªÂ¼ÈëµÄÑ§¿Æ 
- 
+void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject);    //µ¥¿ÆÑ§Ï°³É¼¨Â¼Èë£¬´«Èë¿ªÊ¼Â¼ÈëÎ»ÖÃºÍ½áÊøÂ¼ÈëÎ»ÖÃ£¬´«ÈëÍ·Ö¸Õë ,´«ÈëĞèÒªÂ¼ÈëµÄÑ§¿Æ
+void ShowItem(Stu *p_list,Stu *p_head);  //´«ÈëÖ¸Õë£¬Êä³öÆäÑ§ÉúĞÅÏ¢  
+void Fprint(Stu *p_head);   //½«Êı¾İµ¼³öµ½µ±Ç°Â·¾¶ÏÂµÄStudentInformation.txt 
 /*
 Stu *Itzlink(int n_num);  //³õÊ¼»¯Á´±í 
 Stu *Search(int n_ID,Stu *p_head);   //ËÑË÷Ñ§Éú    

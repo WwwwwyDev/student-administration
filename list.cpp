@@ -69,3 +69,5 @@ Stu *SearchItem(int num,Stu *phead)  //传入头指针，返回编号为num的结点位置
 
 
 
+
+

@@ -35,7 +35,7 @@ void Maininput(Stu *p_head)  //Ö÷²Ëµ¥ÊäÈëº¯Êýº¯Êý
 
 void Studentmenu(Stu *p_head)  //Ñ§Éú²Ëµ¥ÏÔÊ¾º¯Êý 
 {
-	printf("(È¨ÏÞ:Ñ§Éú)ÇëÊäÈëÄãÒª½øÐÐµÄ²Ù×÷\nA:Êä³öËùÓÐÑ§ÉúÐÅÏ¢ B:²éÕÒÑ§Éú C:Êä³öÁ½ÃÅÒÔÉÏ²»¼°¸ñµÄÑ§ÉúÃûµ¥:"); 
+	printf("(È¨ÏÞ:Ñ§Éú)ÇëÊäÈëÄãÒª½øÐÐµÄ²Ù×÷\nA:Êä³öËùÓÐÑ§ÉúÐÅÏ¢ B:²éÕÒÑ§Éú C:Êä³öÁ½ÃÅÒÔÉÏ²»¼°¸ñµÄÑ§ÉúÃûµ¥ D:±£´æÎªÎÄ¼þ:"); 
 	Studentinput(p_head);
 }
 
@@ -56,6 +56,10 @@ void Studentinput(Stu *p_head)   //Ñ§Éú²Ëµ¥ÊäÈëº¯Êý
 	{   
 	    NoPass(p_head); 
 	}
+	else if(strcmp(choice,"D")==0)
+	{   
+	    Fprint(p_head); 
+	}
 	else
 	{
 		printf("Ã»ÓÐÕâ¸ö²Ù×÷£¬ÇëÖØÐÂÑ¡Ôñ\n"); 
@@ -64,7 +68,7 @@ void Studentinput(Stu *p_head)   //Ñ§Éú²Ëµ¥ÊäÈëº¯Êý
 
 void Adminmenu(Stu *p_head)  //¹ÜÀíÔ±²Ëµ¥ÏÔÊ¾º¯Êý 
 {
-	printf("(È¨ÏÞ:¹ÜÀíÔ±)ÇëÊäÈëÄãÒª½øÐÐµÄ²Ù×÷\nA:Êä³öËùÓÐÑ§ÉúÐÅÏ¢ B:²éÕÒÑ§Éú C:É¾³ýÑ§Éú D:Ìí¼ÓÑ§Éú E:ÐÞ¸ÄÑ§ÉúÐÅÏ¢ F:Êä³öÁ½ÃÅÒÔÉÏ²»¼°¸ñµÄÑ§ÉúÃûµ¥ G:Ñ§Éúµ¥¿Æ³É¼¨Â¼Èë:"); 
+	printf("(È¨ÏÞ:¹ÜÀíÔ±)ÇëÊäÈëÄãÒª½øÐÐµÄ²Ù×÷\nA:Êä³öËùÓÐÑ§ÉúÐÅÏ¢ B:²éÕÒÑ§Éú C:É¾³ýÑ§Éú D:Ìí¼ÓÑ§Éú E:ÐÞ¸ÄÑ§ÉúÐÅÏ¢ F:Êä³öÁ½ÃÅÒÔÉÏ²»¼°¸ñµÄÑ§ÉúÃûµ¥ G:Ñ§Éúµ¥¿Æ³É¼¨Â¼Èë H:±£´æÎªÎÄ¼þ:"); 
 	Admininput(p_head);
 }
  
@@ -87,13 +91,12 @@ void Admininput(Stu *p_head)   //¹ÜÀíÔ±²Ëµ¥ÊäÈëº¯Êý
 	    printf("ÇëÊäÈëÄãÒªÉ¾³ýµÄÑ§ÉúµÄ±àºÅ:");
 	    if(scanf("%d",&n_ID)!=1)
 		{
-		printf("ÌáÊ¾£ºÄãÃ»ÓÐÊäÈëÕýÈ·±àºÅ»òÕß±àºÅÊý¾Ý¹ý´óµ¼ÖÂÒç³ö\n");
+		printf("ÌáÊ¾£ºÄãÃ»ÓÐÊäÈëÕýÈ·±àºÅ\n");
 		while(getchar()!='\n');
 	    }
 		else 
 		{
 		Del(p_head,n_ID);
-	    printf("ÌáÊ¾£ºÉ¾³ý³É¹¦\n"); 
 	    SaveFile(p_head); 
 	    }
 	}
@@ -118,7 +121,7 @@ void Admininput(Stu *p_head)   //¹ÜÀíÔ±²Ëµ¥ÊäÈëº¯Êý
 	    printf("ÇëÊäÈëÆðÊ¼Î»ÖÃ±àºÅ:");
 	    if(scanf("%d",&start)!=1)
 		{
-		printf("ÌáÊ¾£ºÄãÃ»ÓÐÊäÈëÕýÈ·±àºÅ»òÕß±àºÅÊý¾Ý¹ý´óµ¼ÖÂÒç³ö\n");
+		printf("ÌáÊ¾£ºÄãÃ»ÓÐÊäÈëÕýÈ·±àºÅ\n");
 		while(getchar()!='\n');
 		return;
 	    }
@@ -131,7 +134,7 @@ void Admininput(Stu *p_head)   //¹ÜÀíÔ±²Ëµ¥ÊäÈëº¯Êý
 	    printf("ÇëÊäÈëÖÕµãÎ»ÖÃ±àºÅ:");
 	    if(scanf("%d",&end)!=1)
 		{
-		printf("ÌáÊ¾£ºÄãÃ»ÓÐÊäÈëÕýÈ·±àºÅ»òÕß±àºÅÊý¾Ý¹ý´óµ¼ÖÂÒç³ö\n");
+		printf("ÌáÊ¾£ºÄãÃ»ÓÐÊäÈëÕýÈ·±àºÅ\n");
 		while(getchar()!='\n');
 		return;
 	    }
@@ -146,6 +149,10 @@ void Admininput(Stu *p_head)   //¹ÜÀíÔ±²Ëµ¥ÊäÈëº¯Êý
 		InputScore(temp1,temp2,p_head,subject); 
 		SaveFile(p_head);
 	}
+	else if(strcmp(choice,"H")==0)
+	{   
+	    Fprint(p_head); 
+	}
 	else
 	{
 		printf("Ã»ÓÐÕâ¸ö²Ù×÷£¬ÇëÖØÐÂÑ¡Ôñ\n"); 
@@ -156,21 +163,25 @@ void Admininput(Stu *p_head)   //¹ÜÀíÔ±²Ëµ¥ÊäÈëº¯Êý
 
 
 //¹¦ÄÜº¯Êý 
+void ShowItem(Stu *p_list,Stu *p_head)  //´«ÈëÖ¸Õë£¬Êä³öÆäÑ§ÉúÐÅÏ¢ 
+{        
+        printf("|±àºÅ:%d ",p_list->m_nSign);
+		printf("|ÐÕÃû:%s ",p_list->m_strName);
+		printf("|°à¼¶:%s\n",p_list->m_strClass);
+		printf("|ÊýÑ§³É¼¨:%-3s ÔºÏµÃû´Î:%-3d °à¼¶Ãû´Î:%-3d\n",p_list->m_nMath,Sort(p_head,p_list->m_nSign,1),ClassSort(p_head,p_list->m_nSign,1));
+		printf("|ÓïÎÄ³É¼¨:%-3s ÔºÏµÃû´Î:%-3d °à¼¶Ãû´Î:%-3d\n",p_list->m_nChinese,Sort(p_head,p_list->m_nSign,2),ClassSort(p_head,p_list->m_nSign,2));
+		printf("|Ó¢Óï³É¼¨:%-3s ÔºÏµÃû´Î:%-3d °à¼¶Ãû´Î:%-3d\n",p_list->m_nEnglish,Sort(p_head,p_list->m_nSign,3),ClassSort(p_head,p_list->m_nSign,3));
+		printf("|×¨Òµ³É¼¨:%-3s ÔºÏµÃû´Î:%-3d °à¼¶Ãû´Î:%-3d\n",p_list->m_nComputer,Sort(p_head,p_list->m_nSign,4),ClassSort(p_head,p_list->m_nSign,4));
+		printf("|×Ü³É¼¨:%-5.1f ÔºÏµÃû´Î:%-3d °à¼¶Ãû´Î:%-3d\n\n",Strtodouble(p_list->m_nComputer)+Strtodouble(p_list->m_nEnglish)+Strtodouble(p_list->m_nChinese)+Strtodouble(p_list->m_nMath),Sort(p_head,p_list->m_nSign,5),ClassSort(p_head,p_list->m_nSign,5));
+ 
+} 
+
 void Display(Stu *p_head)   //±éÀú²¢Êä³öÁ´±í,´«ÈëÍ·Ö¸Õë 
 {   
-    int i = 1;
 	Stu *p_temp = NextItem(p_head);
 	while(p_temp)
 	{   
-		printf("|±àºÅ:%d ",p_temp->m_nSign);
-		printf("|ÐÕÃû:%s ",p_temp->m_strName);
-		printf("|°à¼¶:%s\n",p_temp->m_strClass);
-		printf("|ÊýÑ§³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
-		printf("|ÓïÎÄ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
-		printf("|Ó¢Óï³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
-		printf("|×¨Òµ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
-		printf("|×Ü³É¼¨:%.1f ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n\n",Strtodouble(p_temp->m_nComputer)+Strtodouble(p_temp->m_nEnglish)+Strtodouble(p_temp->m_nChinese)+Strtodouble(p_temp->m_nMath),Sort(p_head,i,5),ClassSort(p_head,i,5));
-		i=i+1;
+		ShowItem(p_temp,p_head);
 	    p_temp=NextItem(p_temp);
 	}
 }
@@ -228,8 +239,7 @@ void SaveFile(Stu *p_head)   //±£´æÎÄ¼þ
 	{
 	fwrite(p_temp,sizeof(struct Stu),1,pf2);  //²ÎÊýËµÃ÷£º1.ÒªÐ´ÈëµÄÊý¾ÝµÄµØÖ·£¬2.Ò»´ÎÒªÐ´¶àÉÙ×Ö½Ú£¬3.Ð´¶àÉÙ´Î£¬4.Ð´µ½ÄÄÀï 
 	p_temp = NextItem(p_temp);
-    }
-	
+    }	
 	fclose(pf2);	
 }
 int Pow(int num,int n) //´«ÈëÊý×Ö£¬·µ»ØÆän´Î·½ 
@@ -292,23 +302,14 @@ double Strtodouble(char *str)  //´«Èë0-100µÄ×Ö·û´®·µ»ØdoubleÐÍº¯Êý£¬Èô´«ÈëÆäËû×Ö
 
 void Search(Stu *p_head,char *name)     //ËÑË÷Ñ§ÉúÐÅÏ¢£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÑ§ÉúÐÕÃû 
 {   Stu *p_temp = NextItem(p_head);
-    int i = 1;
-    int sign=0;
+    int sign=0;    //¼ÇÂ¼ÊÇ·ñÓÐÑ§Éú 
     while(p_temp)
     {
 	if(strcmp(name,p_temp->m_strName)==0)
 	{   sign=1;
-		printf("|±àºÅ:%d ",p_temp->m_nSign);
-		printf("|ÐÕÃû:%s ",p_temp->m_strName);
-		printf("|°à¼¶:%s\n ",p_temp->m_strClass);
-		printf("|ÊýÑ§³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
-		printf("|ÓïÎÄ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
-		printf("|Ó¢Óï³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
-		printf("|×¨Òµ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
-		printf("|×Ü³É¼¨:%d   ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n\n",Strtodouble(p_temp->m_nComputer)+Strtodouble(p_temp->m_nEnglish)+Strtodouble(+p_temp->m_nChinese)+Strtodouble(p_temp->m_nMath),Sort(p_head,i,5),ClassSort(p_head,i,5));
+		ShowItem(p_temp,p_head);
 	}
 	p_temp = NextItem(p_temp);
-	i=i+1;
 	}
 	if(sign == 0)
 	{
@@ -332,9 +333,9 @@ void Del(Stu *p_head,int n_ID)    //É¾³ý±í£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÉ¾³ýÑ§Éú±àºÅ
     while(p_temp2)
     {
     	p_temp2->m_nSign = (p_temp2->m_nSign)-1;
-    	p_temp2 = p_temp2->m_pNext;
+    	p_temp2 = NextItem(p_temp2);
 	}   
-			
+	printf("ÌáÊ¾£ºÉ¾³ý³É¹¦\n"); 		
     }
 }
 
@@ -521,21 +522,14 @@ void Change(Stu *p_head)   //ÐÞ¸Ä
     scanf("%d",&n_ID);
 	Stu *p_temp = SearchItem(n_ID,p_head);    //Í¨¹ý±àºÅËÑË÷½áµãÎ»ÖÃ 
 	printf("¸ÃÑ§ÉúÐÅÏ¢\n");
-	printf("|±àºÅ:%d ",p_temp->m_nSign);
-	printf("|ÐÕÃû:%s ",p_temp->m_strName);
-	printf("|°à¼¶:%s\n",p_temp->m_strClass);
-	printf("|ÊýÑ§³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nMath,Sort(p_head,n_ID,1),ClassSort(p_head,n_ID,1));
-	printf("|ÓïÎÄ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nChinese,Sort(p_head,n_ID,2),ClassSort(p_head,n_ID,2));
-	printf("|Ó¢Óï³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nEnglish,Sort(p_head,n_ID,3),ClassSort(p_head,n_ID,3));
-	printf("|×¨Òµ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nComputer,Sort(p_head,n_ID,4),ClassSort(p_head,n_ID,4));
-	printf("|×Ü³É¼¨:%.1f ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n\n",Strtodouble(p_temp->m_nComputer)+Strtodouble(p_temp->m_nEnglish)+Strtodouble(p_temp->m_nChinese)+Strtodouble(p_temp->m_nMath),Sort(p_head,n_ID,5),ClassSort(p_head,n_ID,5));
+	ShowItem(p_temp,p_head);
 	printf("ÇëÑ¡ÔñÄãÏëÐÞ¸ÄµÄÐÅÏ¢£¨A:ÐÕÃû£¬B:°à¼¶£¬C:ÊýÑ§³É¼¨£¬D:ÓïÎÄ³É¼¨£¬E:Ó¢Óï³É¼¨£¬F:×¨Òµ³É¼¨£©£º");  
 	scanf("%s",c_value);
 	printf("ÇëÊäÈëÄãÐÞ¸ÄºóµÄÄÚÈÝ£º");
 	if(strcmp(c_value,"A") == 0)
 	    {
 		scanf("%s",p_temp->m_strName);
-	    printf("(ÌáÊ¾£ºÐÞ¸Ä³É¹¦£¡)");
+	    printf("(ÌáÊ¾£ºÐÞ¸Ä³É¹¦£¡£©");
 	    } 
     else if(strcmp(c_value,"B") == 0)
 	    {
@@ -545,21 +539,41 @@ void Change(Stu *p_head)   //ÐÞ¸Ä
 	else if (strcmp(c_value,"C") == 0)
 		{
 		scanf("%s",&p_temp->m_nMath);
+		while(Strtodouble(p_temp->m_nMath) == -1)
+		{	   
+			printf("ÌáÊ¾:ÄúµÄÊäÈëÓÐÎÊÌâ(³É¼¨Îª0-100µÄÕûÊý),ÇëÖØÐÂÊäÈë:"); 
+			scanf("%s",p_temp->m_nMath);
+		}
 		printf("(ÌáÊ¾£ºÐÞ¸Ä³É¹¦£¡)");
 		} 
 	else if (strcmp(c_value,"D") == 0)
 		{
 		scanf("%s",&p_temp->m_nChinese);
+		while(Strtodouble(p_temp->m_nChinese) == -1)
+		{	   
+			printf("ÌáÊ¾:ÄúµÄÊäÈëÓÐÎÊÌâ(³É¼¨Îª0-100µÄÕûÊý),ÇëÖØÐÂÊäÈë:"); 
+			scanf("%s",p_temp->m_nChinese);
+		}
 		printf("(ÌáÊ¾£ºÐÞ¸Ä³É¹¦£¡)");
 		} 
 	else if (strcmp(c_value,"E") == 0)
 		{
 		scanf("%s",&p_temp->m_nEnglish);
+		while(Strtodouble(p_temp->m_nEnglish) == -1)
+		{	   
+			printf("ÌáÊ¾:ÄúµÄÊäÈëÓÐÎÊÌâ(³É¼¨Îª0-100µÄÕûÊý),ÇëÖØÐÂÊäÈë:"); 
+			scanf("%s",p_temp->m_nEnglish);
+		}
 		printf("(ÌáÊ¾£ºÐÞ¸Ä³É¹¦£¡)");
 		} 
 	else if (strcmp(c_value,"F") == 0)
 		{
 		scanf("%s",&p_temp->m_nComputer);
+		while(Strtodouble(p_temp->m_nComputer) == -1)
+		{	   
+			printf("ÌáÊ¾:ÄúµÄÊäÈëÓÐÎÊÌâ(³É¼¨Îª0-100µÄÕûÊý),ÇëÖØÐÂÊäÈë:"); 
+			scanf("%s",p_temp->m_nComputer);
+		}
 		printf("(ÌáÊ¾£ºÐÞ¸Ä³É¹¦£¡)");
 		} 
 	else 
@@ -567,8 +581,7 @@ void Change(Stu *p_head)   //ÐÞ¸Ä
 }
 
 void NoPass(Stu *p_head)   //´«ÈëÍ·Ö¸Õë£¬Êä³öËùÓÐ²»¼°¸ñ¿ÆÄ¿³¬¹ý2¿ÆµÄÑ§ÉúÃûµ¥
-{   int i = 1;
-	Stu *p_temp = NextItem(p_head);
+{   Stu *p_temp = NextItem(p_head);
 	int sum = 0;
 	while(p_temp)   //ÅÐ¶Ï²»¼°¸ñ 
 	{
@@ -590,16 +603,8 @@ void NoPass(Stu *p_head)   //´«ÈëÍ·Ö¸Õë£¬Êä³öËùÓÐ²»¼°¸ñ¿ÆÄ¿³¬¹ý2¿ÆµÄÑ§ÉúÃûµ¥
 		}
 		if(sum >= 2)
 		{
-			printf("|±àºÅ:%d ",p_temp->m_nSign);
-		    printf("|ÐÕÃû:%s ",p_temp->m_strName);
-		    printf("|°à¼¶:%s\n",p_temp->m_strClass);
-			printf("|ÊýÑ§³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
-			printf("|ÓïÎÄ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
-			printf("|Ó¢Óï³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
-			printf("|×¨Òµ³É¼¨:%s ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
-			printf("|×Ü³É¼¨:%.1f ÔºÏµÃû´Î:%d °à¼¶Ãû´Î:%d\n\n",Strtodouble(p_temp->m_nComputer)+Strtodouble(p_temp->m_nEnglish)+Strtodouble(p_temp->m_nChinese)+Strtodouble(p_temp->m_nMath),Sort(p_head,i,5),ClassSort(p_head,i,5));
+			ShowItem(p_temp,p_head);
 		}
-		i=i+1;
 		p_temp=NextItem(p_temp);
 		sum=0;
 	}
@@ -667,6 +672,64 @@ void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject)    //µ¥¿ÆÑ§Ï
    			 printf("ÌáÊ¾:ÎÞ´Ë¹¦ÄÜ:"); 
 		}
 }
+
+void Fprint(Stu *p_head)   //½«Êý¾Ýµ¼³öµ½µ±Ç°Â·¾¶ÏÂµÄStudentInformation.txt 
+{   
+    char Str[256];
+    int i = 1; 
+    Stu *p_temp = p_head->m_pNext; 
+    FILE *fp;
+    fp = fopen("StudentInformation.txt", "w");    //ÒÔÐ´Èë´ò¿ªÎÄ¼þ 
+    if (fp == NULL)
+    {
+    printf("ÎÄ¼þ´ò¿ªÊ§°Ü");
+    return;
+    }
+    while(p_temp)  //Ð´ÈëÎÄ¼þ 
+	{   
+	    sprintf(Str,"|±àºÅ:%d",p_temp->m_nSign); //½«×Ö·û´®¸³¸østr 
+		fputs(Str,fp );
+		fputs("|ÐÕÃû:",fp );
+		fputs(p_temp->m_strName,fp );
+		fputs("|°à¼¶:",fp );
+		fputs(p_temp->m_strClass,fp );
+		sprintf(Str,"|ÊýÑ§³É¼¨:%s",p_temp->m_nMath);
+		fputs(Str,fp );
+		sprintf(Str,"|ÔºÏµÅÅÃû:%d",Sort(p_head,i,1));
+		fputs(Str,fp );
+		sprintf(Str,"|°à¼¶ÅÅÃû:%d",ClassSort(p_head,i,1));
+		fputs(Str,fp );
+		sprintf(Str,"|ÓïÎÄ³É¼¨:%s",p_temp->m_nChinese);
+		fputs(Str,fp );
+		sprintf(Str,"|ÔºÏµÅÅÃû:%d",Sort(p_head,i,2));
+		fputs(Str,fp );
+		sprintf(Str,"|°à¼¶ÅÅÃû:%d",ClassSort(p_head,i,2));
+		fputs(Str,fp );
+		sprintf(Str,"|Ó¢Óï³É¼¨:%s",p_temp->m_nEnglish);
+		fputs(Str,fp );
+		sprintf(Str,"|ÔºÏµÅÅÃû:%d",Sort(p_head,i,3));
+		fputs(Str,fp );
+		sprintf(Str,"|°à¼¶ÅÅÃû:%d",ClassSort(p_head,i,3));
+		fputs(Str,fp );
+		sprintf(Str,"|×¨Òµ³É¼¨:%s",p_temp->m_nComputer);
+		fputs(Str,fp );
+		sprintf(Str,"|ÔºÏµÅÅÃû:%d",Sort(p_head,i,4));
+		fputs(Str,fp );
+		sprintf(Str,"|°à¼¶ÅÅÃû:%d",ClassSort(p_head,i,4));
+		fputs(Str,fp );
+		sprintf(Str,"|×Ü³É¼¨:%.1f",Strtodouble(p_temp->m_nComputer)+Strtodouble(p_temp->m_nEnglish)+Strtodouble(p_temp->m_nChinese)+Strtodouble(p_temp->m_nMath));
+		fputs(Str,fp );
+		sprintf(Str,"|ÔºÏµÅÅÃû:%d",Sort(p_head,i,5));
+		fputs(Str,fp );
+		sprintf(Str,"|°à¼¶ÅÅÃû:%d\n",ClassSort(p_head,i,5));
+		fputs(Str,fp );
+	    i=i+1;
+	    p_temp=p_temp->m_pNext;
+	
+	} 
+	printf("(ÌáÊ¾:ÎÄ¼þÒÑ±£´æÔÚµ±Ç°Ä¿Â¼ÏÂ£¬ÎÄ¼þÃû£ºStudentInformation.txt)\n"); 
+	fclose(fp);	
+} 
  
 /*
 Stu *Search(int n_ID,Stu *p_head)
@@ -858,25 +921,21 @@ Stu *Itzlink(int n_num)
 }
 
 
-void Fprint(Stu *p_head)
-{   if(p_head == NULL)
-    {
-    	printf("WRONG:Î´½øÐÐ³õÊ¼»¯±í\n");
-    	exit(-1);	 
-    }
+void Fprint(Stu *p_head)   //½«Êý¾Ýµ¼³öµ½µ±Ç°Â·¾¶ÏÂµÄStudentInformation.txt 
+{   
     char Str[256];
     int i = 1; 
     Stu *p_temp = p_head->m_pNext; 
     FILE *fp;
-    fp = fopen("File.txt", "w");    //ÒÔ¿É¶Á´ò¿ªÎÄ¼þ 
+    fp = fopen("StudentInformation.txt", "w");    //ÒÔÐ´Èë´ò¿ªÎÄ¼þ 
     if (fp == NULL)
     {
-    printf("cannot open file\n");
-    exit(-1);
+    printf("ÎÄ¼þ´ò¿ªÊ§°Ü");
+    return;
     }
     while(p_temp)  //Ð´ÈëÎÄ¼þ 
 	{   
-	    sprintf(Str,"|±àºÅ:%d",p_temp->m_nSign);
+	    sprintf(Str,"|±àºÅ:%d",p_temp->m_nSign); //½«×Ö·û´®¸³¸østr 
 		fputs(Str,fp );
 		fputs("|ÐÕÃû:",fp );
 		fputs(p_temp->m_strName,fp );
@@ -916,7 +975,7 @@ void Fprint(Stu *p_head)
 	    p_temp=p_temp->m_pNext;
 	
 	} 
-	printf("(ÌáÊ¾:ÎÄ¼þÒÑ±£´æÔÚµ±Ç°Ä¿Â¼ÏÂ£¬ÎÄ¼þÃû£ºFile.txt)\n"); 
+	printf("(ÌáÊ¾:ÎÄ¼þÒÑ±£´æÔÚµ±Ç°Ä¿Â¼ÏÂ£¬ÎÄ¼þÃû£ºStudentInformation.txt)\n"); 
 	fclose(fp);	
 } 
 	

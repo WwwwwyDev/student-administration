@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include <string.h>
 #include "sys.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) 
-{   Stu *p_head = NULL;
+{   SetConsoleTitle("学生管理系统(设计by大连民族大学2019082323)"); 
+    Stu *p_head = NULL;
 //文件读取层 
     FILE *pf; 
     int i,num;

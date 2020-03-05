@@ -6,7 +6,7 @@
 //系统操作函数 
 void Mainmenu(Stu *p_head)  //主菜单显示函数 
 {
-     printf("欢迎来到学生管理系统\n请选择你的身份:A:学生 B:系统管理员:");
+     printf("欢迎来到学生管理系统(设计by大连民族大学2019082323)\n请选择你的身份:A:学生 B:系统管理员:");
 	 Maininput(p_head);
 } 
 
@@ -35,7 +35,7 @@ void Maininput(Stu *p_head)  //主菜单输入函数函数
 
 void Studentmenu(Stu *p_head)  //学生菜单显示函数 
 {
-	printf("(权限:学生)请输入你要进行的操作\nA:输出所有学生信息 B:查找学生 C:输出两门以上不及格的学生名单 D:保存为文件:"); 
+	printf("    功能菜单\nA:输出所有学生信息 \nB:查找学生 \nC:输出两门以上不及格的学生名单 \nD:保存为文件 \n(权限:学生)请输入你要进行的操作:"); 
 	Studentinput(p_head);
 }
 
@@ -68,7 +68,7 @@ void Studentinput(Stu *p_head)   //学生菜单输入函数
 
 void Adminmenu(Stu *p_head)  //管理员菜单显示函数 
 {
-	printf("(权限:管理员)请输入你要进行的操作\nA:输出所有学生信息 B:查找学生 C:删除学生 D:添加学生 E:修改学生信息 F:输出两门以上不及格的学生名单 G:学生单科成绩录入 H:保存为文件:"); 
+	printf("    功能菜单\nA:输出所有学生信息 \nB:查找学生 \nC:删除学生 \nD:添加学生 \nE:修改学生信息 \nF:输出两门以上不及格的学生名单 \nG:学生单科成绩录入 \nH:保存为文件\n(权限:管理员)请输入你要进行的操作:"); 
 	Admininput(p_head);
 }
  
@@ -97,12 +97,25 @@ void Admininput(Stu *p_head)   //管理员菜单输入函数
 		else 
 		{
 		Del(p_head,n_ID);
+	    printf("提示：删除成功\n"); 
 	    SaveFile(p_head); 
 	    }
 	}
 	else if(strcmp(choice,"D")==0)
-	{   
-	    AddList(p_head); 
+	{   int num,num1;
+	    printf("请输入你要添加学生的数量:");
+	    if(scanf("%d",&num)!=1)
+		{
+		printf("提示：你没有输入正确数量\n");
+		while(getchar()!='\n');
+	    } 
+	    num1=num; 
+	    while(num)
+	    {
+	    printf("提示：你当前正在添加第%d个学生\n",num1-num+1);
+		AddList(p_head); 
+		num--;
+		}  
 	    SaveFile(p_head);
 	}
 	else if(strcmp(choice,"E")==0)
@@ -334,8 +347,7 @@ void Del(Stu *p_head,int n_ID)    //删除表，传入头指针，传入删除学生编号
     {
     	p_temp2->m_nSign = (p_temp2->m_nSign)-1;
     	p_temp2 = NextItem(p_temp2);
-	}   
-	printf("提示：删除成功\n"); 		
+	}   		
     }
 }
 

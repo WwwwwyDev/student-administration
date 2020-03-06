@@ -32,6 +32,7 @@ void NoPass(Stu *p_head);   //传入头指针，输出所有不及格科目超过2科的学生名单
 void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject);    //单科学习成绩录入，传入开始录入位置和结束录入位置，传入头指针 ,传入需要录入的学科
 void ShowItem(Stu *p_list,Stu *p_head);  //传入指针，输出其学生信息  
 void Fprint(Stu *p_head);   //将数据导出到当前路径下的StudentInformation.txt 
+void ClassSortOutput(Stu *p_head,char *str_class,int subject);    //传入头指针，传入班级，传入学科
 /*
 Stu *Itzlink(int n_num);  //初始化链表 
 Stu *Search(int n_ID,Stu *p_head);   //搜索学生    

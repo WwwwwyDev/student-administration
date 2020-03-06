@@ -35,7 +35,7 @@ void Maininput(Stu *p_head)  //主菜单输入函数函数
 
 void Studentmenu(Stu *p_head)  //学生菜单显示函数 
 {
-	printf("    功能菜单\nA:输出所有学生信息 \nB:查找学生 \nC:输出两门以上不及格的学生名单 \nD:保存为文件 \n(权限:学生)请输入你要进行的操作:"); 
+	printf("    功能菜单\nA:输出所有学生信息 \nB:查找学生 \nC:输出两门以上不及格的学生名单 \nD:保存为文件 \nE:输出班级单科排名 \n(权限:学生)请输入你要进行的操作:"); 
 	Studentinput(p_head);
 }
 
@@ -60,6 +60,24 @@ void Studentinput(Stu *p_head)   //学生菜单输入函数
 	{   
 	    Fprint(p_head); 
 	}
+	else if(strcmp(choice,"E")==0)
+	{   printf("请输入班级:");
+	    char str_class[999];
+	    char str_subject[999]; 
+		scanf("%s",str_class); 
+		printf("请输入你要排名的学科(A：数学B：语文C：英语D：专业):");
+	    scanf("%s",str_subject);
+	    if(strcmp(str_subject,"A")) 
+	    ClassSortOutput(p_head,str_class,1); 
+	    else if(strcmp(str_subject,"B"))
+	    ClassSortOutput(p_head,str_class,2); 
+	    else if(strcmp(str_subject,"C"))
+	    ClassSortOutput(p_head,str_class,3); 
+	    else if(strcmp(str_subject,"D"))
+	    ClassSortOutput(p_head,str_class,3); 
+	    else
+	    printf("提示：没有这个学科"); 
+	}
 	else
 	{
 		printf("没有这个操作，请重新选择\n"); 
@@ -68,7 +86,7 @@ void Studentinput(Stu *p_head)   //学生菜单输入函数
 
 void Adminmenu(Stu *p_head)  //管理员菜单显示函数 
 {
-	printf("    功能菜单\nA:输出所有学生信息 \nB:查找学生 \nC:删除学生 \nD:添加学生 \nE:修改学生信息 \nF:输出两门以上不及格的学生名单 \nG:学生单科成绩录入 \nH:保存为文件\n(权限:管理员)请输入你要进行的操作:"); 
+	printf("    功能菜单\nA:输出所有学生信息 \nB:查找学生 \nC:删除学生 \nD:添加学生 \nE:修改学生信息 \nF:输出两门以上不及格的学生名单 \nG:学生单科成绩录入 \nH:保存为文件 \nI:输出班级单科排名 \n(权限:管理员)请输入你要进行的操作:"); 
 	Admininput(p_head);
 }
  
@@ -165,6 +183,24 @@ void Admininput(Stu *p_head)   //管理员菜单输入函数
 	else if(strcmp(choice,"H")==0)
 	{   
 	    Fprint(p_head); 
+	}
+	else if(strcmp(choice,"I")==0)
+	{   printf("请输入班级:");
+	    char str_class[999];
+	    char str_subject[999]; 
+		scanf("%s",str_class); 
+		printf("请输入你要排名的学科(A：数学B：语文C：英语D：专业):");
+	    scanf("%s",str_subject);
+	    if(strcmp(str_subject,"A")==0) 
+	    ClassSortOutput(p_head,str_class,1); 
+	    else if(strcmp(str_subject,"B")==0)
+	    ClassSortOutput(p_head,str_class,2); 
+	    else if(strcmp(str_subject,"C")==0)
+	    ClassSortOutput(p_head,str_class,3); 
+	    else if(strcmp(str_subject,"D")==0)
+	    ClassSortOutput(p_head,str_class,3); 
+	    else
+	    printf("提示：没有这个学科\n"); 
 	}
 	else
 	{
@@ -742,7 +778,59 @@ void Fprint(Stu *p_head)   //将数据导出到当前路径下的StudentInformation.txt
 	printf("(提示:文件已保存在当前目录下，文件名：StudentInformation.txt)\n"); 
 	fclose(fp);	
 } 
- 
+void ClassSortOutput(Stu *p_head,char *str_class,int subject)    //传入头指针，传入班级，传入学科 桶排序 
+{
+	int list[999];    //将收集到的编号传入数组； 
+	Stu *temp=NextItem(p_head);
+	int num=0; 
+	int sign=0;
+	int i;
+	int len=0;
+	for(i=0;i<998;i++) 
+	{
+		list[i]=0;   //初始化 
+	}
+	while(temp)
+	{   if(strcmp(str_class,temp->m_strClass)==0)
+		{
+			if(list[ClassSort(p_head,temp->m_nSign,subject)+len]==0)
+			{
+				list[ClassSort(p_head,temp->m_nSign,subject)+len]=temp->m_nSign;
+				len=0; 
+				num=num+1;
+			}
+			else
+			{
+				len=len+1; 
+			}
+		
+		sign = 1;
+		}
+		if(len==0)
+		{
+		temp=NextItem(temp);
+		}
+	}
+	if(sign == 0)
+	{
+		printf("提示:没有这个班级\n");
+		return;
+	}
+	else
+	{
+	for ( i=1;i<=num;i++)
+	{   if(subject==1)
+	    printf("%s班该科第%d名:%s 数学成绩为%s\n",str_class,i,SearchItem(list[i],p_head)->m_strName,SearchItem(list[i],p_head)->m_nMath);
+	    if(subject==2)
+	    printf("%s班该科第%d名:%s 语文成绩为%s\n",str_class,i,SearchItem(list[i],p_head)->m_strName,SearchItem(list[i],p_head)->m_nChinese);
+	    if(subject==3)
+	    printf("%s班该科第%d名:%s 英语成绩为%s\n",str_class,i,SearchItem(list[i],p_head)->m_strName,SearchItem(list[i],p_head)->m_nEnglish);
+	    if(subject==4)
+	    printf("%s班该科第%d名:%s 专业成绩为%s\n",str_class,i,SearchItem(list[i],p_head)->m_strName,SearchItem(list[i],p_head)->m_nComputer);
+	}
+	}
+	
+ } 
 /*
 Stu *Search(int n_ID,Stu *p_head)
 {   

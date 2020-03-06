@@ -18,13 +18,13 @@ FILETYPE VFT_APP
   {
     BLOCK "080404E4"
     {
-      VALUE "CompanyName", "由大连民族大学2019082323设计"
+      VALUE "CompanyName", "由2019082323设计"
       VALUE "FileVersion", "0.0.0.2"
       VALUE "FileDescription", "Developed using the Dev-C++ IDE"
-      VALUE "InternalName", "由大连民族大学2019082323设计"
-      VALUE "LegalCopyright", "由大连民族大学2019082323设计"
-      VALUE "LegalTrademarks", "由大连民族大学2019082323设计"
-      VALUE "OriginalFilename", "由大连民族大学2019082323设计"
+      VALUE "InternalName", "由2019082323设计"
+      VALUE "LegalCopyright", "由2019082323设计"
+      VALUE "LegalTrademarks", "由2019082323设计"
+      VALUE "OriginalFilename", "由2019082323设计"
       VALUE "ProductName", "学生管理系统"
       VALUE "ProductVersion", "0.0.0.2"
     }

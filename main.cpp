@@ -46,7 +46,7 @@ int main(int argc, char** argv)
 		    p_temp = NextItem(p_temp);
 		}
 		Del(p_head,p_temp->m_nSign);
-		printf("提示：读取成功\n");
+		printf("提示：读取成功\n欢迎来到学生管理系统(设计by2019082323)\n");
 		fclose(pf);
 	}
 

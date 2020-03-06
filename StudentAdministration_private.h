@@ -10,13 +10,13 @@
 #define VER_MINOR	0
 #define VER_RELEASE	0
 #define VER_BUILD	2
-#define COMPANY_NAME	"由大连民族大学2019082323设计"
+#define COMPANY_NAME	"由2019082323设计"
 #define FILE_VERSION	"0.0.0.2"
 #define FILE_DESCRIPTION	"Developed using the Dev-C++ IDE"
-#define INTERNAL_NAME	"由大连民族大学2019082323设计"
-#define LEGAL_COPYRIGHT	"由大连民族大学2019082323设计"
-#define LEGAL_TRADEMARKS	"由大连民族大学2019082323设计"
-#define ORIGINAL_FILENAME	"由大连民族大学2019082323设计"
+#define INTERNAL_NAME	"由2019082323设计"
+#define LEGAL_COPYRIGHT	"由2019082323设计"
+#define LEGAL_TRADEMARKS	"由2019082323设计"
+#define ORIGINAL_FILENAME	"由2019082323设计"
 #define PRODUCT_NAME	"学生管理系统"
 #define PRODUCT_VERSION	"0.0.0.2"
 

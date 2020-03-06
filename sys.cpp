@@ -6,7 +6,7 @@
 //ÏµÍ³²Ù×÷º¯Êı 
 void Mainmenu(Stu *p_head)  //Ö÷²Ëµ¥ÏÔÊ¾º¯Êı 
 {
-     printf("»¶Ó­À´µ½Ñ§Éú¹ÜÀíÏµÍ³(Éè¼Æby´óÁ¬Ãñ×å´óÑ§2019082323)\nÇëÑ¡ÔñÄãµÄÉí·İ:A:Ñ§Éú B:ÏµÍ³¹ÜÀíÔ±:");
+     printf("ÇëÑ¡ÔñÄãµÄÉí·İ:A:Ñ§Éú B:ÏµÍ³¹ÜÀíÔ±:");
 	 Maininput(p_head);
 } 
 
@@ -23,9 +23,19 @@ void Maininput(Stu *p_head)  //Ö÷²Ëµ¥ÊäÈëº¯Êıº¯Êı
 	else if(strcmp(choice,"B")==0)
 	{   while(1)
 		{
-			Adminmenu(p_head);
+			char admin[999];
+            printf("ÇëÊäÈë¹ÜÀíÔ±ÃÜ³×£º");
+        	scanf("%s",admin);
+    		if(strcmp(admin,"123")==0)
+			{
+			Adminmenu(p_head); 
+			}
+			else
+	    	{   
+	    	printf("ÌáÊ¾£ºÃÜ³×´íÎó\n");
+			return;
+			}
 		}
-		
 	}
 	else
 	{
@@ -35,7 +45,7 @@ void Maininput(Stu *p_head)  //Ö÷²Ëµ¥ÊäÈëº¯Êıº¯Êı
 
 void Studentmenu(Stu *p_head)  //Ñ§Éú²Ëµ¥ÏÔÊ¾º¯Êı 
 {
-	printf("    ¹¦ÄÜ²Ëµ¥\nA:Êä³öËùÓĞÑ§ÉúĞÅÏ¢ \nB:²éÕÒÑ§Éú \nC:Êä³öÁ½ÃÅÒÔÉÏ²»¼°¸ñµÄÑ§ÉúÃûµ¥ \nD:±£´æÎªÎÄ¼ş \nE:Êä³ö°à¼¶µ¥¿ÆÅÅÃû \n(È¨ÏŞ:Ñ§Éú)ÇëÊäÈëÄãÒª½øĞĞµÄ²Ù×÷:"); 
+	printf("    ¹¦ÄÜ²Ëµ¥\nA:Êä³öËùÓĞÑ§ÉúĞÅÏ¢ \nB:²éÕÒÑ§Éú \nC:Êä³öÁ½ÃÅÒÔÉÏ²»¼°¸ñµÄÑ§ÉúÃûµ¥ \nD:±£´æÎªÎÄ¼ş \nE:Êä³ö°à¼¶µ¥¿ÆÅÅÃû \n F:¸ü¸ÄÈ¨ÏŞÎª¹ÜÀíÔ± \n(È¨ÏŞ:Ñ§Éú)ÇëÊäÈëÄãÒª½øĞĞµÄ²Ù×÷:"); 
 	Studentinput(p_head);
 }
 
@@ -78,6 +88,20 @@ void Studentinput(Stu *p_head)   //Ñ§Éú²Ëµ¥ÊäÈëº¯Êı
 	    else
 	    printf("ÌáÊ¾£ºÃ»ÓĞÕâ¸öÑ§¿Æ"); 
 	}
+	else if(strcmp(choice,"F")==0)
+	{   char admin[999];
+        printf("ÇëÊäÈë¹ÜÀíÔ±ÃÜ³×£º");
+        scanf("%s",admin);
+    	if(strcmp(admin,"123")==0)
+		{
+		Adminmenu(p_head); 
+		}
+		else
+	    {   
+	    printf("ÌáÊ¾£ºÃÜ³×´íÎó\n");
+		return;
+	    }
+	} 
 	else
 	{
 		printf("Ã»ÓĞÕâ¸ö²Ù×÷£¬ÇëÖØĞÂÑ¡Ôñ\n"); 
@@ -85,9 +109,9 @@ void Studentinput(Stu *p_head)   //Ñ§Éú²Ëµ¥ÊäÈëº¯Êı
 } 
 
 void Adminmenu(Stu *p_head)  //¹ÜÀíÔ±²Ëµ¥ÏÔÊ¾º¯Êı 
-{
+{   
 	printf("    ¹¦ÄÜ²Ëµ¥\nA:Êä³öËùÓĞÑ§ÉúĞÅÏ¢ \nB:²éÕÒÑ§Éú \nC:É¾³ıÑ§Éú \nD:Ìí¼ÓÑ§Éú \nE:ĞŞ¸ÄÑ§ÉúĞÅÏ¢ \nF:Êä³öÁ½ÃÅÒÔÉÏ²»¼°¸ñµÄÑ§ÉúÃûµ¥ \nG:Ñ§Éúµ¥¿Æ³É¼¨Â¼Èë \nH:±£´æÎªÎÄ¼ş \nI:Êä³ö°à¼¶µ¥¿ÆÅÅÃû \n(È¨ÏŞ:¹ÜÀíÔ±)ÇëÊäÈëÄãÒª½øĞĞµÄ²Ù×÷:"); 
-	Admininput(p_head);
+	Admininput(p_head);	
 }
  
 
@@ -569,23 +593,26 @@ void Change(Stu *p_head)   //ĞŞ¸Ä
     printf("ÇëÊäÈëÄãÏëĞŞ¸ÄµÄÑ§ÉúĞÅÏ¢µÄ±àºÅ£º");
     scanf("%d",&n_ID);
 	Stu *p_temp = SearchItem(n_ID,p_head);    //Í¨¹ı±àºÅËÑË÷½áµãÎ»ÖÃ 
-	printf("¸ÃÑ§ÉúĞÅÏ¢\n");
+	printf("    ¸ÃÑ§ÉúĞÅÏ¢\n");
 	ShowItem(p_temp,p_head);
 	printf("ÇëÑ¡ÔñÄãÏëĞŞ¸ÄµÄĞÅÏ¢£¨A:ĞÕÃû£¬B:°à¼¶£¬C:ÊıÑ§³É¼¨£¬D:ÓïÎÄ³É¼¨£¬E:Ó¢Óï³É¼¨£¬F:×¨Òµ³É¼¨£©£º");  
 	scanf("%s",c_value);
-	printf("ÇëÊäÈëÄãĞŞ¸ÄºóµÄÄÚÈİ£º");
+	
 	if(strcmp(c_value,"A") == 0)
 	    {
+	    printf("ÇëÊäÈëÄãĞŞ¸ÄºóµÄÄÚÈİ£º");
 		scanf("%s",p_temp->m_strName);
 	    printf("(ÌáÊ¾£ºĞŞ¸Ä³É¹¦£¡£©");
 	    } 
     else if(strcmp(c_value,"B") == 0)
 	    {
+	    printf("ÇëÊäÈëÄãĞŞ¸ÄºóµÄÄÚÈİ£º");
 		scanf("%s",p_temp->m_strClass);
 	    printf("(ÌáÊ¾£ºĞŞ¸Ä³É¹¦£¡)");
 	    } 
 	else if (strcmp(c_value,"C") == 0)
 		{
+		printf("ÇëÊäÈëÄãĞŞ¸ÄºóµÄÄÚÈİ£º");
 		scanf("%s",&p_temp->m_nMath);
 		while(Strtodouble(p_temp->m_nMath) == -1)
 		{	   
@@ -596,6 +623,7 @@ void Change(Stu *p_head)   //ĞŞ¸Ä
 		} 
 	else if (strcmp(c_value,"D") == 0)
 		{
+		printf("ÇëÊäÈëÄãĞŞ¸ÄºóµÄÄÚÈİ£º");
 		scanf("%s",&p_temp->m_nChinese);
 		while(Strtodouble(p_temp->m_nChinese) == -1)
 		{	   
@@ -606,6 +634,7 @@ void Change(Stu *p_head)   //ĞŞ¸Ä
 		} 
 	else if (strcmp(c_value,"E") == 0)
 		{
+		printf("ÇëÊäÈëÄãĞŞ¸ÄºóµÄÄÚÈİ£º");	
 		scanf("%s",&p_temp->m_nEnglish);
 		while(Strtodouble(p_temp->m_nEnglish) == -1)
 		{	   
@@ -616,6 +645,7 @@ void Change(Stu *p_head)   //ĞŞ¸Ä
 		} 
 	else if (strcmp(c_value,"F") == 0)
 		{
+		printf("ÇëÊäÈëÄãĞŞ¸ÄºóµÄÄÚÈİ£º");
 		scanf("%s",&p_temp->m_nComputer);
 		while(Strtodouble(p_temp->m_nComputer) == -1)
 		{	   
@@ -625,7 +655,7 @@ void Change(Stu *p_head)   //ĞŞ¸Ä
 		printf("(ÌáÊ¾£ºĞŞ¸Ä³É¹¦£¡)");
 		} 
 	else 
-	    printf("ÌáÊ¾£ºÃ»ÓĞÕâ¸ö¹¦ÄÜ");   
+	    printf("ÌáÊ¾£ºÃ»ÓĞÕâ¸ö¹¦ÄÜ\n");   
 }
 
 void NoPass(Stu *p_head)   //´«ÈëÍ·Ö¸Õë£¬Êä³öËùÓĞ²»¼°¸ñ¿ÆÄ¿³¬¹ı2¿ÆµÄÑ§ÉúÃûµ¥
@@ -649,7 +679,7 @@ void NoPass(Stu *p_head)   //´«ÈëÍ·Ö¸Õë£¬Êä³öËùÓĞ²»¼°¸ñ¿ÆÄ¿³¬¹ı2¿ÆµÄÑ§ÉúÃûµ¥
 		{
 			sum = sum+1;
 		}
-		if(sum >= 2)
+		if(sum > 2)
 		{
 			ShowItem(p_temp,p_head);
 		}
@@ -693,7 +723,7 @@ void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject)    //µ¥¿ÆÑ§Ï
         {   while(temp != NextItem(end))
             {
 	    		printf("%sµÄÓ¢Óï³É¼¨(±àºÅ:%d)Ô­Îª%s·Ö£¬ÏÖ¸ÄÎª:",temp->m_strName,temp->m_nSign,temp->m_nEnglish);
-				scanf("%s",temp->m_nMath);
+				scanf("%s",temp->m_nEnglish);
 				while(Strtodouble(temp->m_nEnglish) == -1)
 					{	   
 						printf("ÌáÊ¾:ÄúµÄÊäÈëÓĞÎÊÌâ(³É¼¨Îª0-100µÄÕûÊı),ÇëÖØĞÂÊäÈë:"); 

@@ -15,6 +15,6 @@ struct Stu
 //链表操作函数 
 Stu *InitList(int num); //初始化链表 ,返回头指针 
 Stu *NextItem(Stu *plist);//传入当前结点，返回下一结点 
-void AddItem(Stu *plist);  //尾插结点，传入头结点，遍历到NULL，将尾部的指针域指向尾部新结点 ，完成添加 
+void AddItem(Stu *plist);  //尾插结点，传入头结点，遍历到NULL，将尾部的指针域指向尾部新结点
 void InitItem(Stu *plist); //初始化结点，将plist指向一个空链表，并初始化数据域
 Stu *SearchItem(int num,Stu *phead);  //传入头指针，返回编号为num的结点位置 

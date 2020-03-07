@@ -110,7 +110,7 @@ void Studentinput(Stu *p_head)   //—ß…˙≤Àµ• ‰»Î∫Ø ˝
 void Adminmenu(Stu *p_head)  //π‹¿Ì‘±≤Àµ•œ‘ æ∫Ø ˝ 
 {   while(1)
     { 
-	printf("    π¶ƒ‹≤Àµ•\nA: ‰≥ˆÀ˘”–—ß…˙–≈œ¢ \nB:≤È’“—ß…˙ \nC:…æ≥˝—ß…˙ \nD:ÃÌº”—ß…˙ \nE:–ﬁ∏ƒ—ß…˙–≈œ¢ \nF: ‰≥ˆ¡Ω√≈“‘…œ≤ªº∞∏Òµƒ—ß…˙√˚µ• \nG:—ß…˙µ•ø∆≥…º®¬º»Î \nH:±£¥ÊŒ™Œƒº˛ \nI: ‰≥ˆ∞‡º∂µ•ø∆≈≈√˚ \n(»®œﬁ:π‹¿Ì‘±)«Î ‰»Îƒ„“™Ω¯––µƒ≤Ÿ◊˜:"); 
+	printf("    π¶ƒ‹≤Àµ•\nA: ‰≥ˆÀ˘”–—ß…˙–≈œ¢ \nB:≤È’“—ß…˙ \nC:…æ≥˝—ß…˙ \nD:ÃÌº”—ß…˙ \nE:–ﬁ∏ƒ—ß…˙–≈œ¢ \nF: ‰≥ˆ¡Ω√≈“‘…œ≤ªº∞∏Òµƒ—ß…˙√˚µ• \nG:—ß…˙µ•ø∆≥…º®¬º»Î \nH:±£¥ÊŒ™Œƒº˛ \nI: ‰≥ˆ∞‡º∂µ•ø∆≈≈√˚ \nJ:≤Â»Î—ß…˙ \n(»®œﬁ:π‹¿Ì‘±)«Î ‰»Îƒ„“™Ω¯––µƒ≤Ÿ◊˜:"); 
 	Admininput(p_head);
 	}	
 }
@@ -231,6 +231,11 @@ void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
 	    ClassSortOutput(p_head,str_class,3); 
 	    else
 	    printf("Ã· æ£∫√ª”–’‚∏ˆ—ßø∆\n"); 
+	}
+	else if(strcmp(choice,"J")==0)
+	{   
+	    Insert(p_head);
+		SaveFile(p_head); 
 	}
 	else
 	{
@@ -872,4 +877,52 @@ void ClassSortOutput(Stu *p_head,char *str_class,int subject)    //¥´»ÎÕ∑÷∏’Î£¨¥
 	}
 	
  } 
+ 
+void Insert(Stu *p_head) //‘⁄÷–º‰≤Â»Î“ª∏ˆ±Ì 
+{   
+	int n;
+	printf("«Î ‰»Îƒ„œÎÃÌº”µƒ±ÌµƒŒª÷√£® ‰»Î0‘Ú≤Â‘⁄ø™Õ∑£¨ ‰»Î1‘Ú≤Â‘⁄1-2÷Æº‰,“‘¥À¿‡Õ∆£©:");
+	if(scanf("%d",&n)!=1)
+	{
+		printf("Ã· æ£∫ƒ„√ª”– ‰»Î’˝»∑÷µ");
+		fflush(stdin);
+	}
+	fflush(stdin);
+	Stu *p_new = (Stu *)malloc(sizeof(Stu));   //∑÷≈‰–¬Ω·µ„ 
+	if(p_new == NULL)
+    {
+    	printf("WRONG:ø’º‰∑÷≈‰ ß∞‹\n");
+    	exit(-1);	 
+    }
+	printf(" ‰»Î–¬‘ˆ±Ì:\n");
+	printf("–’√˚(%d):",n+1);
+	gets(p_new->m_strName);
+	printf("∞‡º∂(%d):",n+1);
+	gets(p_new->m_strClass);
+	printf(" ˝—ß≥…º®(%d):",n+1);
+	gets(p_new->m_nMath);
+	printf("”ÔŒƒ≥…º®(%d):",n+1);
+	gets(p_new->m_nChinese);
+	printf("”¢”Ô≥…º®(%d):",n+1);
+	gets(p_new->m_nEnglish);
+	printf("◊®“µ≥…º®(%d):",n+1);
+	gets(p_new->m_nComputer);
+	Stu *p_temp1 = SearchItem(n,p_head);    //À—À˜–¬Ω·µ„≤Â»ÎŒª÷√µƒ«∞∫ÛΩ·µ„ 
+    if(p_temp1==NULL)
+    {
+        printf("Ã· æ£∫Œ¥’“µΩ∏√±‡∫≈");
+		return;	
+	} 
+    Stu *p_temp2 = SearchItem(n+1,p_head);
+    Stu *p_temp = SearchItem(n+1,p_head);
+    while(p_temp)
+    {
+    	p_temp->m_nSign++;      //∂‘∫Û–¯Ω·µ„±‡∫≈º”“ª 
+    	p_temp = NextItem(p_temp);
+	}
+	p_temp1->m_pNext = p_new;    //Ω´–¬‘ˆΩ·µ„«∞“ªΩ·µ„÷∏œÚ–¬Ω·µ„£¨Ω´–¬Ω·µ„÷∏œÚ∫Û“ªΩ·µ„£¨ÕÍ≥…πÿ¡™ 
+	p_new->m_pNext = p_temp2;
+	p_new->m_nSign = n+1; 
+	printf("Ã· æ£∫≤Â»Î≥…π¶\n");
+}	 
 

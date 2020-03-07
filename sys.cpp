@@ -12,20 +12,18 @@ void Mainmenu(Stu *p_head)  //÷˜≤Àµ•œ‘ æ∫Ø ˝
 
 void Maininput(Stu *p_head)  //÷˜≤Àµ• ‰»Î∫Ø ˝∫Ø ˝ 
 {
-    char choice[999];
-	scanf("%s",choice);
+    char choice[999]= "\0";  //◊÷∑˚ ˝◊È≥ı ºªØ\0
+	gets(choice);//fgets(choice,998,stdin); ±‹√‚∂¡»Îø’∏Ò 
+	//while(getchar()!='\n');
 	if(strcmp(choice,"A")==0)
-	{   while(1)
-		{
+	{   
 			Studentmenu(p_head); 
-		}
 	} 
 	else if(strcmp(choice,"B")==0)
-	{   while(1)
-		{
-			char admin[999];
+	{   
+			char admin[999]= "\0";
             printf("«Î ‰»Îπ‹¿Ì‘±√‹≥◊£∫");
-        	scanf("%s",admin);
+        	gets(admin);
     		if(strcmp(admin,"123")==0)
 			{
 			Adminmenu(p_head); 
@@ -35,7 +33,6 @@ void Maininput(Stu *p_head)  //÷˜≤Àµ• ‰»Î∫Ø ˝∫Ø ˝
 	    	printf("Ã· æ£∫√‹≥◊¥ÌŒÛ\n");
 			return;
 			}
-		}
 	}
 	else
 	{
@@ -44,22 +41,24 @@ void Maininput(Stu *p_head)  //÷˜≤Àµ• ‰»Î∫Ø ˝∫Ø ˝
 } 
 
 void Studentmenu(Stu *p_head)  //—ß…˙≤Àµ•œ‘ æ∫Ø ˝ 
-{
-	printf("    π¶ƒ‹≤Àµ•\nA: ‰≥ˆÀ˘”–—ß…˙–≈œ¢ \nB:≤È’“—ß…˙ \nC: ‰≥ˆ¡Ω√≈“‘…œ≤ªº∞∏Òµƒ—ß…˙√˚µ• \nD:±£¥ÊŒ™Œƒº˛ \nE: ‰≥ˆ∞‡º∂µ•ø∆≈≈√˚ \n F:∏¸∏ƒ»®œﬁŒ™π‹¿Ì‘± \n(»®œﬁ:—ß…˙)«Î ‰»Îƒ„“™Ω¯––µƒ≤Ÿ◊˜:"); 
+{   while(1)
+	{
+	printf("    π¶ƒ‹≤Àµ•\nA: ‰≥ˆÀ˘”–—ß…˙–≈œ¢ \nB:≤È’“—ß…˙ \nC: ‰≥ˆ¡Ω√≈“‘…œ≤ªº∞∏Òµƒ—ß…˙√˚µ• \nD:±£¥ÊŒ™Œƒº˛ \nE: ‰≥ˆ∞‡º∂µ•ø∆≈≈√˚ \nF:∏¸∏ƒ»®œﬁŒ™π‹¿Ì‘± \n(»®œﬁ:—ß…˙)«Î ‰»Îƒ„“™Ω¯––µƒ≤Ÿ◊˜:"); 
 	Studentinput(p_head);
+	}
 }
 
 void Studentinput(Stu *p_head)   //—ß…˙≤Àµ• ‰»Î∫Ø ˝
-{   char choice[999];
-	scanf("%s",choice);
+{   char choice[999]="\0";
+	gets(choice);
 	if(strcmp(choice,"A")==0)
 	{
 		Display(p_head);
 	}
 	else if(strcmp(choice,"B")==0)
-	{   char name[999]; 
+	{   char name[999]="\0"; 
 	    printf("«Î ‰»Îƒ„“™≤È’“—ß…˙–’√˚:");
-	    scanf("%s",name);
+	    gets(name);
 		Search(p_head,name);
 	}
 	else if(strcmp(choice,"C")==0)
@@ -72,26 +71,26 @@ void Studentinput(Stu *p_head)   //—ß…˙≤Àµ• ‰»Î∫Ø ˝
 	}
 	else if(strcmp(choice,"E")==0)
 	{   printf("«Î ‰»Î∞‡º∂:");
-	    char str_class[999];
-	    char str_subject[999]; 
-		scanf("%s",str_class); 
+	    char str_class[999]="\0";
+	    char str_subject[999]="\0"; 
+		gets(str_class); 
 		printf("«Î ‰»Îƒ„“™≈≈√˚µƒ—ßø∆(A£∫ ˝—ßB£∫”ÔŒƒC£∫”¢”ÔD£∫◊®“µ):");
-	    scanf("%s",str_subject);
-	    if(strcmp(str_subject,"A")) 
+	    gets(str_subject);
+	    if(strcmp(str_subject,"A")==0) 
 	    ClassSortOutput(p_head,str_class,1); 
-	    else if(strcmp(str_subject,"B"))
+	    else if(strcmp(str_subject,"B")==0)
 	    ClassSortOutput(p_head,str_class,2); 
-	    else if(strcmp(str_subject,"C"))
+	    else if(strcmp(str_subject,"C")==0)
 	    ClassSortOutput(p_head,str_class,3); 
-	    else if(strcmp(str_subject,"D"))
-	    ClassSortOutput(p_head,str_class,3); 
+	    else if(strcmp(str_subject,"D")==0)
+	    ClassSortOutput(p_head,str_class,4); 
 	    else
-	    printf("Ã· æ£∫√ª”–’‚∏ˆ—ßø∆"); 
+	    printf("Ã· æ£∫√ª”–’‚∏ˆ—ßø∆\n"); 
 	}
 	else if(strcmp(choice,"F")==0)
 	{   char admin[999];
         printf("«Î ‰»Îπ‹¿Ì‘±√‹≥◊£∫");
-        scanf("%s",admin);
+        gets(admin);
     	if(strcmp(admin,"123")==0)
 		{
 		Adminmenu(p_head); 
@@ -109,23 +108,25 @@ void Studentinput(Stu *p_head)   //—ß…˙≤Àµ• ‰»Î∫Ø ˝
 } 
 
 void Adminmenu(Stu *p_head)  //π‹¿Ì‘±≤Àµ•œ‘ æ∫Ø ˝ 
-{   
+{   while(1)
+    { 
 	printf("    π¶ƒ‹≤Àµ•\nA: ‰≥ˆÀ˘”–—ß…˙–≈œ¢ \nB:≤È’“—ß…˙ \nC:…æ≥˝—ß…˙ \nD:ÃÌº”—ß…˙ \nE:–ﬁ∏ƒ—ß…˙–≈œ¢ \nF: ‰≥ˆ¡Ω√≈“‘…œ≤ªº∞∏Òµƒ—ß…˙√˚µ• \nG:—ß…˙µ•ø∆≥…º®¬º»Î \nH:±£¥ÊŒ™Œƒº˛ \nI: ‰≥ˆ∞‡º∂µ•ø∆≈≈√˚ \n(»®œﬁ:π‹¿Ì‘±)«Î ‰»Îƒ„“™Ω¯––µƒ≤Ÿ◊˜:"); 
-	Admininput(p_head);	
+	Admininput(p_head);
+	}	
 }
  
 
 void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
-{   char choice[999];
-	scanf("%s",choice);
+{   char choice[999]="\0";
+	gets(choice);
 	if(strcmp(choice,"A")==0)
 	{
 		Display(p_head);
 	}
 	else if(strcmp(choice,"B")==0)
-	{   char name[999]; 
+	{   char name[999]="\0"; 
 	    printf("«Î ‰»Îƒ„“™≤È’“—ß…˙–’√˚:");
-	    scanf("%s",name);
+	    gets(name);
 		Search(p_head,name);
 	}
 	else if(strcmp(choice,"C")==0)
@@ -134,12 +135,14 @@ void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
 	    if(scanf("%d",&n_ID)!=1)
 		{
 		printf("Ã· æ£∫ƒ„√ª”– ‰»Î’˝»∑±‡∫≈\n");
-		while(getchar()!='\n');
+		fflush(stdin);//while(getchar()!='\n');
 	    }
 		else 
 		{
-		Del(p_head,n_ID);
-	    printf("Ã· æ£∫…æ≥˝≥…π¶\n"); 
+		fflush(stdin);
+		Del2(p_head,n_ID);
+	    //printf("Ã· æ£∫…æ≥˝≥…π¶\n"); 
+	    
 	    SaveFile(p_head); 
 	    }
 	}
@@ -149,8 +152,9 @@ void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
 	    if(scanf("%d",&num)!=1)
 		{
 		printf("Ã· æ£∫ƒ„√ª”– ‰»Î’˝»∑ ˝¡ø\n");
-		while(getchar()!='\n');
+		fflush(stdin);
 	    } 
+	    fflush(stdin);
 	    num1=num; 
 	    while(num)
 	    {
@@ -177,9 +181,10 @@ void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
 	    if(scanf("%d",&start)!=1)
 		{
 		printf("Ã· æ£∫ƒ„√ª”– ‰»Î’˝»∑±‡∫≈\n");
-		while(getchar()!='\n');
+		fflush(stdin);
 		return;
 	    }
+	    fflush(stdin);
 	    Stu *temp1=SearchItem(start , p_head);
         if(temp1==NULL || temp1->m_nSign==0)
         {
@@ -190,9 +195,10 @@ void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
 	    if(scanf("%d",&end)!=1)
 		{
 		printf("Ã· æ£∫ƒ„√ª”– ‰»Î’˝»∑±‡∫≈\n");
-		while(getchar()!='\n');
+		fflush(stdin);
 		return;
 	    }
+	    fflush(stdin);   //«Â≥˝ª∫¥Ê«¯ 
 	    Stu *temp2=SearchItem(end ,p_head);
    		if(temp2==NULL || temp2->m_nSign==0 ||temp1->m_nSign>temp2->m_nSign)
    		{
@@ -200,7 +206,7 @@ void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
    	  		return;
    		}
 	    printf("«Î ‰»Îƒ„“™¬º»Îµƒ—ßø∆(A£∫ ˝—ßB£∫”ÔŒƒC£∫”¢”ÔD£∫◊®“µ):");
-	    scanf("%s",subject);
+	    gets(subject);
 		InputScore(temp1,temp2,p_head,subject); 
 		SaveFile(p_head);
 	}
@@ -212,9 +218,9 @@ void Admininput(Stu *p_head)   //π‹¿Ì‘±≤Àµ• ‰»Î∫Ø ˝
 	{   printf("«Î ‰»Î∞‡º∂:");
 	    char str_class[999];
 	    char str_subject[999]; 
-		scanf("%s",str_class); 
+		gets(str_class); 
 		printf("«Î ‰»Îƒ„“™≈≈√˚µƒ—ßø∆(A£∫ ˝—ßB£∫”ÔŒƒC£∫”¢”ÔD£∫◊®“µ):");
-	    scanf("%s",str_subject);
+	    gets(str_subject);
 	    if(strcmp(str_subject,"A")==0) 
 	    ClassSortOutput(p_head,str_class,1); 
 	    else if(strcmp(str_subject,"B")==0)
@@ -268,37 +274,9 @@ void InitSys(Stu *p_head)      //≥ı ºªØ—ß…˙œµÕ≥∫Û£¨π‹¿Ì‘± ‰»Î ˝æ›≤„
 		scanf("%s",p_temp->m_strName);
 		printf("∞‡º∂(±‡∫≈:%d):",p_temp->m_nSign);
 		scanf("%s",p_temp->m_strClass);
-/*		printf(" ˝—ß≥…º®(±‡∫≈:%d):",p_temp->m_nSign);
-		scanf("%s",p_temp->m_nMath);
-		while(Strtodouble(p_temp->m_nMath) == -1)
-		{   
-			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-			scanf("%s",p_temp->m_nMath);
-		}
-		printf("”ÔŒƒ≥…º®(±‡∫≈:%d):",p_temp->m_nSign);
-		scanf("%s",p_temp->m_nChinese);
-		while(Strtodouble(p_temp->m_nChinese) == -1)
-		{   
-			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:");
-			scanf("%s",p_temp->m_nChinese);
-		}
-		printf("”¢”Ô≥…º®(±‡∫≈:%d):",p_temp->m_nSign);
-		scanf("%s",p_temp->m_nEnglish);
-		while(Strtodouble(p_temp->m_nEnglish) == -1)
-		{   
-			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:");
-			scanf("%s",p_temp->m_nEnglish);
-		}
-		printf("◊®“µ≥…º®(±‡∫≈:%d):",p_temp->m_nSign);
-		scanf("%s",p_temp->m_nComputer);
-		while(Strtodouble(p_temp->m_nComputer) == -1)
-		{   
-			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:");
-			scanf("%s",p_temp->m_nComputer);
-		}
-		*/
         p_temp = NextItem(p_temp);
         }
+        fflush(stdin);
 } 
 
 void SaveFile(Stu *p_head)   //±£¥ÊŒƒº˛ 
@@ -323,7 +301,7 @@ int Pow(int num,int n) //¥´»Î ˝◊÷£¨∑µªÿ∆‰n¥Œ∑Ω
 } 
 
 
-int Strtoint(char *str)    //¥´»Î0-100µƒ◊÷∑˚¥Æ∑µªÿ’˚–Õ∫Ø ˝£¨»Ù¥´»Î∆‰À˚◊÷∑˚¥Æ£¨‘Ú∑µªÿ-1
+int Strtoint(char *str)    //¥´»Î∑˚¥Æ∑µªÿ’˚–Õ∫Ø ˝£¨»Ù¥´»Î∆‰À˚◊÷∑˚¥Æ£¨‘Ú∑µªÿ-1
 {
    int sum = 0;
    while(*str!='\0')
@@ -331,7 +309,7 @@ int Strtoint(char *str)    //¥´»Î0-100µƒ◊÷∑˚¥Æ∑µªÿ’˚–Õ∫Ø ˝£¨»Ù¥´»Î∆‰À˚◊÷∑˚¥Æ£¨‘Ú
    	sum = 10*sum + *str - '0';
    	str++;
    }
-   if(sum >= 0 && sum <= 100)
+   if(sum >= 0)
    return sum;
    else
    return -1;
@@ -408,6 +386,26 @@ void Del(Stu *p_head,int n_ID)    //…æ≥˝±Ì£¨¥´»ÎÕ∑÷∏’Î£¨¥´»Î…æ≥˝—ß…˙±‡∫≈
     	p_temp2->m_nSign = (p_temp2->m_nSign)-1;
     	p_temp2 = NextItem(p_temp2);
 	}   		
+    }
+}
+
+void Del2(Stu *p_head,int n_ID)    //…æ≥˝±Ì£¨¥´»ÎÕ∑÷∏’Î£¨¥´»Î…æ≥˝—ß…˙±‡∫≈ 
+{   if(SearchItem(n_ID,p_head)==NULL)
+    {
+    	printf("Ã· æ£∫√ª”–’‚∏ˆ±‡∫≈\n");
+	}
+	else
+	{
+	free(SearchItem(n_ID,p_head));  // Õ∑≈ƒ⁄¥Êø’º‰ 
+    Stu *p_temp1=SearchItem(n_ID-1,p_head);   //…æ≥˝Ω·µ„«∞∫Ûπÿ¡™ 
+    Stu *p_temp2=SearchItem(n_ID+1,p_head);  
+    p_temp1->m_pNext = p_temp2;
+    while(p_temp2)
+    {
+    	p_temp2->m_nSign = (p_temp2->m_nSign)-1;
+    	p_temp2 = NextItem(p_temp2);
+	}   	
+	printf("Ã· æ£∫…æ≥˝≥…π¶\n");	
     }
 }
 
@@ -581,78 +579,91 @@ void AddList(Stu *p_head)    //Œ≤≤øÃÌº”–¬Õ¨—ß
 	temp=NextItem(temp);
 	printf(" ‰»Î—ß…˙–≈œ¢(±‡∫≈:%d):\n",temp->m_nSign);   //∂‘Ω·µ„–¥»Î ˝æ›
 	printf("–’√˚(±‡∫≈:%d):",temp->m_nSign);
-	scanf("%s",temp->m_strName);
+	gets(temp->m_strName);
 	printf("∞‡º∂(±‡∫≈:%d):",temp->m_nSign);
-	scanf("%s",temp->m_strClass);
+	gets(temp->m_strClass);
 }
 
 void Change(Stu *p_head)   //–ﬁ∏ƒ 
 {   
-    char c_value[999];
+    char c_value[999]="\0";
     int n_ID;
     printf("«Î ‰»Îƒ„œÎ–ﬁ∏ƒµƒ—ß…˙–≈œ¢µƒ±‡∫≈£∫");
-    scanf("%d",&n_ID);
+    //scanf("%d",&n_ID);
+     if(scanf("%d",&n_ID)!=1)
+	{
+		printf("Ã· æ£∫ƒ„√ª”– ‰»Î’˝»∑±‡∫≈\n");
+		fflush(stdin);//while(getchar()!='\n');
+		return;
+	}
 	Stu *p_temp = SearchItem(n_ID,p_head);    //Õ®π˝±‡∫≈À—À˜Ω·µ„Œª÷√ 
+	if(p_temp == NULL)
+	{
+		printf("Ã· æ£∫Œ¥’“µΩ’‚∏ˆ±‡∫≈\n");
+		fflush(stdin);
+		return; 
+	}
 	printf("    ∏√—ß…˙–≈œ¢\n");
 	ShowItem(p_temp,p_head);
-	printf("«Î—°‘Òƒ„œÎ–ﬁ∏ƒµƒ–≈œ¢£®A:–’√˚£¨B:∞‡º∂£¨C: ˝—ß≥…º®£¨D:”ÔŒƒ≥…º®£¨E:”¢”Ô≥…º®£¨F:◊®“µ≥…º®£©£∫");  
-	scanf("%s",c_value);
+	printf("«Î—°‘Òƒ„œÎ–ﬁ∏ƒµƒ–≈œ¢£®A:–’√˚£¨B:∞‡º∂£¨C: ˝—ß≥…º®£¨D:”ÔŒƒ≥…º®£¨E:”¢”Ô≥…º®£¨F:◊®“µ≥…º®£©£∫"); 
+	fflush(stdin); //œ˚≥˝ªÿ≥µ 
+	gets(c_value);
 	
 	if(strcmp(c_value,"A") == 0)
 	    {
 	    printf("«Î ‰»Îƒ„–ﬁ∏ƒ∫Ûµƒƒ⁄»›£∫");
-		scanf("%s",p_temp->m_strName);
-	    printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°£©");
+		gets(p_temp->m_strName);
+	    printf("Ã· æ£∫–ﬁ∏ƒ≥…π¶£°\n");
 	    } 
     else if(strcmp(c_value,"B") == 0)
 	    {
 	    printf("«Î ‰»Îƒ„–ﬁ∏ƒ∫Ûµƒƒ⁄»›£∫");
-		scanf("%s",p_temp->m_strClass);
-	    printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
+		gets(p_temp->m_strClass);
+	    printf("Ã· æ£∫–ﬁ∏ƒ≥…π¶£°\n");
 	    } 
 	else if (strcmp(c_value,"C") == 0)
 		{
 		printf("«Î ‰»Îƒ„–ﬁ∏ƒ∫Ûµƒƒ⁄»›£∫");
-		scanf("%s",&p_temp->m_nMath);
+		gets(p_temp->m_nMath);
 		while(Strtodouble(p_temp->m_nMath) == -1)
 		{	   
 			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-			scanf("%s",p_temp->m_nMath);
+			gets(p_temp->m_nMath);
 		}
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
+		printf("Ã· æ£∫–ﬁ∏ƒ≥…π¶£°\n");
 		} 
 	else if (strcmp(c_value,"D") == 0)
 		{
 		printf("«Î ‰»Îƒ„–ﬁ∏ƒ∫Ûµƒƒ⁄»›£∫");
-		scanf("%s",&p_temp->m_nChinese);
+		gets(p_temp->m_nChinese);
 		while(Strtodouble(p_temp->m_nChinese) == -1)
 		{	   
 			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-			scanf("%s",p_temp->m_nChinese);
+			gets(p_temp->m_nChinese);
 		}
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
+		printf("Ã· æ£∫–ﬁ∏ƒ≥…π¶£°\n");
 		} 
 	else if (strcmp(c_value,"E") == 0)
 		{
 		printf("«Î ‰»Îƒ„–ﬁ∏ƒ∫Ûµƒƒ⁄»›£∫");	
-		scanf("%s",&p_temp->m_nEnglish);
+		gets(p_temp->m_nEnglish);
 		while(Strtodouble(p_temp->m_nEnglish) == -1)
 		{	   
 			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-			scanf("%s",p_temp->m_nEnglish);
+			gets(p_temp->m_nEnglish);
 		}
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
+		printf("Ã· æ£∫–ﬁ∏ƒ≥…π¶£°\n");
 		} 
 	else if (strcmp(c_value,"F") == 0)
 		{
 		printf("«Î ‰»Îƒ„–ﬁ∏ƒ∫Ûµƒƒ⁄»›£∫");
-		scanf("%s",&p_temp->m_nComputer);
+		gets(p_temp->m_nComputer);
 		while(Strtodouble(p_temp->m_nComputer) == -1)
 		{	   
 			printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-			scanf("%s",p_temp->m_nComputer);
+			gets(p_temp->m_nComputer);
 		}
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
+		printf("Ã· æ£∫–ﬁ∏ƒ≥…π¶£°\n");
 		} 
 	else 
 	    printf("Ã· æ£∫√ª”–’‚∏ˆπ¶ƒ‹\n");   
@@ -697,11 +708,11 @@ void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject)    //µ•ø∆—ßœ
         {   while(temp != NextItem(end))
             {
 	    		printf("%sµƒ ˝—ß≥…º®(±‡∫≈:%d)‘≠Œ™%s∑÷£¨œ÷∏ƒŒ™:",temp->m_strName,temp->m_nSign,temp->m_nMath);
-				scanf("%s",temp->m_nMath);
+				gets(temp->m_nMath);
 				while(Strtodouble(temp->m_nMath) == -1)
 					{	   
 						printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-						scanf("%s",temp->m_nMath);
+						gets(temp->m_nMath);
 					}
 				temp=NextItem(temp);
 		   	} 
@@ -710,11 +721,11 @@ void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject)    //µ•ø∆—ßœ
         {   while(temp != NextItem(end))
             {
 	    		printf("%sµƒ”ÔŒƒ≥…º®(±‡∫≈:%d)‘≠Œ™%s∑÷£¨œ÷∏ƒŒ™:",temp->m_strName,temp->m_nSign,temp->m_nChinese);
-				scanf("%s",temp->m_nChinese);
+				gets(temp->m_nChinese);
 				while(Strtodouble(temp->m_nChinese) == -1)
 					{	   
 						printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-						scanf("%s",temp->m_nChinese);
+						gets(temp->m_nChinese);
 					}
 				temp=NextItem(temp);
 		   	} 
@@ -723,11 +734,11 @@ void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject)    //µ•ø∆—ßœ
         {   while(temp != NextItem(end))
             {
 	    		printf("%sµƒ”¢”Ô≥…º®(±‡∫≈:%d)‘≠Œ™%s∑÷£¨œ÷∏ƒŒ™:",temp->m_strName,temp->m_nSign,temp->m_nEnglish);
-				scanf("%s",temp->m_nEnglish);
+				gets(temp->m_nEnglish);
 				while(Strtodouble(temp->m_nEnglish) == -1)
 					{	   
 						printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-						scanf("%s",temp->m_nEnglish);
+						gets(temp->m_nEnglish);
 					}
 				temp=NextItem(temp);
 		   	} 
@@ -736,11 +747,11 @@ void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject)    //µ•ø∆—ßœ
         {   while(temp != NextItem(end))
             {
 	    		printf("%sµƒ◊®“µ≥…º®(±‡∫≈:%d)‘≠Œ™%s∑÷£¨œ÷∏ƒŒ™:",temp->m_strName,temp->m_nSign,temp->m_nComputer);
-				scanf("%s",temp->m_nComputer);
+				gets(temp->m_nComputer);
 				while(Strtodouble(temp->m_nComputer) == -1)
 					{	   
 						printf("Ã· æ:ƒ˙µƒ ‰»Î”–Œ Ã‚(≥…º®Œ™0-100µƒ’˚ ˝),«Î÷ÿ–¬ ‰»Î:"); 
-						scanf("%s",temp->m_nComputer);
+						gets(temp->m_nComputer);
 					}
 				temp=NextItem(temp);
 		   	} 
@@ -805,7 +816,7 @@ void Fprint(Stu *p_head)   //Ω´ ˝æ›µº≥ˆµΩµ±«∞¬∑æ∂œ¬µƒStudentInformation.txt
 	    p_temp=p_temp->m_pNext;
 	
 	} 
-	printf("(Ã· æ:Œƒº˛“—±£¥Ê‘⁄µ±«∞ƒø¬ºœ¬£¨Œƒº˛√˚£∫StudentInformation.txt)\n"); 
+	printf("Ã· æ:Œƒº˛“—±£¥Ê‘⁄µ±«∞ƒø¬ºœ¬£¨Œƒº˛√˚£∫StudentInformation.txt\n"); 
 	fclose(fp);	
 } 
 void ClassSortOutput(Stu *p_head,char *str_class,int subject)    //¥´»ÎÕ∑÷∏’Î£¨¥´»Î∞‡º∂£¨¥´»Î—ßø∆ Õ∞≈≈–Ú 
@@ -861,472 +872,4 @@ void ClassSortOutput(Stu *p_head,char *str_class,int subject)    //¥´»ÎÕ∑÷∏’Î£¨¥
 	}
 	
  } 
-/*
-Stu *Search(int n_ID,Stu *p_head)
-{   
-     Stu *p_temp = p_head;
-     while(p_temp->m_nSign != n_ID)   //n_ID=±È¿˙µΩ¡¥±ÌµƒID
-     {
-	     p_temp = p_temp->m_pNext;
-	     if(p_temp == NULL) 
-	     {
-	     	return NULL;
-		 }
-	 } 
-	return p_temp;
-}
 
-
-int Sort(Stu *p_head,int n_ID,int n_subject)
-{
-    Stu *p_thisStudent=Search(n_ID,p_head);
-    int num;
-	int i = 1;
-	int sum = 0;
-    if(n_subject == 1)   //”√Search()∫Ø ˝∂‘√ø“ª∏ˆΩ·µ„∏√±‡∫≈ ˝æ›÷µΩ¯––ºÏÀ˜£¨”ˆµΩ±»±ª≈≈–ÚΩ·µ„ ˝÷µ¥Û ±sum+1
-    {
-    	num = p_thisStudent->m_nMath;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nMath)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 2)
-	{
-		num = p_thisStudent->m_nChinese;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nChinese)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 3)
-	{
-		num = p_thisStudent->m_nEnglish;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nEnglish)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 4)
-	{
-		num = p_thisStudent->m_nComputer;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nComputer)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 5)
-	{
-		num = p_thisStudent->m_nComputer+p_thisStudent->m_nEnglish+p_thisStudent->m_nChinese+p_thisStudent->m_nMath;
-    	while(Search(i,p_head))
-    	{
-    	int n_sumScore = Search(i,p_head)->m_nComputer+Search(i,p_head)->m_nEnglish+Search(i,p_head)->m_nChinese+Search(i,p_head)->m_nMath;
-    	if(num <= n_sumScore)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
- } 
- 
- 
- 
-void NoPass(Stu *p_head)
-{   if(p_head == NULL)
-    {
-    	printf("WRONG:Œ¥Ω¯––≥ı ºªØ±Ì\n");
-    	return;	 
-    }
-	int i = 1;
-	Stu *p_temp = p_head->m_pNext;
-	int sum = 0;
-	while(p_temp)   //≈–∂œ≤ªº∞∏Ò 
-	{
-		if(p_temp->m_nMath < 60)
-		{
-			sum = sum+1;
-		}
-		if(p_temp->m_nEnglish < 60)
-		{
-			sum = sum+1;
-		}
-		if(p_temp->m_nChinese < 60)
-		{
-			sum = sum+1;
-		}
-		if(p_temp->m_nComputer < 60)
-		{
-			sum = sum+1;
-		}
-		if(sum >= 2)
-		{
-			printf("|±‡∫≈:%d ",p_temp->m_nSign);
-		    printf("|–’√˚:%s ",p_temp->m_strName);
-		    printf("|∞‡º∂:%s ",p_temp->m_strClass);
-			printf("| ˝—ß≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
-			printf("|”ÔŒƒ≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
-			printf("|”¢”Ô≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
-			printf("|◊®“µ≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
-			printf("|◊‹≥…º®:%d   ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n\n",p_temp->m_nComputer+p_temp->m_nEnglish+p_temp->m_nChinese+p_temp->m_nMath,Sort(p_head,i,5),ClassSort(p_head,i,5));
-		}
-		i=i+1;
-		p_temp=p_temp->m_pNext;
-		sum=0;
-	}
-}
-
-Stu *Itzlink(int n_num) 
-{   
-    int n_id;
-    Stu *p_head = NULL;//Õ∑÷∏’Î 
-    Stu *p_init = (Stu *)malloc(sizeof(Stu));//≥ı ºªØÕ∑Ω·µ„ 
-    if(p_init == NULL)
-    {
-    	printf("ø’º‰∑÷≈‰ ß∞‹\n");
-    	exit(-1);	 
-    }
-	Stu *p_temp = (Stu *)malloc(sizeof(Stu));//¡Ÿ ±Ω·µ„ 
-	if(p_temp == NULL)
-    {
-    	printf("ø’º‰∑÷≈‰ ß∞‹\n");
-    	exit(-1);	 
-    }
-	p_head=p_init;
-	p_init->m_pNext = p_temp;
-	p_temp->m_pNext = NULL;
-	p_init->m_nSign = 0;  //¥¥Ω®¡Ÿ ±Ω·µ„,Õ∑÷∏’Î÷∏œÚÕ∑Ω·µ„£¨Õ∑Ω·µ„next÷∏’Î÷∏œÚ¡Ÿ ±Ω·µ„£¨¡Ÿ ±Ω·µ„÷∏œÚNULL
-	for(n_id = 1;n_id <= n_num;n_id++)
-	{
-		
-		printf(" ‰»Î—ß…˙–≈œ¢(±‡∫≈:%d):\n",n_id);   //∂‘¡Ÿ ±Ω·µ„–¥»Î ˝æ›
-		printf("–’√˚(±‡∫≈:%d):",n_id);
-		scanf("%s",p_temp->m_strName);
-		printf("∞‡º∂(±‡∫≈:%d):",n_id);
-		scanf("%s",p_temp->m_strClass);
-		printf(" ˝—ß≥…º®(±‡∫≈:%d):",n_id);
-		scanf("%d",&p_temp->m_nMath);
-		printf("”ÔŒƒ≥…º®(±‡∫≈:%d):",n_id);
-		scanf("%d",&p_temp->m_nChinese);
-		printf("”¢”Ô≥…º®(±‡∫≈:%d):",n_id);
-		scanf("%d",&p_temp->m_nEnglish);
-		printf("◊®“µ≥…º®(±‡∫≈:%d):",n_id);
-		scanf("%d",&p_temp->m_nComputer);
-		p_temp->m_nSign=n_id;
-		if(n_id < n_num)
-		{
-		Stu *p_new = (Stu *)malloc(sizeof(Stu));  //¥¥Ω®“ª∏ˆ–¬µƒΩ·µ„÷∏œÚNULL£¨≤¢Ω´¡Ÿ ±Ω·µ„next÷∏’Î÷∏œÚ–¬Ω·µ„£¨¡Ÿ ±Ω·µ„÷∏œÚ–¬Ω·µ„
-			if(p_new == NULL)
-        	{
-    			printf("ø’º‰∑÷≈‰ ß∞‹\n");
-    			exit(-1);	 
-        	}
-		p_new->m_pNext = NULL;
-		p_temp->m_pNext = p_new;
-		p_temp=p_new;
-	    }
-	}
-    return p_head;
-}
-
-
-void Fprint(Stu *p_head)   //Ω´ ˝æ›µº≥ˆµΩµ±«∞¬∑æ∂œ¬µƒStudentInformation.txt 
-{   
-    char Str[256];
-    int i = 1; 
-    Stu *p_temp = p_head->m_pNext; 
-    FILE *fp;
-    fp = fopen("StudentInformation.txt", "w");    //“‘–¥»Î¥Úø™Œƒº˛ 
-    if (fp == NULL)
-    {
-    printf("Œƒº˛¥Úø™ ß∞‹");
-    return;
-    }
-    while(p_temp)  //–¥»ÎŒƒº˛ 
-	{   
-	    sprintf(Str,"|±‡∫≈:%d",p_temp->m_nSign); //Ω´◊÷∑˚¥Æ∏≥∏¯str 
-		fputs(Str,fp );
-		fputs("|–’√˚:",fp );
-		fputs(p_temp->m_strName,fp );
-		fputs("|∞‡º∂:",fp );
-		fputs(p_temp->m_strClass,fp );
-		sprintf(Str,"| ˝—ß≥…º®:%d",p_temp->m_nMath);
-		fputs(Str,fp );
-		sprintf(Str,"|‘∫œµ≈≈√˚:%d",Sort(p_head,i,1));
-		fputs(Str,fp );
-		sprintf(Str,"|∞‡º∂≈≈√˚:%d",ClassSort(p_head,i,1));
-		fputs(Str,fp );
-		sprintf(Str,"|”ÔŒƒ≥…º®:%d",p_temp->m_nChinese);
-		fputs(Str,fp );
-		sprintf(Str,"|‘∫œµ≈≈√˚:%d",Sort(p_head,i,2));
-		fputs(Str,fp );
-		sprintf(Str,"|∞‡º∂≈≈√˚:%d",ClassSort(p_head,i,2));
-		fputs(Str,fp );
-		sprintf(Str,"|”¢”Ô≥…º®:%d",p_temp->m_nEnglish);
-		fputs(Str,fp );
-		sprintf(Str,"|‘∫œµ≈≈√˚:%d",Sort(p_head,i,3));
-		fputs(Str,fp );
-		sprintf(Str,"|∞‡º∂≈≈√˚:%d",ClassSort(p_head,i,3));
-		fputs(Str,fp );
-		sprintf(Str,"|◊®“µ≥…º®:%d",p_temp->m_nComputer);
-		fputs(Str,fp );
-		sprintf(Str,"|‘∫œµ≈≈√˚:%d",Sort(p_head,i,4));
-		fputs(Str,fp );
-		sprintf(Str,"|∞‡º∂≈≈√˚:%d",ClassSort(p_head,i,4));
-		fputs(Str,fp );
-		sprintf(Str,"|◊‹≥…º®:%d",p_temp->m_nComputer+p_temp->m_nEnglish+p_temp->m_nChinese+p_temp->m_nMath);
-		fputs(Str,fp );
-		sprintf(Str,"|‘∫œµ≈≈√˚:%d",Sort(p_head,i,5));
-		fputs(Str,fp );
-		sprintf(Str,"|∞‡º∂≈≈√˚:%d\n",ClassSort(p_head,i,5));
-		fputs(Str,fp );
-	    i=i+1;
-	    p_temp=p_temp->m_pNext;
-	
-	} 
-	printf("(Ã· æ:Œƒº˛“—±£¥Ê‘⁄µ±«∞ƒø¬ºœ¬£¨Œƒº˛√˚£∫StudentInformation.txt)\n"); 
-	fclose(fp);	
-} 
-	
-	
-void Display(Stu *p_head)
-{   if(p_head == NULL)
-    {
-    	printf("WRONG:Œ¥Ω¯––≥ı ºªØ±Ì\n");
-    	return;	 
-    }
-    int i = 1;
-	Stu *p_temp = p_head->m_pNext;
-	while(p_temp)
-	{   
-		printf("|±‡∫≈:%d ",p_temp->m_nSign);
-		printf("|–’√˚:%s ",p_temp->m_strName);
-		printf("|∞‡º∂:%s ",p_temp->m_strClass);
-		printf("| ˝—ß≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nMath,Sort(p_head,i,1),ClassSort(p_head,i,1));
-		printf("|”ÔŒƒ≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nChinese,Sort(p_head,i,2),ClassSort(p_head,i,2));
-		printf("|”¢”Ô≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nEnglish,Sort(p_head,i,3),ClassSort(p_head,i,3));
-		printf("|◊®“µ≥…º®:%d ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n",p_temp->m_nComputer,Sort(p_head,i,4),ClassSort(p_head,i,4));
-		printf("|◊‹≥…º®:%d   ‘∫œµ√˚¥Œ:%d ∞‡º∂√˚¥Œ:%d\n\n",p_temp->m_nComputer+p_temp->m_nEnglish+p_temp->m_nChinese+p_temp->m_nMath,Sort(p_head,i,5),ClassSort(p_head,i,5));
-		i=i+1;
-	    p_temp=p_temp->m_pNext;
-	}
-}
-
-
-void Del(Stu *p_head)
-{   if(p_head == NULL)
-    {
-    	printf("WRONG:Œ¥Ω¯––≥ı ºªØ±Ì\n");
-    	return;	 
-    }
-    int n_ID;
-    printf("«Î ‰»Îƒ„œÎ…æ≥˝µƒ±Ìµƒ±‡∫≈£∫");
-    scanf("%d",&n_ID);
-	free(Search(n_ID,p_head));  // Õ∑≈ƒ⁄¥Êø’º‰ 
-    Stu *p_temp1=Search(n_ID-1,p_head);   //…æ≥˝Ω·µ„«∞∫Ûπÿ¡™ 
-    Stu *p_temp2=Search(n_ID+1,p_head);  
-    p_temp1->m_pNext = p_temp2;
-    while(p_temp2)
-    {
-    	p_temp2->m_nSign = (p_temp2->m_nSign)-1;
-    	p_temp2 = p_temp2->m_pNext;
-	}    	
-	printf("(Ã· æ£∫…æ≥˝≥…π¶)");
-}
-
-
-int ClassSort(Stu *p_head,int n_ID,int n_subject)   //Õ¨sort¿‡À∆£¨÷ª «≈–∂œ¡À∞‡º∂ «∑Òœ‡Õ¨ 
-{   
-    Stu *p_thisStudent=Search(n_ID,p_head);
-    int num;
-	int i = 1;
-	int sum = 0;
-    if(n_subject == 1)
-    {
-    	num = p_thisStudent->m_nMath;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nMath && strcmp(p_thisStudent->m_strClass,Search(i,p_head)->m_strClass) == 0)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 2)
-	{
-		num = p_thisStudent->m_nChinese;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nChinese && strcmp(p_thisStudent->m_strClass,Search(i,p_head)->m_strClass) == 0)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 3)
-	{
-		num = p_thisStudent->m_nEnglish;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nEnglish && strcmp(p_thisStudent->m_strClass,Search(i,p_head)->m_strClass) == 0)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 4)
-	{
-		num = p_thisStudent->m_nComputer;
-    	while(Search(i,p_head))
-    	{
-    	if(num <= Search(i,p_head)->m_nComputer && strcmp(p_thisStudent->m_strClass,Search(i,p_head)->m_strClass) == 0)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
-	if(n_subject == 5)
-	{
-		num = p_thisStudent->m_nComputer+p_thisStudent->m_nEnglish+p_thisStudent->m_nChinese+p_thisStudent->m_nMath;
-    	while(Search(i,p_head))
-    	{
-    	int n_sumScore = Search(i,p_head)->m_nComputer+Search(i,p_head)->m_nEnglish+Search(i,p_head)->m_nChinese+Search(i,p_head)->m_nMath;
-    	if(num <= n_sumScore && strcmp(p_thisStudent->m_strClass,Search(i,p_head)->m_strClass) == 0)
-		{
-		sum = sum+1;
-		}	
-		i = i+1;
-		}
-		return sum;
-	}
- } 
- 
- void Change(Stu *p_head)
-{   if(p_head == NULL)
-    {
-    	printf("WRONG:Œ¥Ω¯––≥ı ºªØ±Ì\n");
-    	return;	 
-    }
-    if(p_head == NULL)
-    {
-    	printf("WRONG:ø’º‰∑÷≈‰ ß∞‹\n");
-    	exit(-1);	 
-    }
-    char c_value[20];
-    int n_ID;
-    printf("«Î ‰»Îƒ„œÎ–ﬁ∏ƒµƒ±Ìµƒ±‡∫≈£∫");
-    scanf("%d",&n_ID);
-	Stu *p_temp = Search(n_ID,p_head);    //Õ®π˝±‡∫≈À—À˜Ω·µ„Œª÷√ 
-	printf("«Î—°‘Òƒ„œÎ–ﬁ∏ƒµƒ÷µ£®A:–’√˚£¨B:∞‡º∂£¨C: ˝—ß≥…º®£¨D:”ÔŒƒ≥…º®£¨E:”¢”Ô≥…º®£¨F:◊®“µ≥…º®£©£∫");  
-	scanf("%s",c_value);
-	printf("«Î ‰»Îƒ„–ﬁ∏ƒ∫Ûµƒƒ⁄»›£∫");
-	if(strcmp(c_value,"A") == 0)
-	    {
-		scanf("%s",p_temp->m_strName);
-	    printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
-	    } 
-    else if(strcmp(c_value,"B") == 0)
-	    {
-		scanf("%s",p_temp->m_strClass);
-	    printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
-	    } 
-	else if (strcmp(c_value,"C") == 0)
-		{
-		scanf("%d",&p_temp->m_nMath);
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
-		} 
-	else if (strcmp(c_value,"D") == 0)
-		{
-		scanf("%d",&p_temp->m_nChinese);
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
-		} 
-	else if (strcmp(c_value,"E") == 0)
-		{
-		scanf("%d",&p_temp->m_nEnglish);
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
-		} 
-	else if (strcmp(c_value,"F") == 0)
-		{
-		scanf("%d",&p_temp->m_nComputer);
-		printf("(Ã· æ£∫–ﬁ∏ƒ≥…π¶£°)");
-		} 
-	else 
-	    printf("(Ã· æ£∫√ª”–’‚∏ˆπ¶ƒ‹)");   
-}
-
-
-void Add(Stu *p_head)
-{   if(p_head == NULL)
-    {
-    	printf("WRONG:Œ¥Ω¯––≥ı ºªØ±Ì\n");
-    	return;	 
-    }
-    if(p_head == NULL)
-    {
-    	printf("WRONG:ø’º‰∑÷≈‰ ß∞‹\n");
-    	exit(-1);	 
-    }
-	int n;
-	printf("«Î ‰»Îƒ„œÎÃÌº”µƒ±ÌµƒŒª÷√£® ‰»Î0‘Ú≤Â‘⁄ø™Õ∑£¨ ‰»Î1‘Ú≤Â‘⁄1-2÷Æº‰,“‘¥À¿‡Õ∆£©:");
-	scanf("%d",&n);
-	Stu *p_new = (Stu *)malloc(sizeof(Stu));   //∑÷≈‰–¬Ω·µ„ 
-	if(p_new == NULL)
-    {
-    	printf("WRONG:ø’º‰∑÷≈‰ ß∞‹\n");
-    	exit(-1);	 
-    }
-	printf(" ‰»Î–¬‘ˆ±Ì:\n");
-	printf("–’√˚(%d):",n+1);
-	scanf("%s",p_new->m_strName);
-	printf("∞‡º∂(%d):",n+1);
-	scanf("%s",p_new->m_strClass);
-	printf(" ˝—ß≥…º®(%d):",n+1);
-	scanf("%d",&p_new->m_nMath);
-	printf("”ÔŒƒ≥…º®(%d):",n+1);
-	scanf("%d",&p_new->m_nChinese);
-	printf("”¢”Ô≥…º®(%d):",n+1);
-	scanf("%d",&p_new->m_nEnglish);
-	printf("◊®“µ≥…º®(%d):",n+1);
-	scanf("%d",&p_new->m_nComputer);
-	Stu *p_temp1 = Search(n,p_head);    //À—À˜–¬Ω·µ„≤Â»ÎŒª÷√µƒ«∞∫ÛΩ·µ„ 
-    Stu *p_temp2 = Search(n+1,p_head);
-    Stu *p_temp = Search(n+1,p_head);
-    while(p_temp)
-    {
-    	p_temp->m_nSign++;      //∂‘∫Û–¯Ω·µ„±‡∫≈º”“ª 
-    	p_temp = p_temp->m_pNext;
-	}
-	p_temp1->m_pNext = p_new;    //Ω´–¬‘ˆΩ·µ„«∞“ªΩ·µ„÷∏œÚ–¬Ω·µ„£¨Ω´–¬Ω·µ„÷∏œÚ∫Û“ªΩ·µ„£¨ÕÍ≥…πÿ¡™ 
-	p_new->m_pNext = p_temp2;
-	p_new->m_nSign = n+1; 
-}	 
-*/ 

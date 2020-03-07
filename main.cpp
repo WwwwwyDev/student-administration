@@ -25,11 +25,13 @@ int main(int argc, char** argv)
 	    while(scanf("%d",&num)!=1 || num<0)
 		{
 		printf("提示：你没有输入正确值，请重新输入:");
-		while(getchar()!='\n');
+		fflush(stdin);//while(getchar()!='\n');
 	    }
+	    fflush(stdin);
 	     p_head = InitList(num);  //开num个空间的链表 
 	     InitSys(p_head);      //输入数据域 
 	     SaveFile(p_head);   //保存文件 
+	     printf("欢迎来到学生管理系统(设计by2019082323)\n");
      }
      else
 	{   

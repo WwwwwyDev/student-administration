@@ -298,7 +298,7 @@ void SaveFile(Stu *p_head)   //±£´æÎÄ¼ş
     }	
 	fclose(pf2);	
 }
-int Pow(int num,int n) //´«ÈëÊı×Ö£¬·µ»ØÆän´Î·½ 
+/*int Pow(int num,int n) //´«ÈëÊı×Ö£¬·µ»ØÆän´Î·½ 
 { if(n == 1)
   return num;
   else
@@ -319,11 +319,12 @@ int Strtoint(char *str)    //´«Èë·û´®·µ»ØÕûĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö·û´®£¬Ôò·µ»Ø-1
    else
    return -1;
 } 
+*/ 
 double Strtodouble(char *str)  //´«Èë0-100µÄ×Ö·û´®·µ»ØdoubleĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö·û´®£¬Ôò·µ»Ø-1
 {   int i;
 	int sign = 0;
 	int len = strlen(str);
-	if(str[0] == '.'||str[len-1] == '.')
+	if(str[0] == '.'||str[len-1] == '.')//¶ÔÇ°ºóĞ¡ÊıµãÅĞ¶Ï 
 	{
 				return -1;
 	}
@@ -331,11 +332,11 @@ double Strtodouble(char *str)  //´«Èë0-100µÄ×Ö·û´®·µ»ØdoubleĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö
 	{
 		if(str[i]<'0' || str[i]>'9')
 		{
-			if(str[i]!='.')
+			if(str[i]!='.')//·ÀÖ¹ÊäÈëÆäËû×Ö·û 
 			{
 				return -1;
 			}
-			if(str[i]=='.')
+			if(str[i]=='.')//·ÀÖ¹ÊäÈë¶à¸öĞ¡Êıµã 
 			{
 				sign=sign+1;
 				if(sign>1)
@@ -345,13 +346,13 @@ double Strtodouble(char *str)  //´«Èë0-100µÄ×Ö·û´®·µ»ØdoubleĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö
 			}
 		}
 	}
-    if (atof(str)<0.0 || atof(str)>100.0)
+    if (atof(str)<0.0 || atof(str)>100.0)  //ÅĞ¶ÏÊÇ·ñ·ûºÏ³ÌĞòÂß¼­ 
 	{
 		return -1;
 	}
 	else
 	{
-		return atof(str);
+		return atof(str);   //×ª»¯ÎªdoubleĞÍ 
 	}
 }
 
@@ -383,7 +384,7 @@ void Del(Stu *p_head,int n_ID)    //É¾³ı±í£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÉ¾³ıÑ§Éú±àºÅ
 	else
 	{
 	free(SearchItem(n_ID,p_head));  //ÊÍ·ÅÄÚ´æ¿Õ¼ä 
-    Stu *p_temp1=SearchItem(n_ID-1,p_head);   //É¾³ı½áµãÇ°ºó¹ØÁª 
+    Stu *p_temp1=SearchItem(n_ID-1,p_head);   //½áµãÇ°ºó¹ØÁª 
     Stu *p_temp2=SearchItem(n_ID+1,p_head);  
     p_temp1->m_pNext = p_temp2;
     while(p_temp2)
@@ -421,7 +422,7 @@ int Sort(Stu *p_head,int n_ID,int n_subject)   //ÔºÏµ×ÜÅÅÃû£¬´«ÈëÍ·Ö¸Õë¡¢Ñ§Éú±àº
     int num;
 	int i = 1;
 	int sum = 1;
-    if(n_subject == 1)   //ÓÃSearch()º¯Êı¶ÔÃ¿Ò»¸ö½áµã¸Ã±àºÅÊı¾İÖµ½øĞĞ¼ìË÷£¬Óöµ½±È±»ÅÅĞò½áµãÊıÖµ´óÊ±sum+1
+    if(n_subject == 1)   //ÓÃSearchItem()º¯Êı¶ÔÃ¿Ò»¸ö½áµã¸Ã±àºÅÊı¾İÖµ½øĞĞ¼ìË÷£¬Óöµ½±È±»ÅÅĞò½áµãÊıÖµ´óÊ±sum+1
     {
     	num = Strtodouble(p_thisStudent->m_nMath);
     	while(SearchItem(i,p_head))
@@ -901,12 +902,32 @@ void Insert(Stu *p_head) //ÔÚÖĞ¼ä²åÈëÒ»¸ö±í
 	gets(p_new->m_strClass);
 	printf("ÊıÑ§³É¼¨(%d):",n+1);
 	gets(p_new->m_nMath);
+	while(Strtodouble(p_new->m_nMath) == -1)
+	{	   
+		printf("ÌáÊ¾:ÄúµÄÊäÈëÓĞÎÊÌâ(³É¼¨Îª0-100µÄÕûÊı),ÇëÖØĞÂÊäÈë:"); 
+		gets(p_new->m_nMath);
+	}
 	printf("ÓïÎÄ³É¼¨(%d):",n+1);
 	gets(p_new->m_nChinese);
+	while(Strtodouble(p_new->m_nChinese) == -1)
+	{	   
+		printf("ÌáÊ¾:ÄúµÄÊäÈëÓĞÎÊÌâ(³É¼¨Îª0-100µÄÕûÊı),ÇëÖØĞÂÊäÈë:"); 
+		gets(p_new->m_nChinese);
+	}
 	printf("Ó¢Óï³É¼¨(%d):",n+1);
 	gets(p_new->m_nEnglish);
+	while(Strtodouble(p_new->m_nEnglish) == -1)
+	{	   
+		printf("ÌáÊ¾:ÄúµÄÊäÈëÓĞÎÊÌâ(³É¼¨Îª0-100µÄÕûÊı),ÇëÖØĞÂÊäÈë:"); 
+		gets(p_new->m_nEnglish);
+	}
 	printf("×¨Òµ³É¼¨(%d):",n+1);
 	gets(p_new->m_nComputer);
+	while(Strtodouble(p_new->m_nComputer) == -1)
+	{	   
+		printf("ÌáÊ¾:ÄúµÄÊäÈëÓĞÎÊÌâ(³É¼¨Îª0-100µÄÕûÊı),ÇëÖØĞÂÊäÈë:"); 
+		gets(p_new->m_nComputer);
+	}
 	Stu *p_temp1 = SearchItem(n,p_head);    //ËÑË÷ĞÂ½áµã²åÈëÎ»ÖÃµÄÇ°ºó½áµã 
     if(p_temp1==NULL)
     {

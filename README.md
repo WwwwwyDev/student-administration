@@ -20,7 +20,7 @@
 
 #### 流程图
 
-![main](.\main.jpg)
+![main](https://gitee.com/wu_wen_yi/StudentAdministration/blob/master/main.jpg)
 
 #### 功能及函数介绍
 

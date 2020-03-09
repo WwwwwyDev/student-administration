@@ -1,4 +1,5 @@
-#define LISH_H_
+#ifndef _LIST_H_
+#define _LIST_H_
 //构造数据域和结点 
 struct Stu
 {   //数据域 
@@ -18,3 +19,5 @@ Stu *NextItem(Stu *plist);//传入当前结点，返回下一结点
 void AddItem(Stu *plist);  //尾插结点，传入头结点，遍历到NULL，将尾部的指针域指向尾部新结点
 void InitItem(Stu *plist); //初始化结点，将plist指向一个空链表，并初始化数据域
 Stu *SearchItem(int num,Stu *phead);  //传入头指针，返回编号为num的结点位置 
+
+#endif

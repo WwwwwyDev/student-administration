@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sys.h"
+#include "menu.h"
 //系统操作函数 
 void Mainmenu(Stu *p_head)  //主菜单显示函数 
 {    if(p_head == NULL)

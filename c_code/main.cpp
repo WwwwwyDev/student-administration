@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <string.h>
-#include "sys.h"
+#include "list.h"
+#include "menu.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 

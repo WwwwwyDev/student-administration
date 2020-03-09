@@ -5,7 +5,11 @@
 #include "sys.h"
 //系统操作函数 
 void Mainmenu(Stu *p_head)  //主菜单显示函数 
-{
+{    if(p_head == NULL)
+     {
+	    printf("提示：空间分配错误，请重新打开程序尝试") ; 
+	    return; 
+     } 
      printf("请选择你的身份:A:学生 B:系统管理员:");
 	 Maininput(p_head);
 } 

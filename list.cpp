@@ -24,7 +24,9 @@ void AddItem(Stu *plist)  //尾插结点，传入前置结点，遍历到NULL，将尾部的指针域指
 	temp->m_pNext=NULL;
 }
 Stu *NextItem(Stu *plist) //传入当前结点，传出下一结点 
-{
+{   if(plist==NULL)
+	return NULL;
+	else
 	return plist->m_pNext;
 }
 
@@ -43,7 +45,7 @@ Stu *InitList(int num) //初始化链表
 	for(i=1;i<=num;i++)
 	{
 		AddItem(temp);
-		temp=NextItem(temp);  //此时temp->NULL 
+		temp=NextItem(temp); 
 		temp->m_nSign = i; 
 	}
 	return phead;

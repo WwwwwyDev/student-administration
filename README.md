@@ -20,7 +20,7 @@
 
 #### 流程图
 
-![main](https://gitee.com/wu_wen_yi/StudentAdministration/blob/master/main.jpg)
+![mark](http://q6wrbgr7n.bkt.clouddn.com/blog/20200309/4kTvkWw5yaLd.jpg?imageslim)
 
 #### 功能及函数介绍
 

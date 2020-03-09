@@ -20,7 +20,7 @@
 
 #### 流程图
 
-![mark](http://q6wrbgr7n.bkt.clouddn.com/blog/20200309/4kTvkWw5yaLd.jpg?imageslim)
+![图床链接过期](http://q6wrbgr7n.bkt.clouddn.com/blog/20200309/4kTvkWw5yaLd.jpg)
 
 #### 功能及函数介绍
 

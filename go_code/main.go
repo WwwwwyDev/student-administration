@@ -1,10 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"time"
+)
+
+
+
 
 func main() {
-	/* 这是我的第一个简单的程序 */
-	var a string
 
-	fmt.Println(a)
+  phead := InitList(3)
+InitImformation(phead)
+	time.Sleep(5*time.Second)
 }
+
+
+
+
+

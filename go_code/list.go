@@ -8,6 +8,7 @@ type Stu struct{
 	str_class string
 	str_math string
 	str_chinese string
+	str_english string
 	str_computer string
 	//定义指针域
 	p_next *Stu
@@ -29,6 +30,10 @@ func InitList(num int) *Stu {
 		AddItem(ptemp)
 		ptemp = ptemp.p_next
 		ptemp.n_id = i
+		ptemp.str_math="0"
+		ptemp.str_chinese="0"
+		ptemp.str_english="0"
+		ptemp.str_computer="0"
 	}
 	return phead
 }

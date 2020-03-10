@@ -1,8 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
+
 	"time"
 )
 
@@ -11,8 +10,9 @@ import (
 
 func main() {
 
-  phead := InitList(3)
-InitImformation(phead)
+     phead := InitList(3)
+     InitImformation(phead)
+     Display(phead)
 	time.Sleep(5*time.Second)
 }
 

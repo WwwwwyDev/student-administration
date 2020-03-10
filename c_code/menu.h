@@ -1,8 +1,7 @@
 //存储数据结构
 //存储函数申明
 
-//#include "list.h"
-#include "menu.cpp"
+#include "list.h"
 //管理系统函数
 void Mainmenu(Stu *p_head);  //主菜单显示函数 
 void Maininput(Stu *p_head);  //主菜单输入函数函数

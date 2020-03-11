@@ -1,9 +1,15 @@
+#调用pickle模块用于保存列表数据
+import pickle
+#打开数据文件，若不存在则赋空值
+try:
+    pickle_file = open('StudentInformation.wwy','rb')
+    Stu=pickle.load(pickle_file)
+    pickle_file.close()
+except:
+    Stu=[]
 
-Stu=[]
-def main():
-    while True:
-        MenuOutput()
-        key=input('请输入功能对应字母:')
+#菜单函数
+def MenuInput(key):
         if key=='A':
             AddStudent()
         elif key=='B':
@@ -12,6 +18,8 @@ def main():
             Change()
         elif key=='D':
             Display()
+        elif key=='E':
+            Nopass()
 
 
 
@@ -21,9 +29,11 @@ def MenuOutput():
     print('B.删除学生')
     print('C.修改学生')
     print('D.显示所有学生信息')
-    print('E.退出系统')
+    print('E.输出2门不及格学生名单')
 
-def AddStudent():
+
+#功能函数
+def AddStudent():   #添加学生
     new_name=input('请输入新学生的名字:')
     new_class=input('请输入新学生的班级:')
     new_information={}
@@ -34,15 +44,17 @@ def AddStudent():
     new_information['english']=0
     new_information['computer']=0
     Stu.append(new_information)
+    print("添加成功")
+    SaveData()
 
-def Display():
+def Display():   #输出学生信息
     print('学生信息如下:')
     i=1
     for temp in Stu:
         print('编号%d 姓名%s 班级%s 数学成绩%d 语文成绩%d 英语成绩%d 专业成绩%d'%(i,temp['name'],temp['class'],temp['math'],temp['chinese'],temp['english'],temp['computer']))
         i=i+1
 
-def Del():
+def Del():     #删除学生
     try:
         delnum=int(input("请输入你要删除的编号:"))-1
     except:
@@ -53,8 +65,9 @@ def Del():
     else:
         del Stu[delnum]
         print('删除成功')
+        SaveData()
 
-def Change():
+def Change():     #修改学生信息
     try:
         changenum=int(input('请输入你要修改的编号:'))-1
     except:
@@ -100,4 +113,34 @@ def Change():
         Stu[changenum]['chinese']=change_chinese
         Stu[changenum]['english']=change_english
         Stu[changenum]['computer']=change_computer
+        print("修改成功")
+        SaveData()
     
+def SaveData():     #保存数据
+    pickle_file = open('StudentInformation.wwy','wb')
+    pickle.dump(Stu,pickle_file)
+    pickle_file.close()
+
+def Nopass():     #统计所有不及格学生名单
+    sum =0
+    i=1
+    for temp in Stu:
+        if temp['math']<60:
+            sum=sum+1
+        if temp['chinese']<60:
+            sum=sum+1
+        if temp['english']<60:
+            sum=sum+1
+        if temp['computer']<60:
+            sum=sum+1
+        if sum>2:
+            print('不及格 编号%d 姓名%s 班级%s 数学成绩%d 语文成绩%d 英语成绩%d 专业成绩%d'%(i,temp['name'],temp['class'],temp['math'],temp['chinese'],temp['english'],temp['computer']))
+        i=i+1
+        sum=0
+
+
+#执行功能    
+while True:
+    MenuOutput()
+    key=input('请输入功能对应字母:')
+    MenuInput(key)

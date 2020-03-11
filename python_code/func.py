@@ -1,18 +1,3 @@
-
-Stu=[]
-def main():
-    while True:
-        MenuOutput()
-        key=input('请输入功能对应字母:')
-        if key=='A':
-            AddStudent()
-        elif key=='D':
-            Display()
-
-
-
-
-
 def MenuOutput():  
     print('主菜单')
     print('A.添加学生')
@@ -21,7 +6,7 @@ def MenuOutput():
     print('D.显示所有学生信息')
     print('E.退出系统')
 
-def AddStudent():
+def AddStudent()
     new_name=input('请输入新学生的名字:')
     new_class=input('请输入新学生的班级')
     new_information={}
@@ -37,5 +22,5 @@ def Display():
     print('学生信息如下:')
     i=1
     for temp in Stu:
-        print('编号%d 姓名%s 班级%s 数学成绩%d 语文成绩%d 英语成绩%d 专业成绩%d'%(i,temp['name'],temp['class'],temp['math'],temp['chinese'],temp['english'],temp['computer']))
+        print('%d %s %s %d %d %d %d'%(i,temp['name'],temp['class'],temp['math'],temp['chinese'],temp['english'],temp['computer']))
         i=i+1

@@ -6,7 +6,7 @@ import (
 )
 func Menu(phead *Stu){
 	fmt.Println("功能菜单")
-	fmt.Println("A:输出所有学生信息B:查找学生C:删除学生")
+	fmt.Println("A:输出所有学生信息B:查找学生C:删除学生D:添加学生E:修改学生信息F:输出两门以上不及格学生G:单科成绩录入")
 	fmt.Printf("请选择你的操作:")
 	choice := "0"
 	fmt.Scanf("%s",&choice)
@@ -29,6 +29,19 @@ func MenuInput(choice string,phead *Stu){
 		}else{
 			Del(phead,nid)
 		}
+		break
+	case "D":AddList(phead)
+		break
+	case "E":nid:=0
+		fmt.Printf("请输入要修改的编号:")
+		fmt.Scanf("%d",&nid)
+		if nid <= 0{
+			fmt.Println("无此编号")
+		}else {
+			Change(phead, nid)
+		}
+		break
+	case "F":NoPass(phead)
 		break
 	default:fmt.Println("无此操作")
 	        break
@@ -192,5 +205,80 @@ func Del(phead *Stu,nid int){
 			ptemp=ptemp.p_next
 		}
 		fmt.Println("删除成功")
+	}
+}
+
+
+func AddList(phead *Stu){
+	ptemp :=phead
+	for ptemp.p_next!=nil{
+		ptemp=ptemp.p_next
+	}
+	AddItem(ptemp)
+	ptemp= ptemp.p_next
+	fmt.Printf("输入学生信息(编号:%d):\n",ptemp.n_id)  //对结点写入数据
+	fmt.Printf("姓名(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_name)
+	fmt.Printf("班级(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_class)
+}
+
+func Change(phead *Stu,nid int){
+	ptemp := SearchItem(nid,phead)
+	if ptemp==nil{
+		 fmt.Println("无此编号")
+		return
+	}
+	fmt.Printf("输入修改后学生信息(编号:%d):\n",ptemp.n_id)  //对结点写入数据
+	fmt.Printf("姓名(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_name)
+	fmt.Printf("班级(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_class)
+	fmt.Printf("数学成绩(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_math)
+	fmt.Printf("语文成绩(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_chinese)
+	fmt.Printf("英语成绩(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_english)
+	fmt.Printf("专业成绩(编号:%d):",ptemp.n_id)
+	fmt.Scanf("%s",&ptemp.str_computer)
+}
+
+func NoPass(phead *Stu){
+	ptemp:=phead.p_next
+	sum :=0
+	for ptemp!=nil{
+		if Strtodouble(ptemp.str_math)<60{
+			sum=sum+1
+		}
+		if Strtodouble(ptemp.str_chinese)<60{
+			sum=sum+1
+		}
+		if Strtodouble(ptemp.str_english)<60{
+			sum=sum+1
+		}
+		if Strtodouble(ptemp.str_computer)<60{
+			sum=sum+1
+		}
+		if sum>2{
+			ShowItem(ptemp,phead)
+		}
+		ptemp=ptemp.p_next
+		sum=0
+	}
+}
+
+func ScoreInput(phead *Stu){
+	ptemp:=phead.p_next
+	subject :=""
+	fmt.Printf("请输入你要输入成绩的学科A:数学B:语文C:英语D:专业:")
+	fmt.Scanf("%s",&subject)
+	switch subject {
+	case "A":
+		for ptemp!=nil{
+			fmt.Printf("%s的数学成绩原为%s现改为:",ptemp.str_name,ptemp.str_math)
+			fmt.Scanf("%s",&ptemp.str_math)
+			ptemp=ptemp.p_next
+		}
 	}
 }

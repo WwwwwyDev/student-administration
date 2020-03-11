@@ -20,6 +20,10 @@ def MenuInput(key):
             Display()
         elif key=='E':
             Nopass()
+        elif key=='F':
+            ScoreInput()
+        else:
+            print("无此功能")
 
 
 
@@ -29,7 +33,8 @@ def MenuOutput():
     print('B.删除学生')
     print('C.修改学生')
     print('D.显示所有学生信息')
-    print('E.输出2门不及格学生名单')
+    print('E.输出2门以上不及格学生名单')
+    print('F.输入单科成绩')
 
 
 #功能函数
@@ -51,7 +56,7 @@ def Display():   #输出学生信息
     print('学生信息如下:')
     i=1
     for temp in Stu:
-        print('编号%d 姓名%s 班级%s 数学成绩%d 语文成绩%d 英语成绩%d 专业成绩%d'%(i,temp['name'],temp['class'],temp['math'],temp['chinese'],temp['english'],temp['computer']))
+        print('编号%d 姓名%s 班级%s 数学成绩%d 数学排名%d 语文成绩%d 语文排名%d 英语成绩%d 英语排名%d 专业成绩%d 专业排名%d'%(i,temp['name'],temp['class'],temp['math'],Sort(1,i),temp['chinese'],Sort(2,i),temp['english'],Sort(3,i),temp['computer'],Sort(4,i)))
         i=i+1
 
 def Del():     #删除学生
@@ -138,7 +143,87 @@ def Nopass():     #统计所有不及格学生名单
         i=i+1
         sum=0
 
-
+def ScoreInput():    #输入单科成绩
+    print('请选择你要输入的科目')
+    print('A.数学')
+    print('B.语文')
+    print('C.英语')
+    print('D.专业')
+    choice=input('请输入科目对应字母:')
+    if choice=='A':
+        for temp in Stu:
+            print('%s的原数学成绩为%d'%(temp['name'],temp['math']))
+            try:
+                new_score=int(input('现改为:'))
+                while new_score<0 or new_score>100:
+                    new_score=int(input('输入成绩不符合逻辑,请重新输入:'))                             
+            except:
+                print("输入异常")
+                return
+            temp['math']=new_score
+            SaveData()
+    elif choice=='B':
+        for temp in Stu:
+            print('%s的原语文成绩为%d'%(temp['name'],temp['chinese']))
+            try:
+                new_score=int(input('现改为:'))
+                while new_score<0 or new_score>100:
+                    new_score=int(input('输入成绩不符合逻辑,请重新输入:'))                             
+            except:
+                print("输入异常")
+                return
+            temp['chinese']=new_score
+            SaveData()
+    elif choice=='C':
+        for temp in Stu:
+            print('%s的原英语成绩为%d'%(temp['name'],temp['english']))
+            try:
+                new_score=int(input('现改为:'))
+                while new_score<0 or new_score>100:
+                    new_score=int(input('输入成绩不符合逻辑,请重新输入:'))                             
+            except:
+                print("输入异常")
+                return
+            temp['english']=new_score
+            SaveData()
+    elif choice=='D':
+        for temp in Stu:
+            print('%s的原专业成绩为%d'%(temp['name'],temp['computer']))
+            try:
+                new_score=int(input('现改为:'))
+                while new_score<0 or new_score>100:
+                    new_score=int(input('输入成绩不符合逻辑,请重新输入:'))                             
+            except:
+                print("输入异常")
+                return
+            temp['computer']=new_score
+            SaveData()
+    else:
+        print("无此功能")
+        
+def Sort(subject,num):#排名    
+    sum=1
+    if subject==1:
+        for temp in Stu:
+            if temp['math']>Stu[num-1]['math']:
+                sum=sum+1
+        return sum
+    if subject==2:
+        for temp in Stu:
+            if temp['chinese']>Stu[num-1]['chinese']:
+                sum=sum+1
+        return sum
+    if subject==3:
+        for temp in Stu:
+            if temp['english']>Stu[num-1]['english']:
+                sum=sum+1
+        return sum
+    if subject==4:
+        for temp in Stu:
+            if temp['computer']>Stu[num-1]['computer']:
+                sum=sum+1
+        return sum
+        
 #执行功能    
 while True:
     MenuOutput()

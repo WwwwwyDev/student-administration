@@ -39,13 +39,13 @@ func InitList(num int) *Stu {
 }
 //传入头指针，返回编号为num的结点位置
 func SearchItem(num int,phead *Stu) *Stu{
-ptemp := phead;
-for ptemp != nil{
-if num == ptemp.n_id {
-return ptemp
-} else {
-ptemp = ptemp.p_next
-}
-}
-return nil;
+	ptemp := phead;
+	for ptemp != nil{
+	if num == ptemp.n_id {
+	return ptemp
+	} else {
+	ptemp = ptemp.p_next
+	}
+	}
+	return nil;
 }

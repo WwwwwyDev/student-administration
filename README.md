@@ -169,7 +169,7 @@ fflush(stdin);//while(getchar()!='\n');
 ###### （3）
 
 ```c
-fflush(stdin)；
+fflush(stdin);;
 ```
 
 读入int型等变量时会将换行符读入，利用这个函数可以将缓冲区换行符清楚。Stdin指缓冲区

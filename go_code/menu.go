@@ -43,6 +43,8 @@ func MenuInput(choice string,phead *Stu){
 		break
 	case "F":NoPass(phead)
 		break
+	case "G":ScoreInput(phead)
+		break
 	default:fmt.Println("无此操作")
 	        break
 	}
@@ -280,5 +282,30 @@ func ScoreInput(phead *Stu){
 			fmt.Scanf("%s",&ptemp.str_math)
 			ptemp=ptemp.p_next
 		}
+		break
+	case "B":
+		for ptemp!=nil{
+			fmt.Printf("%s的语文成绩原为%s现改为:",ptemp.str_name,ptemp.str_chinese)
+			fmt.Scanf("%s",&ptemp.str_chinese)
+			ptemp=ptemp.p_next
+		}
+		break
+	case "C":
+		for ptemp!=nil{
+			fmt.Printf("%s的英语成绩原为%s现改为:",ptemp.str_name,ptemp.str_english)
+			fmt.Scanf("%s",&ptemp.str_english)
+			ptemp=ptemp.p_next
+		}
+		break
+	case "D":
+		for ptemp!=nil{
+			fmt.Printf("%s的专业成绩原为%s现改为:",ptemp.str_name,ptemp.str_computer)
+			fmt.Scanf("%s",&ptemp.str_computer)
+			ptemp=ptemp.p_next
+		}
+		break
+	default:
+		fmt.Println("没有这个科目")
+		break
 	}
 }

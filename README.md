@@ -24,7 +24,7 @@
 
 #### 流程图
 
-![图床链接过期](http://q6wrbgr7n.bkt.clouddn.com/blog/20200309/ftheWTPoa58S.jpg)
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Tree.jpg)
 
 #### 功能及函数介绍
 
@@ -151,6 +151,64 @@ void ClassSortOutput(Stu *p_head,char *str_class,int subject);//传入头指针�
 ```c
 void Insert(Stu *p_head) ;//在中间插入一个表，找到前后结点，free()并将前中后结点关联，并将后续结点编号加一
 ```
+
+#### 功能测试
+
+###### （1）存在数据文件时对数据读取并进入主菜单
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/MainMenu.PNG)
+
+###### （2）不存在数据时初始化系统
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Init.PNG)
+
+###### （3）学生菜单
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/StudentMenu.PNG)
+
+###### （4）管理员菜单（需输入密匙）
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/AdminMenu.PNG)
+
+###### （5）输出所有学生信息
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/PutOut.PNG)
+
+###### （6）查找学生
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Search.PNG)
+
+###### （7）输出两门以上不及格学生名单
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Nopass.PNG)
+
+###### （8）输出班级单科排名
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Sort.PNG)
+
+###### （9）添加学生
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Add.PNG)
+
+###### （10）删除学生
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Del.PNG)
+
+###### （11）修改学生信息
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Change.PNG)
+
+###### （12）单科成绩录入
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/ScoreInput.PNG)
+
+###### （13）插入学生
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Insert.PNG)
+
+###### （14）保存为txt
+
+![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Save.PNG)
 
 #### 遇到的问题和异常处理方法
 

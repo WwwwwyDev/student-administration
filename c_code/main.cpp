@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 	  //未找到文件需要初始化文件
 	if((pf = fopen("data.wwy","r")) == NULL)
 	    {
-	      sign=1; 
+	      sign=1; //标记
 	    }
 	fclose(pf);   
 	if(sign == 1)

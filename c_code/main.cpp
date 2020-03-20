@@ -8,14 +8,14 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) 
-{   SetConsoleTitle("Ñ§Éú¹ÜÀíÏµÍ³(Éè¼Æby´óÁ¬Ãñ×å´óÑ§2019082323)"); 
-    printf("µ±Ç°ÔËĞĞÄ¿Â¼%s\n",argv[0]); 
+{   SetConsoleTitle("å­¦ç”Ÿç®¡ç†ç³»ç»Ÿ(è®¾è®¡byå¤§è¿æ°‘æ—å¤§å­¦2019082323)"); 
+    printf("å½“å‰è¿è¡Œç›®å½•%s\n",argv[0]); 
     Stu *p_head = NULL;
-//ÎÄ¼ş¶ÁÈ¡²ã 
+//æ–‡ä»¶è¯»å–å±‚ 
     FILE *pf; 
     int i,num;
 	int sign=0; 
-	  //Î´ÕÒµ½ÎÄ¼şĞèÒª³õÊ¼»¯ÎÄ¼ş
+	  //æœªæ‰¾åˆ°æ–‡ä»¶éœ€è¦åˆå§‹åŒ–æ–‡ä»¶
 	if((pf = fopen("data.wwy","r")) == NULL)
 	    {
 	      sign=1; 
@@ -23,17 +23,17 @@ int main(int argc, char** argv)
 	fclose(pf);   
 	if(sign == 1)
 	{
-	printf("Ê×´ÎÊ¹ÓÃÎ´ÕÒµ½ÀúÊ·ÎÄ¼ş£¬Çë³õÊ¼»¯ÎÄ¼ş£¬ÇëÊäÈëÑ§ÉúÊıÁ¿(ÊäÈë0£¬Ôò²»Â¼ÈëÈÎºÎÊı¾İ):");
+	printf("é¦–æ¬¡ä½¿ç”¨æœªæ‰¾åˆ°å†å²æ–‡ä»¶ï¼Œè¯·åˆå§‹åŒ–æ–‡ä»¶ï¼Œè¯·è¾“å…¥å­¦ç”Ÿæ•°é‡(è¾“å…¥0ï¼Œåˆ™ä¸å½•å…¥ä»»ä½•æ•°æ®):");
 	    while(scanf("%d",&num)!=1 || num<0)
 		{
-		printf("ÌáÊ¾£ºÄãÃ»ÓĞÊäÈëÕıÈ·Öµ£¬ÇëÖØĞÂÊäÈë:");
+		printf("æç¤ºï¼šä½ æ²¡æœ‰è¾“å…¥æ­£ç¡®å€¼ï¼Œè¯·é‡æ–°è¾“å…¥:");
 		fflush(stdin);//while(getchar()!='\n');
 	    }
 	    fflush(stdin);
-	     p_head = InitList(num);  //¿ªnum¸ö¿Õ¼äµÄÁ´±í 
-	     InitSys(p_head);      //ÊäÈëÊı¾İÓò 
-	     SaveFile(p_head);   //±£´æÎÄ¼ş 
-	     printf("»¶Ó­À´µ½Ñ§Éú¹ÜÀíÏµÍ³(Éè¼Æby2019082323)\n");
+	     p_head = InitList(num);  //å¼€numä¸ªç©ºé—´çš„é“¾è¡¨ 
+	     InitSys(p_head);      //è¾“å…¥æ•°æ®åŸŸ 
+	     SaveFile(p_head);   //ä¿å­˜æ–‡ä»¶ 
+	     printf("æ¬¢è¿æ¥åˆ°å­¦ç”Ÿç®¡ç†ç³»ç»Ÿ(è®¾è®¡by2019082323)\n");
      }
      else
 	{   
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 	{   
 	   exit(1);   
 	}
-         //ÕÒµ½ÎÄ¼ş£¬½«ÎÄ¼ş¶ÁÈëÁ´±í 
+         //æ‰¾åˆ°æ–‡ä»¶ï¼Œå°†æ–‡ä»¶è¯»å…¥é“¾è¡¨ 
 	    p_head = InitList(0);
 	    Stu *p_temp = p_head;
         while(fread(p_temp,sizeof(struct Stu),1,pf) == 1)
@@ -50,11 +50,11 @@ int main(int argc, char** argv)
 		    p_temp = NextItem(p_temp);
 		}
 		Del(p_head,p_temp->m_nSign);
-		printf("ÌáÊ¾£º¶ÁÈ¡³É¹¦\n»¶Ó­À´µ½Ñ§Éú¹ÜÀíÏµÍ³(Éè¼Æby2019082323)\n");
+		printf("æç¤ºï¼šè¯»å–æˆåŠŸ\næ¬¢è¿æ¥åˆ°å­¦ç”Ÿç®¡ç†ç³»ç»Ÿ(è®¾è®¡by2019082323)\n");
 		fclose(pf);
 	}
 
-//¹¤×÷²ã 
+//å·¥ä½œå±‚ 
 	while(1)
 	{
 		Mainmenu(p_head);

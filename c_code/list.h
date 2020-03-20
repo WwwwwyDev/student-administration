@@ -1,23 +1,23 @@
 #ifndef _LIST_H_
 #define _LIST_H_
-//¹¹ÔìÊı¾İÓòºÍ½áµã 
+//æ„é€ æ•°æ®åŸŸå’Œç»“ç‚¹ 
 struct Stu
-{   //Êı¾İÓò 
+{   //æ•°æ®åŸŸ 
     int  m_nSign;
-	char m_strName[999]; //Ñ§Éú»ù±¾ĞÅÏ¢ 
+	char m_strName[999]; //å­¦ç”ŸåŸºæœ¬ä¿¡æ¯ 
 	char m_strClass[999];
-	char  m_nMath[999]; //¸÷¿Æ³É¼¨¼°¶ÔÓ¦ÅÅÃû
+	char  m_nMath[999]; //å„ç§‘æˆç»©åŠå¯¹åº”æ’å
 	char  m_nChinese[999];
 	char  m_nEnglish[999];
 	char  m_nComputer[999];
-	//½áµã 
+	//ç»“ç‚¹ 
 	Stu *m_pNext;
 };
-//Á´±í²Ù×÷º¯Êı 
-Stu *InitList(int num); //³õÊ¼»¯Á´±í ,·µ»ØÍ·Ö¸Õë 
-Stu *NextItem(Stu *plist);//´«Èëµ±Ç°½áµã£¬·µ»ØÏÂÒ»½áµã 
-void AddItem(Stu *plist);  //Î²²å½áµã£¬´«ÈëÍ·½áµã£¬±éÀúµ½NULL£¬½«Î²²¿µÄÖ¸ÕëÓòÖ¸ÏòÎ²²¿ĞÂ½áµã
-void InitItem(Stu *plist); //³õÊ¼»¯½áµã£¬½«plistÖ¸ÏòÒ»¸ö¿ÕÁ´±í£¬²¢³õÊ¼»¯Êı¾İÓò
-Stu *SearchItem(int num,Stu *phead);  //´«ÈëÍ·Ö¸Õë£¬·µ»Ø±àºÅÎªnumµÄ½áµãÎ»ÖÃ 
+//é“¾è¡¨æ“ä½œå‡½æ•° 
+Stu *InitList(int num); //åˆå§‹åŒ–é“¾è¡¨ ,è¿”å›å¤´æŒ‡é’ˆ 
+Stu *NextItem(Stu *plist);//ä¼ å…¥å½“å‰ç»“ç‚¹ï¼Œè¿”å›ä¸‹ä¸€ç»“ç‚¹ 
+void AddItem(Stu *plist);  //å°¾æ’ç»“ç‚¹ï¼Œä¼ å…¥å¤´ç»“ç‚¹ï¼Œéå†åˆ°NULLï¼Œå°†å°¾éƒ¨çš„æŒ‡é’ˆåŸŸæŒ‡å‘å°¾éƒ¨æ–°ç»“ç‚¹
+void InitItem(Stu *plist); //åˆå§‹åŒ–ç»“ç‚¹ï¼Œå°†plistæŒ‡å‘ä¸€ä¸ªç©ºé“¾è¡¨ï¼Œå¹¶åˆå§‹åŒ–æ•°æ®åŸŸ
+Stu *SearchItem(int num,Stu *phead);  //ä¼ å…¥å¤´æŒ‡é’ˆï¼Œè¿”å›ç¼–å·ä¸ºnumçš„ç»“ç‚¹ä½ç½® 
 
 #endif

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void InitItem(Stu *plist) //³õÊ¼»¯½áµã£¬½«plistÖ¸ÏòÒ»¸ö¿ÕÁ´±í
+void InitItem(Stu *plist) //åˆå§‹åŒ–ç»“ç‚¹ï¼Œå°†plistæŒ‡å‘ä¸€ä¸ªç©ºé“¾è¡¨
 {     strcpy(plist->m_nComputer,"0");
       strcpy(plist->m_nChinese,"0");
       strcpy(plist->m_nEnglish,"0");
@@ -10,12 +10,12 @@ void InitItem(Stu *plist) //³õÊ¼»¯½áµã£¬½«plistÖ¸ÏòÒ»¸ö¿ÕÁ´±í
       plist->m_pNext = NULL;
 } 
 
-void AddItem(Stu *plist)  //Î²²å½áµã£¬´«ÈëÇ°ÖÃ½áµã£¬±éÀúµ½NULL£¬½«Î²²¿µÄÖ¸ÕëÓòÖ¸ÏòÎ²²¿ĞÂ½áµã £¬Íê³ÉÌí¼Ó 
+void AddItem(Stu *plist)  //å°¾æ’ç»“ç‚¹ï¼Œä¼ å…¥å‰ç½®ç»“ç‚¹ï¼Œéå†åˆ°NULLï¼Œå°†å°¾éƒ¨çš„æŒ‡é’ˆåŸŸæŒ‡å‘å°¾éƒ¨æ–°ç»“ç‚¹ ï¼Œå®Œæˆæ·»åŠ  
 {   
 	struct Stu *temp = (struct Stu*)malloc(sizeof(struct Stu));
 	if(temp == NULL)
     {
-    	printf("¿Õ¼ä·ÖÅäÊ§°Ü\n");
+    	printf("ç©ºé—´åˆ†é…å¤±è´¥\n");
     	exit(-1);	 
     }
 	InitItem(temp); 
@@ -23,20 +23,20 @@ void AddItem(Stu *plist)  //Î²²å½áµã£¬´«ÈëÇ°ÖÃ½áµã£¬±éÀúµ½NULL£¬½«Î²²¿µÄÖ¸ÕëÓòÖ¸
 	plist->m_pNext=temp;
 	temp->m_pNext=NULL;
 }
-Stu *NextItem(Stu *plist) //´«Èëµ±Ç°½áµã£¬´«³öÏÂÒ»½áµã 
+Stu *NextItem(Stu *plist) //ä¼ å…¥å½“å‰ç»“ç‚¹ï¼Œä¼ å‡ºä¸‹ä¸€ç»“ç‚¹ 
 {   if(plist==NULL)
 	return NULL;
 	else
 	return plist->m_pNext;
 }
 
-Stu *InitList(int num) //³õÊ¼»¯Á´±í 
+Stu *InitList(int num) //åˆå§‹åŒ–é“¾è¡¨ 
 {   int i;
-	struct Stu *phead = (struct Stu*)malloc(sizeof(struct Stu)); //´´½¨Í·½áµã£¬±àºÅÎª0£¬²»´æÈÎºÎÊı¾İ 
+	struct Stu *phead = (struct Stu*)malloc(sizeof(struct Stu)); //åˆ›å»ºå¤´ç»“ç‚¹ï¼Œç¼–å·ä¸º0ï¼Œä¸å­˜ä»»ä½•æ•°æ® 
 	struct Stu *temp = phead;
 	if(phead == NULL)
     {
-    	printf("¿Õ¼ä·ÖÅäÊ§°Ü\n");
+    	printf("ç©ºé—´åˆ†é…å¤±è´¥\n");
     	exit(-1);	 
     }
     phead->m_pNext = NULL;
@@ -51,7 +51,7 @@ Stu *InitList(int num) //³õÊ¼»¯Á´±í
 	return phead;
 }
 
-Stu *SearchItem(int num,Stu *phead)  //´«ÈëÍ·Ö¸Õë£¬·µ»Ø±àºÅÎªnumµÄ½áµãÎ»ÖÃ 
+Stu *SearchItem(int num,Stu *phead)  //ä¼ å…¥å¤´æŒ‡é’ˆï¼Œè¿”å›ç¼–å·ä¸ºnumçš„ç»“ç‚¹ä½ç½® 
 {   struct Stu *temp = phead;
     while(temp)
     {

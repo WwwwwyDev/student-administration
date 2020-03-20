@@ -1,38 +1,38 @@
-//´æ´¢Êı¾İ½á¹¹
-//´æ´¢º¯ÊıÉêÃ÷
+//å­˜å‚¨æ•°æ®ç»“æ„
+//å­˜å‚¨å‡½æ•°ç”³æ˜
 
 #include "list.h"
-//¹ÜÀíÏµÍ³º¯Êı
-void Mainmenu(Stu *p_head);  //Ö÷²Ëµ¥ÏÔÊ¾º¯Êı 
-void Maininput(Stu *p_head);  //Ö÷²Ëµ¥ÊäÈëº¯Êıº¯Êı
-void Studentmenu(Stu *p_head);  //Ñ§Éú²Ëµ¥ÏÔÊ¾º¯Êı 
-void Studentinput(Stu *p_head);   //Ñ§Éú²Ëµ¥ÊäÈëº¯Êı
-void Adminmenu(Stu *p_head);  //¹ÜÀíÔ±²Ëµ¥ÏÔÊ¾º¯Êı 
-void Admininput(Stu *p_head);   //¹ÜÀíÔ±²Ëµ¥ÊäÈëº¯Êı
+//ç®¡ç†ç³»ç»Ÿå‡½æ•°
+void Mainmenu(Stu *p_head);  //ä¸»èœå•æ˜¾ç¤ºå‡½æ•° 
+void Maininput(Stu *p_head);  //ä¸»èœå•è¾“å…¥å‡½æ•°å‡½æ•°
+void Studentmenu(Stu *p_head);  //å­¦ç”Ÿèœå•æ˜¾ç¤ºå‡½æ•° 
+void Studentinput(Stu *p_head);   //å­¦ç”Ÿèœå•è¾“å…¥å‡½æ•°
+void Adminmenu(Stu *p_head);  //ç®¡ç†å‘˜èœå•æ˜¾ç¤ºå‡½æ•° 
+void Admininput(Stu *p_head);   //ç®¡ç†å‘˜èœå•è¾“å…¥å‡½æ•°
 
 
 
 
 
 
-//¹¦ÄÜº¯Êı 
-void Display(Stu *p_head);   //Êä³öÑ§ÉúĞÅÏ¢ 
-void InitSys(Stu *p_head);   //ÊäÈëÑ§ÉúĞÅÏ¢(³õÊ¼»¯ÏµÍ³)
-void SaveFile(Stu *p_head);   //±£´æÎÄ¼ş 
-/*int Pow(int num,int n); //´«ÈëÊı×Ö£¬·µ»ØÆän´Î·½ 
-int Strtoint(char *str);    //´«Èë0-100µÄ×Ö·û´®·µ»ØÕûĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö·û´®£¬Ôò·µ»Ø-1*/
-int Sort(Stu *p_head,int n_ID,int n_subject);  //ÔºÏµÅÅÃû£¬´«ÈëÍ·Ö¸Õë¡¢Ñ§Éú±àºÅ¡¢ËùÒªÅÅÃûµÄÊı¾İÀàĞÍ 
-int ClassSort(Stu *p_head,int n_ID,int n_subject);   //°à¼¶ÅÅÃû£¬´«ÈëÍ·Ö¸Õë¡¢Ñ§Éú±àºÅ¡¢ËùÒªÅÅÃûµÄÊı¾İÀàĞÍ 
-void Search(Stu *p_head,char *name);     //ËÑË÷Ñ§ÉúĞÅÏ¢£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÑ§ÉúĞÕÃû
-void Del(Stu *p_head,int n_ID);    //É¾³ı±í£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÉ¾³ıÑ§Éú±àºÅ
-void Del2(Stu *p_head,int n_ID);    //É¾³ı±í£¬´«ÈëÍ·Ö¸Õë£¬´«ÈëÉ¾³ıÑ§Éú±àºÅ 
-double Strtodouble(char *str);  //´«Èë·û´®·µ»ØdoubleĞÍº¯Êı£¬Èô´«ÈëÆäËû×Ö·û´®£¬Ôò·µ»Ø-1
-void AddList(Stu *p_head);    //Î²²¿Ìí¼ÓĞÂÍ¬Ñ§
-void Change(Stu *p_head);   //ĞŞ¸Ä
-void NoPass(Stu *p_head);   //´«ÈëÍ·Ö¸Õë£¬Êä³öËùÓĞ²»¼°¸ñ¿ÆÄ¿³¬¹ı2¿ÆµÄÑ§ÉúÃûµ¥
-void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject);    //µ¥¿ÆÑ§Ï°³É¼¨Â¼Èë£¬´«Èë¿ªÊ¼Â¼ÈëÎ»ÖÃºÍ½áÊøÂ¼ÈëÎ»ÖÃ£¬´«ÈëÍ·Ö¸Õë ,´«ÈëĞèÒªÂ¼ÈëµÄÑ§¿Æ
-void ShowItem(Stu *p_list,Stu *p_head);  //´«ÈëÖ¸Õë£¬Êä³öÆäÑ§ÉúĞÅÏ¢  
-void Fprint(Stu *p_head);   //½«Êı¾İµ¼³öµ½µ±Ç°Â·¾¶ÏÂµÄStudentInformation.txt 
-void ClassSortOutput(Stu *p_head,char *str_class,int subject);    //´«ÈëÍ·Ö¸Õë£¬´«Èë°à¼¶£¬´«ÈëÑ§¿Æ
-void Insert(Stu *p_head); //ÔÚÖĞ¼ä²åÈëÒ»¸ö±í 
+//åŠŸèƒ½å‡½æ•° 
+void Display(Stu *p_head);   //è¾“å‡ºå­¦ç”Ÿä¿¡æ¯ 
+void InitSys(Stu *p_head);   //è¾“å…¥å­¦ç”Ÿä¿¡æ¯(åˆå§‹åŒ–ç³»ç»Ÿ)
+void SaveFile(Stu *p_head);   //ä¿å­˜æ–‡ä»¶ 
+/*int Pow(int num,int n); //ä¼ å…¥æ•°å­—ï¼Œè¿”å›å…¶næ¬¡æ–¹ 
+int Strtoint(char *str);    //ä¼ å…¥0-100çš„å­—ç¬¦ä¸²è¿”å›æ•´å‹å‡½æ•°ï¼Œè‹¥ä¼ å…¥å…¶ä»–å­—ç¬¦ä¸²ï¼Œåˆ™è¿”å›-1*/
+int Sort(Stu *p_head,int n_ID,int n_subject);  //é™¢ç³»æ’åï¼Œä¼ å…¥å¤´æŒ‡é’ˆã€å­¦ç”Ÿç¼–å·ã€æ‰€è¦æ’åçš„æ•°æ®ç±»å‹ 
+int ClassSort(Stu *p_head,int n_ID,int n_subject);   //ç­çº§æ’åï¼Œä¼ å…¥å¤´æŒ‡é’ˆã€å­¦ç”Ÿç¼–å·ã€æ‰€è¦æ’åçš„æ•°æ®ç±»å‹ 
+void Search(Stu *p_head,char *name);     //æœç´¢å­¦ç”Ÿä¿¡æ¯ï¼Œä¼ å…¥å¤´æŒ‡é’ˆï¼Œä¼ å…¥å­¦ç”Ÿå§“å
+void Del(Stu *p_head,int n_ID);    //åˆ é™¤è¡¨ï¼Œä¼ å…¥å¤´æŒ‡é’ˆï¼Œä¼ å…¥åˆ é™¤å­¦ç”Ÿç¼–å·
+void Del2(Stu *p_head,int n_ID);    //åˆ é™¤è¡¨ï¼Œä¼ å…¥å¤´æŒ‡é’ˆï¼Œä¼ å…¥åˆ é™¤å­¦ç”Ÿç¼–å· 
+double Strtodouble(char *str);  //ä¼ å…¥ç¬¦ä¸²è¿”å›doubleå‹å‡½æ•°ï¼Œè‹¥ä¼ å…¥å…¶ä»–å­—ç¬¦ä¸²ï¼Œåˆ™è¿”å›-1
+void AddList(Stu *p_head);    //å°¾éƒ¨æ·»åŠ æ–°åŒå­¦
+void Change(Stu *p_head);   //ä¿®æ”¹
+void NoPass(Stu *p_head);   //ä¼ å…¥å¤´æŒ‡é’ˆï¼Œè¾“å‡ºæ‰€æœ‰ä¸åŠæ ¼ç§‘ç›®è¶…è¿‡2ç§‘çš„å­¦ç”Ÿåå•
+void InputScore(Stu *start , Stu *end , Stu *p_head ,char *subject);    //å•ç§‘å­¦ä¹ æˆç»©å½•å…¥ï¼Œä¼ å…¥å¼€å§‹å½•å…¥ä½ç½®å’Œç»“æŸå½•å…¥ä½ç½®ï¼Œä¼ å…¥å¤´æŒ‡é’ˆ ,ä¼ å…¥éœ€è¦å½•å…¥çš„å­¦ç§‘
+void ShowItem(Stu *p_list,Stu *p_head);  //ä¼ å…¥æŒ‡é’ˆï¼Œè¾“å‡ºå…¶å­¦ç”Ÿä¿¡æ¯  
+void Fprint(Stu *p_head);   //å°†æ•°æ®å¯¼å‡ºåˆ°å½“å‰è·¯å¾„ä¸‹çš„StudentInformation.txt 
+void ClassSortOutput(Stu *p_head,char *str_class,int subject);    //ä¼ å…¥å¤´æŒ‡é’ˆï¼Œä¼ å…¥ç­çº§ï¼Œä¼ å…¥å­¦ç§‘
+void Insert(Stu *p_head); //åœ¨ä¸­é—´æ’å…¥ä¸€ä¸ªè¡¨ 
 

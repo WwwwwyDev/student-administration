@@ -156,59 +156,59 @@ void Insert(Stu *p_head) ;//在中间插入一个表，找到前后结点，free
 
 ###### （1）存在数据文件时对数据读取并进入主菜单
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/MainMenu.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/MainMenu.PNG)
 
 ###### （2）不存在数据时初始化系统
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Init.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Init.PNG)
 
 ###### （3）学生菜单
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/StudentMenu.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/StudentMenu.PNG)
 
 ###### （4）管理员菜单（需输入密匙）
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/AdminMenu.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/AdminMenu.PNG)
 
 ###### （5）输出所有学生信息
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/PutOut.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/PutOut.PNG)
 
 ###### （6）查找学生
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Search.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Search.PNG)
 
 ###### （7）输出两门以上不及格学生名单
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Nopass.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Nopass.PNG)
 
 ###### （8）输出班级单科排名
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Sort.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Sort.PNG)
 
 ###### （9）添加学生
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Add.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Add.PNG)
 
 ###### （10）删除学生
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Del.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Del.PNG)
 
 ###### （11）修改学生信息
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Change.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Change.PNG)
 
 ###### （12）单科成绩录入
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/ScoreInput.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/ScoreInput.PNG)
 
 ###### （13）插入学生
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Insert.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Insert.PNG)
 
 ###### （14）保存为txt
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Save.PNG)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Save.PNG)
 
 #### 遇到的问题和异常处理方法
 

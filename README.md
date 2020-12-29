@@ -24,7 +24,7 @@
 
 #### 流程图
 
-![图床链接过期](https://gitee.com/wu_wen_yi/StudentAdministration/raw/master/img-folder/Tree.jpg)
+![图床链接过期](https://gitee.com/wu_wen_yi/student-administration/raw/master/img-folder/Tree.jpg)
 
 #### 功能及函数介绍
 

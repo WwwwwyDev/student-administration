@@ -8,7 +8,7 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) 
-{   SetConsoleTitle("学生管理系统(设计by大连民族大学2019082323)"); 
+{   SetConsoleTitle("学生管理系统"); 
     printf("当前运行目录%s\n",argv[0]); 
     Stu *p_head = NULL;
 //文件读取层 
@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	     p_head = InitList(num);  //开num个空间的链表 
 	     InitSys(p_head);      //输入数据域 
 	     SaveFile(p_head);   //保存文件 
-	     printf("欢迎来到学生管理系统(设计by2019082323)\n");
+	     printf("欢迎来到学生管理系统\n");
      }
      else
 	{   
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 		    p_temp = NextItem(p_temp);
 		}
 		Del(p_head,p_temp->m_nSign);
-		printf("提示：读取成功\n欢迎来到学生管理系统(设计by2019082323)\n");
+		printf("提示：读取成功\n欢迎来到学生管理系统\n");
 		fclose(pf);
 	}
 

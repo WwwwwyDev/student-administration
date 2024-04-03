@@ -5,9 +5,6 @@
 
 学生成绩管理程序 
 
-#### 代码及版本管理地址
-
-[gitee码云版本地址(点击跳转)](https://gitee.com/wu_wen_yi/student-administration)
 
 #### 要求
 
